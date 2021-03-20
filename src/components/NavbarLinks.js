@@ -45,7 +45,7 @@ const NavItem = styled(Link)`
     z-index: 6;
   }
 `
-const NavbarLinks = () => {
+const NavbarLinks = ({ location }) => {
   const blogActive = location.pathname.includes("blog") ? "page" : ""
   const portfolioActive =
     location.pathname.includes("project") ||

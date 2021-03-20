@@ -37,6 +37,7 @@ module.exports = {
         },
       },
     },
+    /*
     {
       resolve: "gatsby-source-cloudinary",
       options: {
@@ -48,13 +49,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
       resolve: "gatsby-transformer-cloudinary",
       options: {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
@@ -63,7 +57,7 @@ module.exports = {
         uploadFolder: "gatsby-cloudinary",
       },
     },
-
+    */
     {
       resolve: "gatsby-source-filesystem",
       options: {

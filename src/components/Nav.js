@@ -92,17 +92,17 @@ const Hamburger = styled.div`
   }
 `
 
-const Nav = () => {
+const Nav = ({ location }) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   let navBox = (
     <Navbox>
-      <NavbarLinks />
+      <NavbarLinks location={location} />
     </Navbox>
   )
   if (!navbarOpen) {
     navBox = (
       <Navbox open>
-        <NavbarLinks />
+        <NavbarLinks location={location} />
       </Navbox>
     )
   }
