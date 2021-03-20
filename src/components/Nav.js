@@ -4,7 +4,6 @@ import Logo from "./Logo"
 import NavbarLinks from "./NavbarLinks"
 
 const NavStyles = styled.nav`
-  height: 10vh;
   display: flex;
   background-color: var(--offWhite);
   position: relative;
@@ -16,10 +15,10 @@ const NavStyles = styled.nav`
   border-bottom: 0.1rem solid var(--grey);
   box-shadow: var(--bs);
   font-size: 145%;
-
+  height: 10rem;
   @media (max-width: 768px) {
     position: sticky;
-    height: 8vh;
+    height: 6rem;
     top: 0;
     left: 0;
     right: 0;
@@ -122,57 +121,3 @@ const Nav = ({ location }) => {
 }
 
 export default Nav
-
-/*
-const NavStyles = styled.nav`
-  margin-bottom: 3rem;
-  padding: 1rem 0 1rem;
-  background: var(--offWhite);
-  border-bottom: 0.1rem solid var(--grey);
-  box-shadow: var(--bs);
-  ul {
-    margin: 0 auto;
-    max-width: 1400px;
-    text-align: center;
-    list-style: none;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr 2fr 1.3fr 2fr 1fr;
-
-    li {
-      font-size: 190%;
-      font-weight: 500;
-      @media (max-width: 1180px) {
-      }
-    }
-    a {
-      text-decoration: none;
-      position: relative;
-      z-index: 5;
-      &:hover {
-        color: var(--secondary);
-      }
-      &:hover::before,
-      &[aria-current="page"]::before {
-        width: 0.5em;
-        height: 0.5em;
-        content: "";
-        pointer-events: none;
-        background: var(--secondary);
-        position: absolute;
-        z-index: -1;
-        --translate: -1.5rem;
-        --rotate: -45deg;
-        transform: translateX(var(--translate)) translateY(var(--translate))
-          rotate(var(--rotate));
-      }
-      &[aria-current="page"] {
-        color: var(--primary);
-      }
-      &[aria-current="page"]::before {
-        background: var(--primary);
-      }
-    }
-  }
-`
-*/

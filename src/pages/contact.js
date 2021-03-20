@@ -86,7 +86,7 @@ export default function ContactPage() {
             placeholder: BLURRED
             height: 350
             width: 500
-            transformOptions: { fit: COVER, cropFocus: NORTH }
+            transformOptions: { cropFocus: NORTH }
           )
         }
       }

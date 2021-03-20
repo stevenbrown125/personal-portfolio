@@ -11,7 +11,9 @@ import pompei from "../assets/images/pompei.png"
 import SocialMediaGrid from "./SocialMediaGrid"
 import SupFooterGrid from "./SupFooterGrid"
 import Footer from "./Footer"
+import { Helmet } from "react-helmet"
 
+import { withPrefix } from "gatsby"
 const SiteBorderStyles = styled.div`
   background: url(${bg}) no-repeat center top;
   background-size: auto;
@@ -51,6 +53,17 @@ const Layout = ({ location, children }) => {
 
   return (
     <>
+      <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-4QCZHL7SRC"
+        ></script>
+        <script
+          async
+          src={withPrefix("js/google-analytics.js")}
+          type="text/javascript"
+        ></script>
+      </Helmet>
       <GlobalStyles />
       <Typography />
       <SiteBorderStyles className={bgimage}>

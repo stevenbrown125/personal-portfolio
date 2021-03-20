@@ -27,7 +27,7 @@ const Logo = () => {
     query {
       file(name: { eq: "logo" }, extension: { eq: "png" }) {
         childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          gatsbyImageData(placeholder: BLURRED)
         }
       }
     }
