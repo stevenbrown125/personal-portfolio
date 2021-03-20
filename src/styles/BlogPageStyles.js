@@ -73,6 +73,27 @@ const BlogPageStyles = styled.div`
         }
       }
     }
+    section.blog-post-nav {
+      h2 {
+        text-align: center;
+        padding: 1rem;
+      }
+      nav {
+        font-size: 85%;
+        font-style: italic;
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          list-style-type: none;
+          padding: 0;
+          li {
+            max-width: 30rem;
+          }
+        }
+      }
+    }
+
     ul,
     ol {
       li {

@@ -54,17 +54,12 @@ const NavbarLinks = ({ location, navbarOpen, setNavbarOpen }) => {
       : ""
   return (
     <>
-      <NavItem
-        to="/"
-        navbarOpen={navbarOpen}
-        onClick={() => setNavbarOpen(!navbarOpen)}
-      >
+      <NavItem to="/" onClick={() => setNavbarOpen(!navbarOpen)}>
         Home
       </NavItem>
       <NavItem
         aria-current={portfolioActive}
         to="/portfolio"
-        navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}
       >
         Portfolio
@@ -73,16 +68,11 @@ const NavbarLinks = ({ location, navbarOpen, setNavbarOpen }) => {
       <NavItem
         aria-current={blogActive}
         to="/blog"
-        navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}
       >
         Blog
       </NavItem>
-      <NavItem
-        to="/contact"
-        navbarOpen={navbarOpen}
-        onClick={() => setNavbarOpen(!navbarOpen)}
-      >
+      <NavItem to="/contact" onClick={() => setNavbarOpen(!navbarOpen)}>
         Contact
       </NavItem>
     </>

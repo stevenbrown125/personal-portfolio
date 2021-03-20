@@ -47,7 +47,31 @@ async function createBlogPosts({ graphql, actions, reporter }) {
   // Get all markdown blog posts sorted by date
   const result = await graphql(`
     {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: ASC }) {
+      allPosts: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: ASC }
+        filter: { frontmatter: { type: { eq: "post" } } }
+      ) {
+        nodes {
+          id
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            categories
+            date
+            description
+            title
+            tags
+            type
+          }
+          html
+        }
+      }
+      allProjects: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: ASC }
+        filter: { frontmatter: { type: { eq: "project" } } }
+      ) {
         nodes {
           id
           excerpt
@@ -75,53 +99,60 @@ async function createBlogPosts({ graphql, actions, reporter }) {
     return
   }
 
-  const items = result.data.allMarkdownRemark.nodes
   const itemsPerPage = parseInt(process.env.ITEMS_PER_PAGE)
-  const categories = []
-  const posts = []
-  const projects = []
+  const posts = result.data.allPosts.nodes
+  const projects = result.data.allProjects.nodes
   const postTags = []
   const projectTags = []
+  const categories = []
 
   // Create blog posts pages
   // But only if there's at least one markdown file found in "content/blog" (defined in gatsby-config.js)
-  if (items.length > 0) {
-    items.forEach(item => {
-      // First, determine each item as either a blog post or a project so we can use the right template
-      if (item.frontmatter.type === "post") {
-        // Add  it to our blog posts array
-        posts.push(item)
-        // Add the metadata to our master lists to be added to the graphql api later
-        if (item.frontmatter.categories) {
-          item.frontmatter.categories.forEach(cat => categories.push(cat))
-        }
-        if (item.frontmatter.tags) {
-          item.frontmatter.tags.forEach(tag => postTags.push(tag))
-        }
-        // And then create the corresponding blog post page
-        createPage({
-          path: `/blog${item.fields.slug}`,
-          component: blogPost,
-          context: {
-            id: item.id,
-          },
-        })
-      } else {
-        // if it's not a blog post, it must be a Project
-        projects.push(item)
+  if (posts.length > 0) {
+    posts.forEach((item, index) => {
+      const previousPostId = index === 0 ? null : posts[index - 1].id
+      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+      // Add the metadata to our master lists to be added to the graphql api later
+      if (item.frontmatter.categories) {
+        item.frontmatter.categories.forEach(cat => categories.push(cat))
+      }
+      if (item.frontmatter.tags) {
+        item.frontmatter.tags.forEach(tag => postTags.push(tag))
+      }
+      // And then create the corresponding blog post page
+      createPage({
+        path: `/blog${item.fields.slug}`,
+        component: blogPost,
+        context: {
+          id: item.id,
+          previousPostId,
+          nextPostId,
+        },
+      })
+    })
+
+    // Create project pages
+    if (projects.length > 0) {
+      projects.forEach((item, index) => {
+        const previousPostId = index === 0 ? null : projects[index - 1].id
+        const nextPostId =
+          index === projects.length - 1 ? null : projects[index + 1].id
+
         if (item.frontmatter.tags) {
           item.frontmatter.tags.forEach(tag => projectTags.push(tag))
         }
+        // And then create the corresponding project page
         createPage({
           path: `/project${item.fields.slug}`,
           component: projectTempate,
           context: {
             id: item.id,
+            previousPostId,
+            nextPostId,
           },
         })
-      }
-    })
-
+      })
+    }
     // Create the default Blog Listing Page
     createMainBlogPageListings(posts, itemsPerPage, createPage)
     // Create the default Portfolio Listing  Page

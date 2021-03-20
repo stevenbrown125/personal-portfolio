@@ -10,6 +10,8 @@ import BlogPageStyles from "../styles/BlogPageStyles"
 const ProjectTemplate = ({ data }) => {
   const post = data.markdownRemark
   let featuredImage = ""
+  const { previous, next } = data
+
   if (post.frontmatter.featuredImage.childImageSharp.gatsbyImageData) {
     featuredImage = (
       <figure>
@@ -75,6 +77,27 @@ const ProjectTemplate = ({ data }) => {
             itemProp="articleBody"
           />
         </section>
+        <section className="blog-post-nav box content">
+          <h2>Looking for more?</h2>
+          <nav>
+            <ul>
+              <li>
+                {previous && (
+                  <Link to={`/project${previous.fields.slug}`} rel="prev">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li>
+                {next && (
+                  <Link to={`/project${next.fields.slug}`} rel="next">
+                    {next.frontmatter.title} →
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </nav>
+        </section>
         <Bio />
       </article>
     </BlogPageStyles>
@@ -84,7 +107,7 @@ const ProjectTemplate = ({ data }) => {
 export default ProjectTemplate
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query($id: String!, $previousPostId: String, $nextPostId: String) {
     markdownRemark(id: { eq: $id }) {
       html
       excerpt
@@ -102,6 +125,22 @@ export const pageQuery = graphql`
       id
       fields {
         slug
+      }
+    }
+    previous: markdownRemark(id: { eq: $previousPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+      }
+    }
+    next: markdownRemark(id: { eq: $nextPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
       }
     }
   }

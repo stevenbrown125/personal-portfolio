@@ -11,6 +11,7 @@ const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
   let featuredImage = ""
   let featuredImageCaption = ""
+  const { previous, next } = data
   if (post.frontmatter.imageDescription) {
     featuredImageCaption = (
       <figcaption>{post.frontmatter?.imageDescription}</figcaption>
@@ -29,7 +30,7 @@ const BlogPostTemplate = ({ data }) => {
       </figure>
     )
   }
-
+  console.log(previous)
   return (
     <BlogPageStyles className="container two-columns">
       <SEO
@@ -70,6 +71,27 @@ const BlogPostTemplate = ({ data }) => {
             itemProp="articleBody"
           />
         </section>
+        <section className="blog-post-nav box content">
+          <h2>Looking for more?</h2>
+          <nav>
+            <ul>
+              <li>
+                {previous && (
+                  <Link to={`/blog${previous.fields.slug}`} rel="prev">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li>
+                {next && (
+                  <Link to={`/blog${next.fields.slug}`} rel="next">
+                    {next.frontmatter.title} →
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </nav>
+        </section>
         <Bio />
       </article>
     </BlogPageStyles>
@@ -79,7 +101,11 @@ const BlogPostTemplate = ({ data }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($id: String!) {
+  query BlogPostBySlug(
+    $id: String!
+    $previousPostId: String
+    $nextPostId: String
+  ) {
     markdownRemark(id: { eq: $id }) {
       html
       excerpt
@@ -98,6 +124,22 @@ export const pageQuery = graphql`
       id
       fields {
         slug
+      }
+    }
+    previous: markdownRemark(id: { eq: $previousPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+      }
+    }
+    next: markdownRemark(id: { eq: $nextPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
       }
     }
   }

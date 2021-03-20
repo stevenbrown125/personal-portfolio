@@ -37,7 +37,6 @@ const Logo = ({ navbarOpen, setNavbarOpen }) => {
       as={Link}
       to="/"
       className="logoWrap"
-      navbarOpen={navbarOpen}
       onClick={() => setNavbarOpen(!navbarOpen)}
     >
       <GatsbyImage
