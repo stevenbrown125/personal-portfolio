@@ -94,6 +94,24 @@ const BlogPageStyles = styled.div`
         line-height: 2.2rem;
       }
     }
+    article section {
+      h2 {
+        font-size: 130%;
+      }
+      p {
+        line-height: 1.8rem;
+        font-size: 90%;
+      }
+      ul {
+        font-size: 74%;
+      }
+      ol {
+        font-size: 74%;
+      }
+      li {
+        line-height: 1.8rem;
+      }
+    }
   }
 `
 export default BlogPageStyles

@@ -36,9 +36,7 @@ The spacing effect works, not just for humans, but for all biological life forms
 
 What can you do to improve your memory?
 
-1. First you can use a technique called memory hooks in which you create a more personal connection to the information by relating it to something you do know. Essentially you can build off your existing neural pathways by connecting new words and phrases to words and phrases you already know. For example for me I just learned the Polish word for eight which is osiem sounds like the english word awesome. So of course I can relate this too the phrase ‘Everything is osiem’ which is probably a stupid joke and not that funny but it’ll help me remember it in the future.
-
-   Read more on [memory hooks](https://roadtoepic.com/remember-anything-forever-with-memory-hooks/).
+1. First you can use a technique called memory hooks in which you create a more personal connection to the information by relating it to something you do know. Essentially you can build off your existing neural pathways by connecting new words and phrases to words and phrases you already know. For example for me I just learned the Polish word for eight which is osiem sounds like the english word awesome. So of course I can relate this too the phrase ‘Everything is osiem’ which is probably a stupid joke and not that funny but it’ll help me remember it in the future. (Read more on [memory hooks](https://roadtoepic.com/remember-anything-forever-with-memory-hooks/).)
 
 2. Incorporate more senses. When studying, don’t just hear the word, select the option, and move on. Hear the word, repeat it! Sound it out, look at the spelling. Make the connection between the sounds and the letters. It’s a bit more difficult but it will help you in the long run.
 
