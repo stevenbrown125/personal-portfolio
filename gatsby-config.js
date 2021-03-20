@@ -2,20 +2,22 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: `Steven Brown's Portfolio`,
+    title: "Steven Brown's Portfolio",
     author: {
-      name: `Steven Brown`,
-      summary: `Javascript Enthusiast, React Developer, Gatsby Student, Unity Hobbiest, Investor, Linguist, Dad, Full Sail Alumni, CEO of @Bliztek`,
+      name: "Steven Brown",
+      summary:
+        "Javascript Enthusiast, React Developer, Gatsby Student, Unity Hobbiest, Investor, Linguist, Dad, Full Sail Alumni, CEO of @Bliztek",
     },
-    description: `A website and blog displaying Steven's projects and interests. I design and develop things using  React and NodeJS!`,
-    siteUrl: `https://bliztek.com`,
+    description:
+      "A website and blog displaying Steven's projects and interests. I design and develop things using  React and NodeJS!",
+    siteUrl: "https://bliztek.com",
     social: {
-      twitter: `Design4TheWeb`,
+      twitter: "Design4TheWeb",
     },
   },
   plugins: [
     {
-      resolve: `gatsby-source-twitter`,
+      resolve: "gatsby-source-twitter",
       options: {
         credentials: {
           consumer_key: process.env.TWITTER_KEY,
@@ -65,65 +67,66 @@ module.exports = {
     },
     */
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/blog`,
-        name: `blog`,
+        name: "blog",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/projects`,
-        name: `projects`,
+        name: "projects",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/assets`,
-        name: `assets`,
+        name: "assets",
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 630,
             },
           },
           {
-            resolve: `gatsby-remark-external-links`,
+            resolve: "gatsby-remark-external-links",
             options: {
-              target: `_blank`,
-              rel: `nofollow`,
+              target: "_blank",
+              rel: "nofollow",
             },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: "gatsby-remark-responsive-iframe",
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: "margin-bottom: 1.0725rem",
             },
           },
-          `gatsby-remark-copy-linked-files`,
+          "gatsby-remark-copy-linked-files",
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-image",
     /*
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
-    },*/
+    }, */
 
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-styled-components`,
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-styled-components",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

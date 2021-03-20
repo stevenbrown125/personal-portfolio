@@ -5,23 +5,46 @@ import LatestProjects from "./LatestProjects"
 import TwitterFeed from "./TwitterFeed"
 
 const SubGridStyles = styled.div`
-  min-width: var(--minWidth);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
   & > div {
     display: grid-item;
-    padding: 1rem 3rem;
-    box-shadow: none;
+    padding: 0rem 3rem;
   }
-  article h3 {
-    font-size: 120%;
+  article {
+    margin-bottom: 1rem;
+    h3 {
+      font-size: 120%;
+    }
+    .categories {
+      display: none;
+    }
   }
-  .categories {
-    display: none;
-  }
+
   @media only screen and (max-width: 800px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto;
+    div {
+      padding: 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 110%;
+      display: block;
+    }
+    p {
+      padding: 1rem;
+      font-size: 90%;
+    }
+    article {
+      h3 {
+        font-size: 100%;
+      }
+      p {
+        font-size: 90%;
+      }
+    }
   }
 `
 

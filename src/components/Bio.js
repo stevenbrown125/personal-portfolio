@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { FaTwitterSquare, FaLinkedin, FaGithubSquare } from "react-icons/fa"
 
@@ -35,9 +35,7 @@ export default function Bio() {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 80, height: 80, quality: 95) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(width: 95, height: 95, placeholder: BLURRED)
         }
       }
       site {
@@ -56,11 +54,13 @@ export default function Bio() {
 
   const author = data.site.siteMetadata?.author
   const social = data.site.siteMetadata?.social
-  const avatar = data?.avatar?.childImageSharp?.fixed
 
   return (
     <BioStyles className="box content">
-      <Image fixed={avatar} alt={author?.name || ``} />
+      <GatsbyImage
+        image={data.avatar.childImageSharp.gatsbyImageData}
+        alt={author?.name || ""}
+      />
       <h2>{author.name}</h2>
       <h3 className="social-icons">
         <span>
@@ -96,9 +96,9 @@ export default function Bio() {
         <a
           target="_blank"
           rel="noreferrer"
-          href={`https://twitter.com/${social?.twitter || ``} `}
+          href={`https://twitter.com/${social?.twitter || ""} `}
         >
-          {social?.twitter ? `@${social?.twitter}` : ``}
+          {social?.twitter ? `@${social?.twitter}` : ""}
         </a>
       </p>
     </BioStyles>

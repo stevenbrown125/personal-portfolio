@@ -4,8 +4,6 @@ import styled from "styled-components"
 import { FaTwitter, FaHeart, FaRetweet } from "react-icons/fa"
 
 const TweetStyles = styled.div`
-  padding: 0.4rem 0.8rem;
-  margin: 0.6rem;
   div {
     border-bottom: 1px solid var(--grey);
   }
@@ -30,8 +28,9 @@ const TweetStyles = styled.div`
       transform: scale(1.3);
     }
   }
-  svg {
+  div svg {
     transition: transform 0.2s ease-in-out;
+    padding-right: 1rem;
   }
   a {
     text-decoration: none;
@@ -47,9 +46,6 @@ const TweetStyles = styled.div`
   .retweet {
     color: #3ebf63;
   }
-  p {
-    font-size: 95%;
-  }
   .tweet-caption {
     color: var(--black);
     font-style: italic;
@@ -61,10 +57,10 @@ const TweetStyles = styled.div`
   }
 `
 
-export default function TweetFeed({ items }) {
+export default function TweetFeed() {
   const data = useStaticQuery(graphql`
     query {
-      tweets: allTwitterStatusesUserTimelineLatestTweets(limit: 3) {
+      tweets: allTwitterStatusesUserTimelineLatestTweets(limit: 4) {
         nodes {
           id
           created_at
@@ -81,29 +77,21 @@ export default function TweetFeed({ items }) {
 
   return (
     <TweetStyles>
-      <h2>
-        <span className="mark">
-          <FaTwitter /> @Design4TheWeb Tweets
-        </span>
+      <h2 className="mark">
+        <FaTwitter /> @Design4TheWeb Tweets
       </h2>
       {tweetsArray.map(tweet => (
         <div className="tweet" key={tweet.id}>
-          <p className="tweet-caption">
+          <p>
             <a
               href={"https://twitter.com/Design4TheWeb/status/" + tweet.id_str}
               target="_blank"
               rel="noreferrer"
             >
               <FaTwitter />
-              @Design4TheWeb Tweeted on{" "}
-              {tweet.created_at.split(" ")[0] +
-                ", " +
-                tweet.created_at.split(" ")[1] +
-                " " +
-                +tweet.created_at.split(" ")[2]}
-            </a>
+            </a>{" "}
+            {tweet.full_text}
           </p>
-          <p>{tweet.full_text}</p>
           <ul>
             <li>
               <a

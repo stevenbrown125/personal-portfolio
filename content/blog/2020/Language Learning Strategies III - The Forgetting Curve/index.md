@@ -1,23 +1,22 @@
 ---
 title: Language Learning Strategies III - The Forgetting Curve
 date: "2020-11-25T06:27:04.284Z"
-featuredImage: './lost-places-3942773_1920.jpg'
+featuredImage: "./lost-places-3942773_1920.jpg"
 type: post
 categories:
-- Language
+  - Language
 tags:
-- Language
-- Polish
-- English
-- Learning Strategies
+  - Language
+  - Polish
+  - English
+  - Learning Strategies
 ---
+
 ## Jeszcze raz witam!
 
 The forgetting curve is a psychology concept, discovered by German Scientist [Hermann Ebbinghaus](https://www.britannica.com/biography/Hermann-Ebbinghaus), which describes how the brain’s ability to retain information decreases over time. The idea behind his extensive research is that memorized information is lost at an exponential rate, meaning that after a day or two, you have less than a 40% chance of recalling something you had previously memorized. This concept stresses the importance of reviewing information at regular intervals to reset the forgetting curve and developing new neural pathways, as we discussed in our earlier post. Here is a graphical representation of the forgetting curve:
 
 ![The Forgetting Curve Depicted!](./forgetting-curve.jpg "The forgetting curve depicted")
-
-
 
 Several other factors also contribute to how well we retain, or forget, information. Those factors include:
 
@@ -30,7 +29,6 @@ Several other factors also contribute to how well we retain, or forget, informat
 Well another discovery by Hermann Ebbinghaus is called the spacing effect and it suggests reviewing information at strategic intervals to maximize your retention ability. For example, say you learn a new word or phrase in polish. Ideally, you want to review it within an hour, then again right after five hours, then again after a day, once more after three days, and so on until you have ten repetitions after about eight months. Each time you review the word or phrase, you are able to recall it after a longer period of time. Here is a graphical representation of the spacing effect:
 
 ![Spacing Effect Depicted!](./spaced-learning.png "The Spacing Effect")
-
 
 These concepts are in fact so successful, there have been used in the development of several language acquisition applications. One of the most prominent is Memrise, which I also recommend if you're interested in supplementing our language learning applications with yet another mobile app.
 

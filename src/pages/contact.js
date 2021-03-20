@@ -1,75 +1,123 @@
 import React from "react"
 import styled from "styled-components"
-import contact from "../assets/images/contact.jpg"
 import { FaUser, FaEnvelope, FaEdit } from "react-icons/fa"
 import SEO from "../components/Seo"
+import BlogPageStyles from "../styles/BlogPageStyles"
 
-const ContactPageStyles = styled.div`
-  input,
-  textarea {
-    background: #fff;
-    border: 1px solid var(--grey);
-    padding: 1rem;
-  }
-  textarea {
-    height: 27rem;
-  }
-  button {
-    background: var(--blue);
-    border: none;
-    &:hover {
-      background: var(--lightblue);
-    }
-  }
-  img {
-    margin: 1rem 0 2.4rem;
-    border: solid 1px #ccc;
-    -moz-box-shadow: 1px 1px 5px #999;
-    -webkit-box-shadow: 1px 1px 5px #999;
-    box-shadow: 1px 1px 5px #999;
-    border: solid 1px #efefef;
-  }
-`
+import { useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { Helmet } from "react-helmet"
 
-const ContactGridStyles = styled.div`
+const ContactPageStyles = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1rem;
-  @media (max-width: 800px) {
-    grid-template-columns: 1fr;
+  figure {
+    display: inline-block;
   }
-  div img {
-    margin: 0 auto;
-    width: 98%;
+  div {
+    padding: 1rem;
   }
   form {
-    font-size: 1.8rem;
     fieldset {
       display: grid;
       gap: 0.8rem;
+      border-color: rgba(0, 0, 0, 0.1);
+      border-width: 1px;
+      padding-block-start: 0;
     }
     .mapleSyrup {
       display: none;
+    }
+    button {
+      background: var(--primary);
+      color: white;
+      border: 0;
+      padding: 0.6rem 1rem;
+      border-radius: 2px;
+      cursor: pointer;
+      --cast: 2px;
+      box-shadow: var(--cast) var(--cast) 0 var(--grey);
+      text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.2);
+      transition: all 0.2s;
+      &:hover {
+        --cast: 4px;
+        background-color: var(--secondary);
+      }
+    }
+    input,
+    textarea {
+      background: #fff;
+      border: 1px solid var(--grey);
+      padding: 1rem;
+    }
+    textarea {
+      height: 21rem;
+    }
+    svg {
+      padding-right: 1rem;
+    }
+    legend {
+      float: left;
+      text-align: center;
+      font-size: 85%;
+      border-bottom: 1px solid var(--grey);
+      padding: 1rem;
+    }
+    div {
+      padding: 0;
+    }
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: auto;
+    text-align: center;
+    form {
+      text-align: left;
     }
   }
 `
 
 export default function ContactPage() {
-  return (
-    <div className="container">
-      <SEO
-        title={`Contact`}
-        description={`Got questions, comments, or concerns? Need a quote for a web project or want to hire me part time? Awesome! Please fill out the provided form and I will get back to you as soon as possible. Looking forward to hearing from you!`}
-      />
-      <div>
-        <h1 className="mark content title-section">
-          <FaEdit />
-          Contact
-        </h1>
-      </div>
+  const data = useStaticQuery(graphql`
+    query {
+      contact: file(absolutePath: { regex: "/rome-2.jpg/" }) {
+        childImageSharp {
+          gatsbyImageData(
+            placeholder: BLURRED
+            height: 350
+            width: 500
+            transformOptions: { fit: COVER, cropFocus: NORTH }
+          )
+        }
+      }
+    }
+  `)
 
-      <ContactPageStyles className="box content">
-        <ContactGridStyles>
+  return (
+    <BlogPageStyles className="container single-column">
+      <Helmet>
+        <script
+          src={`https://www.google.com/recaptcha/api.js?r=${Math.random()}`}
+          async
+          defer
+        ></script>
+      </Helmet>
+      <SEO
+        title={"Contact"}
+        description={
+          "Got questions, comments, or concerns? Need a quote for a web project or want to hire me part time? Awesome! Please fill out the provided form and I will get back to you as soon as possible. Looking forward to hearing from you!"
+        }
+      />
+
+      <article>
+        <header className="box">
+          <h1 className="mark">
+            <FaEdit />
+            Contact
+          </h1>
+        </header>
+
+        <ContactPageStyles className="box content">
           <div>
             <p>
               Got questions, comments, concerns? Need a quote for a web project
@@ -77,9 +125,14 @@ export default function ContactPage() {
               provided form and I will get back to you as soon as possible. I'm
               looking forward to hearing from you!
             </p>
-            <img src={contact} alt="Contact Steven Brown" />
+            <figure>
+              <GatsbyImage
+                image={data.contact.childImageSharp.gatsbyImageData}
+                alt="Steven Brown"
+              />
+            </figure>
           </div>
-          <form>
+          <form action="https://formspree.io/f/mlearrjj" method="POST">
             <fieldset>
               <legend>Contact Form</legend>
               <label htmlFor="name">
@@ -88,7 +141,7 @@ export default function ContactPage() {
               </label>
               <input
                 type="text"
-                name="name"
+                name="_name"
                 id="name"
                 placeholder="e.g. john doe"
                 required
@@ -99,7 +152,7 @@ export default function ContactPage() {
               </label>
               <input
                 type="email"
-                name="email"
+                name="_replyto"
                 id="email"
                 placeholder="email@domain.com"
                 required
@@ -114,19 +167,18 @@ export default function ContactPage() {
                 placeholder="type here"
                 required
               />
-              <input
-                type="mapleSyrup"
-                name="mapleSyrup"
-                id="mapleSyrup"
-                className="mapleSyrup"
-              />
-              <button type="submit" name="submit" value="Send Message!">
+              <input type="text" name="_gotcha" className="mapleSyrup" />
+              <div
+                className="g-recaptcha"
+                data-sitekey="6Ldry4UaAAAAABBpzHUPhDuzItukepJmzJrbTPqW"
+              ></div>
+              <button type="submit" value="Send Message!">
                 Send Message!
               </button>
             </fieldset>
           </form>
-        </ContactGridStyles>
-      </ContactPageStyles>
-    </div>
+        </ContactPageStyles>
+      </article>
+    </BlogPageStyles>
   )
 }

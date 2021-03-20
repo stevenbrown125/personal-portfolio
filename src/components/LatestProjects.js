@@ -5,7 +5,7 @@ import ListingsProject from "./ListingsProject"
 
 export default function LatestProjects() {
   return (
-    <div className="box">
+    <div>
       <h2 className="mark">
         <FaCodeBranch /> Latest Project
       </h2>
@@ -34,13 +34,10 @@ const pageQuery = graphql`
           demolink
           featuredImage {
             childImageSharp {
-              fluid(maxWidth: 580, maxHeight: 300) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
             }
           }
         }
-
         fields {
           slug
         }

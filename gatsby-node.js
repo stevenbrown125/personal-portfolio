@@ -1,6 +1,6 @@
 require("dotenv").config()
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require("path")
+const { createFilePath } = require("gatsby-source-filesystem")
 
 // First we modify the GraphQL Schema
 // Here we add a few custom types so that we can query them later
@@ -41,8 +41,8 @@ async function createBlogPosts({ graphql, actions, reporter }) {
   const { createPage } = actions
 
   // Define the page templates
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const projectTempate = path.resolve(`./src/templates/project-post.js`)
+  const blogPost = path.resolve("./src/templates/blog-post.js")
+  const projectTempate = path.resolve("./src/templates/project-post.js")
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(`
@@ -69,7 +69,7 @@ async function createBlogPosts({ graphql, actions, reporter }) {
   `)
   if (result.errors) {
     reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
+      "There was an error loading your blog posts",
       result.errors
     )
     return
@@ -92,10 +92,12 @@ async function createBlogPosts({ graphql, actions, reporter }) {
         // Add  it to our blog posts array
         posts.push(item)
         // Add the metadata to our master lists to be added to the graphql api later
-        if (item.frontmatter.categories)
+        if (item.frontmatter.categories) {
           item.frontmatter.categories.forEach(cat => categories.push(cat))
-        if (item.frontmatter.tags)
+        }
+        if (item.frontmatter.tags) {
           item.frontmatter.tags.forEach(tag => postTags.push(tag))
+        }
         // And then create the corresponding blog post page
         createPage({
           path: `/blog${item.fields.slug}`,
@@ -107,8 +109,9 @@ async function createBlogPosts({ graphql, actions, reporter }) {
       } else {
         // if it's not a blog post, it must be a Project
         projects.push(item)
-        if (item.frontmatter.tags)
+        if (item.frontmatter.tags) {
           item.frontmatter.tags.forEach(tag => projectTags.push(tag))
+        }
         createPage({
           path: `/project${item.fields.slug}`,
           component: projectTempate,
@@ -149,10 +152,10 @@ function countOccurrences(arr, val) {
 }
 
 function createMainBlogPageListings(posts, itemsPerPage, createPage) {
-  const template = path.resolve(`./src/templates/blog-listing.js`)
+  const template = path.resolve("./src/templates/blog-listing.js")
   const numPages = Math.ceil(posts.length / itemsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
-    const path = `/blog${i === 0 ? `` : `/${i + 1}`}`
+    const path = `/blog${i === 0 ? "" : `/${i + 1}`}`
     createPage({
       path: path,
       component: template,
@@ -167,10 +170,10 @@ function createMainBlogPageListings(posts, itemsPerPage, createPage) {
 }
 
 function createMainPortfolioPageListings(projects, itemsPerPage, createPage) {
-  const template = path.resolve(`./src/templates/project-listing.js`)
+  const template = path.resolve("./src/templates/project-listing.js")
   const numPages = Math.ceil(projects.length / itemsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
-    const path = `/portfolio${i === 0 ? `` : `/${i + 1}`}`
+    const path = `/portfolio${i === 0 ? "" : `/${i + 1}`}`
     createPage({
       path: path,
       component: template,
@@ -185,8 +188,8 @@ function createMainPortfolioPageListings(projects, itemsPerPage, createPage) {
 }
 
 function createTagPages(tags, type, itemsPerPage, createPage) {
-  const tagPostTemplate = path.resolve(`./src/templates/blog-tags.js`)
-  const tagProjectTemplate = path.resolve(`./src/templates/project-tags.js`)
+  const tagPostTemplate = path.resolve("./src/templates/blog-listing.js")
+  const tagProjectTemplate = path.resolve("./src/templates/project-listing.js")
 
   const uTags = [...new Set(tags)]
   uTags.forEach(tag => {
@@ -194,7 +197,7 @@ function createTagPages(tags, type, itemsPerPage, createPage) {
 
     Array.from({ length: numPages }).forEach((_, i) => {
       const path = `/${type}/tag/${tag.toLowerCase()}${
-        i === 0 ? `` : `/${i + 1}`
+        i === 0 ? "" : `/${i + 1}`
       }`
       createPage({
         path: path,
@@ -212,7 +215,7 @@ function createTagPages(tags, type, itemsPerPage, createPage) {
 }
 
 function createCategoryPages(categories, itemsPerPage, createPage) {
-  const categoryTemplate = path.resolve(`./src/templates/category.js`)
+  const categoryTemplate = path.resolve("./src/templates/blog-listing.js")
   // Get a unique array of categories so we can ensure we don't double tap
   const uCategories = [...new Set(categories)]
 
@@ -224,7 +227,7 @@ function createCategoryPages(categories, itemsPerPage, createPage) {
 
     Array.from({ length: numPages }).forEach((_, i) => {
       const path = `/blog/category/${category.toLowerCase()}${
-        i === 0 ? `` : `/${i + 1}`
+        i === 0 ? "" : `/${i + 1}`
       }`
       createPage({
         path: path,
@@ -248,13 +251,13 @@ exports.createPages = async params => {
 // While Nodes are created, we generate new Nodes Fields based on the data passed
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === "MarkdownRemark") {
     const value = createFilePath({ node, getNode })
       .replace(/\s+/g, "-")
       .toLowerCase()
 
     createNodeField({
-      name: `slug`,
+      name: "slug",
       node,
       value,
     })

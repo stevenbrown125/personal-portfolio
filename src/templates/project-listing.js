@@ -6,56 +6,47 @@ import Sidebar from "../components/Sidebar"
 import { FaCodeBranch } from "react-icons/fa"
 import ListingsProject from "../components/ListingsProject"
 import Pagination from "../components/Pagination"
-import BlogPageStylesExtended from "../styles/BlogPageStylesExtended"
+import BlogPageStyles from "../styles/BlogPageStyles"
 
-export default function BlogIndex({ data, location }) {
+export default function BlogIndex({ data, location, pageContext }) {
   const projects = data.allMarkdownRemark.nodes
-  if (projects.length === 0) {
-    return (
-      <div>
-        <SEO title="All posts" />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-        <Bio />
-      </div>
-    )
+  let pagination = ""
+  let title = "Latest Project Showcase"
+  if (pageContext.id) {
+    title = `Projects using ${pageContext.id}`
   }
-
+  if (pageContext.numPages > 1) {
+    pagination = <Pagination pageContext={pageContext} location={location} />
+  }
   return (
-    <BlogPageStylesExtended className="container">
+    <BlogPageStyles className="container two-columns">
       <SEO
-        title={`Latest Project Showcase`}
-        description={`On this page, find my latest projects with links to a live demo of the site.`}
+        title={title}
+        description={
+          "On this page, find my latest projects with links to a live demo of the site."
+        }
       />
       <Sidebar className="box" args={["tags-project", "latest-project"]} />
-      <div>
-        <div className="box blog-header">
-          <h1 className="mark content title-section">
-            <FaCodeBranch /> My Projects
+      <article>
+        <header className="box">
+          <h1 itemProp="headline" className="mark">
+            <FaCodeBranch /> {title}
           </h1>
-
-          <Pagination
-            pathbase="/portfolio/"
-            totalItems={data.allMarkdownRemark.totalCount}
-            location={location}
-          />
-        </div>
-        <div className="box">
+          {pagination}
+        </header>
+        <section className="box">
           <ListingsProject projects={projects} />
-        </div>
+        </section>
         <Bio />
-      </div>
-    </BlogPageStylesExtended>
+      </article>
+    </BlogPageStyles>
   )
 }
 
 export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query($id: String, $skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "project" } } }
+      filter: { frontmatter: { type: { eq: "project" }, tags: { eq: $id } } }
       limit: $limit
       sort: { fields: frontmatter___date, order: DESC }
       skip: $skip
@@ -74,9 +65,7 @@ export const pageQuery = graphql`
           tags
           featuredImage {
             childImageSharp {
-              fluid(maxWidth: 580, maxHeight: 300) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }

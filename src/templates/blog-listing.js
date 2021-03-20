@@ -4,58 +4,72 @@ import Bio from "../components/Bio"
 import SEO from "../components/Seo"
 import Sidebar from "../components/Sidebar"
 import { FaRegNewspaper } from "react-icons/fa"
-import BlogPageStyles from "../styles/BlogPageStyles"
 import ListingsBlog from "../components/ListingsBlog"
 import Pagination from "../components/Pagination"
+import BlogPageStyles from "../styles/BlogPageStyles"
 
-export default function BlogIndex({ data, location }) {
-  const posts = data.allMarkdownRemark.nodes
-  if (posts.length === 0) {
-    return (
-      <div>
-        <SEO title="All posts" />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-        <Bio />
-      </div>
-    )
+export default function BlogIndex({ data, location, pageContext }) {
+  let posts = data.byTag.nodes
+  if (data.byTag.totalCount === 0) {
+    posts = data.byCategory.nodes
   }
-
+  let title = "All Blog Posts"
+  let pagination = ""
+  if (pageContext.id) {
+    title = `${pageContext.id} blog posts`
+  }
+  if (pageContext.numPages > 1) {
+    pagination = <Pagination pageContext={pageContext} location={location} />
+  }
   return (
-    <BlogPageStyles className="container">
+    <BlogPageStyles className="container two-columns">
       <SEO
-        title={`All Blog Posts`}
-        description={`On this page, you will find all my latest blog posts.`}
+        title={title}
+        description={"On this page, you will find all my latest blog posts."}
       />
       <Sidebar className="sidebar box" args={["categories", "tags-post"]} />
-      <div>
-        <div className="box blog-header">
-          <h1 className="mark content title-section">
-            <FaRegNewspaper /> My Blog Posts
+      <article itemScope itemType="http://schema.org/Article">
+        <header className="box">
+          <h1 itemProp="headline" className="mark">
+            <FaRegNewspaper /> {title}
           </h1>
-
-          <Pagination
-            pathbase="/blog/"
-            totalItems={data.allMarkdownRemark.totalCount}
-            location={location}
-          />
-        </div>
-        <div className="box">
+          {pagination}
+        </header>
+        <section className="box">
           <ListingsBlog posts={posts} />
-        </div>
+        </section>
         <Bio />
-      </div>
+      </article>
     </BlogPageStyles>
   )
 }
 
 export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "post" } } }
+  query($id: String, $skip: Int!, $limit: Int!) {
+    byTag: allMarkdownRemark(
+      filter: { frontmatter: { type: { eq: "post" }, tags: { eq: $id } } }
+      limit: $limit
+      sort: { fields: frontmatter___date, order: DESC }
+      skip: $skip
+    ) {
+      nodes {
+        id
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "dddd MMMM Do, YYYY")
+          title
+          description
+          categories
+          tags
+        }
+      }
+      totalCount
+    }
+    byCategory: allMarkdownRemark(
+      filter: { frontmatter: { type: { eq: "post" }, categories: { eq: $id } } }
       limit: $limit
       sort: { fields: frontmatter___date, order: DESC }
       skip: $skip

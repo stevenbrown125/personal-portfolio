@@ -6,9 +6,9 @@ const SocialMediaGridStyles = styled.div`
   background: var(--black);
   color: var(--white);
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 150%;
   padding: 1rem;
-  min-width: var(--minWidth);
+  box-shadow: var(--bs);
   a {
     color: var(--white);
     padding: 2rem;
@@ -21,6 +21,10 @@ const SocialMediaGridStyles = styled.div`
   }
   a.github:hover {
     color: var(--orange);
+  }
+
+  @media only screen and (max-width: 800px) {
+    font-size: 90%;
   }
 `
 
