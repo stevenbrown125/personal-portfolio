@@ -32,35 +32,35 @@ const SEO = ({ description, lang, meta, title }) => {
       titleTemplate={defaultTitle ? `${defaultTitle} - %s ` : null}
       meta={[
         {
-          name: `description`,
+          name: "description",
           content: metaDescription,
         },
         {
-          property: `og:title`,
+          property: "og:title",
           content: title,
         },
         {
-          property: `og:description`,
+          property: "og:description",
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: "og:type",
+          content: "website",
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          name: "twitter:card",
+          content: "summary",
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
+          name: "twitter:creator",
+          content: site.siteMetadata?.social?.twitter || "",
         },
         {
-          name: `twitter:title`,
+          name: "twitter:title",
           content: title,
         },
         {
-          name: `twitter:description`,
+          name: "twitter:description",
           content: metaDescription,
         },
       ].concat(meta)}
@@ -69,9 +69,9 @@ const SEO = ({ description, lang, meta, title }) => {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: "en",
   meta: [],
-  description: ``,
+  description: "",
 }
 
 SEO.propTypes = {

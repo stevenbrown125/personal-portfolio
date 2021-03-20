@@ -9,7 +9,7 @@ module.exports = {
         "Javascript Enthusiast, React Developer, Gatsby Student, Unity Hobbiest, Investor, Linguist, Dad, Full Sail Alumni, CEO of @Bliztek",
     },
     description:
-      "A website and blog displaying Steven's projects and interests. I design and develop things using  React and NodeJS!",
+      "A website and blog displaying Steven's projects and interests. I design and develop things using React and NodeJS!",
     siteUrl: "https://bliztek.com",
     social: {
       twitter: "Design4TheWeb",
@@ -37,21 +37,20 @@ module.exports = {
         },
       },
     },
-    /*
     {
-      resolve: `gatsby-source-cloudinary`,
+      resolve: "gatsby-source-cloudinary",
       options: {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
         apiSecret: process.env.CLOUDINARY_API_SECRET,
-        resourceType: `image`,
-        prefix: `steven-brown-portfolio/`,
+        resourceType: "image",
+        prefix: "steven-brown-portfolio/",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `images`,
+        name: "images",
         path: `${__dirname}/src/images`,
       },
     },
@@ -61,11 +60,10 @@ module.exports = {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
         apiSecret: process.env.CLOUDINARY_API_SECRET,
-        // This folder will be created if it doesn’t exist.
         uploadFolder: "gatsby-cloudinary",
       },
     },
-    */
+
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -117,14 +115,13 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
-    /*
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: "gatsby-plugin-google-analytics",
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: "G-4QCZHL7SRC",
+        head: false,
       },
-    }, */
-
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-styled-components",
     // this (optional) plugin enables Progressive Web App + Offline functionality
