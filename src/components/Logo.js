@@ -22,7 +22,7 @@ const LogoWrap = styled.div`
   }
 `
 
-const Logo = () => {
+const Logo = ({ navbarOpen, setNavbarOpen }) => {
   const data = useStaticQuery(graphql`
     query {
       file(name: { eq: "logo" }, extension: { eq: "png" }) {
@@ -33,7 +33,13 @@ const Logo = () => {
     }
   `)
   return (
-    <LogoWrap as={Link} to="/" className="logoWrap">
+    <LogoWrap
+      as={Link}
+      to="/"
+      className="logoWrap"
+      navbarOpen={navbarOpen}
+      onClick={() => setNavbarOpen(!navbarOpen)}
+    >
       <GatsbyImage
         image={data.file.childImageSharp.gatsbyImageData}
         alt="Steven Brown's FullStack Development Portfolio Logo"

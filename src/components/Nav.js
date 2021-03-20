@@ -15,10 +15,10 @@ const NavStyles = styled.nav`
   border-bottom: 0.1rem solid var(--grey);
   box-shadow: var(--bs);
   font-size: 145%;
-  height: 10rem;
+  min-height: 10rem;
   @media (max-width: 768px) {
     position: sticky;
-    height: 6rem;
+    min-height: 9rem;
     top: 0;
     left: 0;
     right: 0;
@@ -28,6 +28,9 @@ const NavStyles = styled.nav`
       left: 4rem;
     }
     justify-content: flex-end;
+  }
+  @media (max-width: 390px) {
+    min-height: 6rem;
   }
 `
 const Toggle = styled.div`
@@ -95,13 +98,21 @@ const Nav = ({ location }) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   let navBox = (
     <Navbox>
-      <NavbarLinks location={location} />
+      <NavbarLinks
+        location={location}
+        navbarOpen={navbarOpen}
+        setNavbarOpen={setNavbarOpen}
+      />
     </Navbox>
   )
   if (!navbarOpen) {
     navBox = (
       <Navbox open>
-        <NavbarLinks location={location} />
+        <NavbarLinks
+          location={location}
+          navbarOpen={navbarOpen}
+          setNavbarOpen={setNavbarOpen}
+        />
       </Navbox>
     )
   }

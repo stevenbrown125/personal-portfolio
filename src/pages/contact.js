@@ -80,14 +80,9 @@ const ContactPageStyles = styled.section`
 export default function ContactPage() {
   const data = useStaticQuery(graphql`
     query {
-      contact: file(absolutePath: { regex: "/rome-2.jpg/" }) {
+      contact: file(absolutePath: { regex: "/rome-3.jpg/" }) {
         childImageSharp {
-          gatsbyImageData(
-            placeholder: BLURRED
-            height: 350
-            width: 500
-            transformOptions: { cropFocus: NORTH }
-          )
+          gatsbyImageData(placeholder: BLURRED)
         }
       }
     }

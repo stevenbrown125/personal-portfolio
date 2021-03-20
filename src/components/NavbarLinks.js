@@ -45,7 +45,7 @@ const NavItem = styled(Link)`
     z-index: 6;
   }
 `
-const NavbarLinks = ({ location }) => {
+const NavbarLinks = ({ location, navbarOpen, setNavbarOpen }) => {
   const blogActive = location.pathname.includes("blog") ? "page" : ""
   const portfolioActive =
     location.pathname.includes("project") ||
@@ -54,15 +54,37 @@ const NavbarLinks = ({ location }) => {
       : ""
   return (
     <>
-      <NavItem to="/">Home</NavItem>
-      <NavItem aria-current={portfolioActive} to="/portfolio">
+      <NavItem
+        to="/"
+        navbarOpen={navbarOpen}
+        onClick={() => setNavbarOpen(!navbarOpen)}
+      >
+        Home
+      </NavItem>
+      <NavItem
+        aria-current={portfolioActive}
+        to="/portfolio"
+        navbarOpen={navbarOpen}
+        onClick={() => setNavbarOpen(!navbarOpen)}
+      >
         Portfolio
       </NavItem>
-      <Logo />
-      <NavItem aria-current={blogActive} to="/blog">
+      <Logo navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
+      <NavItem
+        aria-current={blogActive}
+        to="/blog"
+        navbarOpen={navbarOpen}
+        onClick={() => setNavbarOpen(!navbarOpen)}
+      >
         Blog
       </NavItem>
-      <NavItem to="/contact">Contact</NavItem>
+      <NavItem
+        to="/contact"
+        navbarOpen={navbarOpen}
+        onClick={() => setNavbarOpen(!navbarOpen)}
+      >
+        Contact
+      </NavItem>
     </>
   )
 }
