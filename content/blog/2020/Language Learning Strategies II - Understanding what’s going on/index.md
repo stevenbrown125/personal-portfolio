@@ -20,7 +20,7 @@ Why is learning a language so difficult? Well, for many of us it will require us
 
 _So how do you do that?_
 
-Well, we’ll get to that soon, but first let’s talk about brain plasticity. _Brain plasticity_, as defined by the neurologist Dr. Judy Willis, is how our brain organizes and / or compartments information, so it can retrieve it later as part of ideas or thoughts [[1](#1).]. This means that every single activity we experience, we are learning from it, and making new connections inside of our brain. More precisely, in response to everything we do, groups of neurons are being fire together and building new neural pathways. When we are young, our brains are malleable and not fully formed which allows for a lot of flexibility and plasticity. This explains why children learn so quickly (both in language, and otherwise).
+Well, we’ll get to that soon, but first let’s talk about brain plasticity. _Brain plasticity_, as defined by the neurologist Dr. Judy Willis, is how our brain organizes and / or compartments information, so it can retrieve it later as part of ideas or thoughts [1]. This means that every single activity we experience, we are learning from it, and making new connections inside of our brain. More precisely, in response to everything we do, groups of neurons are being fire together and building new neural pathways. When we are young, our brains are malleable and not fully formed which allows for a lot of flexibility and plasticity. This explains why children learn so quickly (both in language, and otherwise).
 
 Deborah Ancona, Seley Distinguished Professor of Management at MIT goes on to explain that as we grow older, the neural pathways become more and more embedded and move to deeper parts of the brain [2]. Tara Swart, a senior lecturer at MIT, in her book _Neuroscience for Leadership_, says this is because our brains are “inherently lazy” and always choose the most energy efficient path if we let it[2]. abnf
 
@@ -32,7 +32,7 @@ There’s a lot more information out there about neural plasticity. I just wante
 
 ## Further reading _(optional, but recommended)_
 
-This article by Dr. Judy Willis elaborates in further details how your brain processes new information and gives insight on how to improve your brain’s learning receptiveness by understanding yourself and your environment.abnf
+This article by Dr. Judy Willis elaborates in further details how your brain processes new information and gives insight on how to improve your brain’s learning receptiveness by understanding yourself and your environment.
 
 [https://www.teachthought.com/learning/how-the-brain-works-and-how-students-can-respond/](https://www.teachthought.com/learning/how-the-brain-works-and-how-students-can-respond/)
 
@@ -42,5 +42,6 @@ This article provides TONS of different research in regards to neural plasticity
 
 <h3 class="References">References:</h3>
 
-[1] [https://www.edutopia.org/blog/neuroscience-higher-ed-judy-willis](https://www.edutopia.org/blog/neuroscience-higher-ed-judy-willis)
-[2] [https://books.google.it/books?id=myw1DQAAQBAJ&lpg=PA143&pg=PA143&redir_esc=y#v=onepage&q&f=false](https://books.google.it/books?id=myw1DQAAQBAJ&lpg=PA143&pg=PA143&redir_esc=y#v=onepage&q&f=false)
+[1] Willis, J. (2012, July 27). A neurologist makes the case for teaching teachers about the brain. Retrieved November 10, 2020, from [https://www.edutopia.org/blog/neuroscience-higher-ed-judy-willis](https://www.edutopia.org/blog/neuroscience-higher-ed-judy-willis)
+
+[2] Anderson, K. (2016). Reading your life's story: An invitation to spiritual mentoring. Downers Grove: InterVarsity Press. [https://books.google.it/books?id=myw1DQAAQBAJ&lpg=PA143&pg=PA143](https://books.google.it/books?id=myw1DQAAQBAJ&lpg=PA143&pg=PA143)

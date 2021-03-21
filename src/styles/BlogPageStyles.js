@@ -71,6 +71,9 @@ const BlogPageStyles = styled.div`
           padding: 1rem 0;
           font-size: 80%;
         }
+        div {
+          height: 400px;
+        }
       }
     }
     section.blog-post-nav {
