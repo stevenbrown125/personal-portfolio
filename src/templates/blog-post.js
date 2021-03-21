@@ -30,7 +30,6 @@ const BlogPostTemplate = ({ data }) => {
       </figure>
     )
   }
-  console.log(previous)
   return (
     <BlogPageStyles className="container two-columns">
       <SEO
