@@ -3,6 +3,7 @@ import styled from "styled-components"
 const BlogPageStyles = styled.div`
   display: grid;
   grid-gap: 2rem;
+
   article {
     margin-bottom: 0;
     header {
@@ -72,8 +73,11 @@ const BlogPageStyles = styled.div`
           font-size: 80%;
         }
         div {
-          height: 400px;
+          max-height: 400px;
         }
+      }
+      div {
+        word-break: break-all;
       }
     }
     section.blog-post-nav {
@@ -119,6 +123,9 @@ const BlogPageStyles = styled.div`
       }
     }
     article section {
+      a {
+        padding: 0rem;
+      }
       h2 {
         font-size: 130%;
       }
