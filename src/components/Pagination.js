@@ -1,31 +1,5 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
-import styled from "styled-components"
-
-const PaginationStyles = styled.ul`
-  padding-bottom: 1.8rem;
-  li {
-    display: inline;
-    padding: 0 1rem;
-  }
-  a {
-    text-decoration: none;
-  }
-  a:hover {
-    color: var(--primary);
-  }
-  .currentPage {
-    font-size: 140%;
-  }
-  .currentPage a {
-    pointer-events: none;
-    cursor: default;
-    color: black;
-  }
-  .heading {
-    font-style: italic;
-  }
-`
 
 export default function Pagination({ pageContext, location }) {
   const [page, setPage] = useState(pageContext.currentPage)
