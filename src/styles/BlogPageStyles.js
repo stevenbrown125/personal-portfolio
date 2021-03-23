@@ -18,9 +18,21 @@ const BlogPageStyles = styled.div`
         font-size: 165%;
         padding: 1rem;
       }
+      span.pagination {
+        float: right;
+        font-size: 60%;
+        padding-top: 0.5rem;
+        fieldset {
+          border: none;
+          padding: 0;
+          input,
+          select {
+            margin: 0 0 0 1rem;
+          }
+        }
+      }
       p {
         padding: 0 2rem;
-        font-size: 80%;
         display: inline-block;
       }
       figure {
@@ -29,9 +41,7 @@ const BlogPageStyles = styled.div`
         margin-inline-start: 0;
       }
     }
-    section section:nth-child(3) {
-      float: right;
-    }
+
     .category-list {
       display: inline-block;
       padding-right: 1rem;
@@ -104,8 +114,8 @@ const BlogPageStyles = styled.div`
     ul,
     ol {
       li {
+        font-size: 115%;
         line-height: 2.8rem;
-        font-size: 118%;
         padding: 1rem 1rem;
       }
     }
@@ -131,16 +141,29 @@ const BlogPageStyles = styled.div`
       }
       p {
         line-height: 1.8rem;
+
         font-size: 90%;
       }
-      ul {
-        font-size: 74%;
-      }
+    }
+    li {
+      line-height: 1.8rem;
+    }
+
+    section.content div {
+      ul,
       ol {
-        font-size: 74%;
+        font-size: 80%;
+        li {
+          line-height: 1.6rem;
+        }
       }
-      li {
-        line-height: 1.8rem;
+    }
+
+    span.pagination {
+      fieldset {
+        label span.jump-to {
+          display: none;
+        }
       }
     }
   }

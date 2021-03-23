@@ -31,8 +31,8 @@ export default function BlogIndex({ data, location, pageContext }) {
         <header className="box">
           <h1 itemProp="headline" className="mark">
             <FaCodeBranch /> {title}
+            <span className="pagination"> {pagination}</span>
           </h1>
-          {pagination}
         </header>
         <section className="box">
           <ListingsProject projects={projects} />

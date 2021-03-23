@@ -4,7 +4,7 @@ date: "2020-11-19T14:58:04.284Z"
 type: post
 featuredImage: "./kyryll-ushakov-dgPqKyBIX2E-unsplash.jpg"
 imageDescription: Photo by Proriat Hospitality on Unsplash
-
+featured: true
 categories:
   - Language
   - Polish

@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState } from "react"
+import { navigate } from "gatsby"
 import styled from "styled-components"
 
 const PaginationStyles = styled.ul`
@@ -28,22 +28,44 @@ const PaginationStyles = styled.ul`
 `
 
 export default function Pagination({ pageContext, location }) {
-  let pathBase = location.pathname
-  if (pageContext.currentPage !== 1) {
-    pathBase = location.pathname.split("/").slice(0, -1).join("/")
-  }
+  const [page, setPage] = useState(pageContext.currentPage)
+  const pathBase =
+    pageContext.currentPage !== 1
+      ? location.pathname.split("/").slice(0, -2).join("/")
+      : location.pathname
+
   return (
-    <PaginationStyles>
-      <li className="heading">Jump to Page:</li>
-      {Array.from({ length: pageContext.numPages }).map((_, i) => {
-        i++
-        const currentClass = i === pageContext.currentPage ? "currentPage" : ""
-        return (
-          <li key={`pagination-${i}`} className={currentClass}>
-            <Link to={`${pathBase}${i === 1 ? "" : `/${i}`}`}>[ {i} ]</Link>
-          </li>
-        )
-      })}
-    </PaginationStyles>
+    <form
+      onSubmit={event => {
+        event.preventDefault()
+        if (page !== pageContext.currentPage) {
+          page === 1
+            ? navigate(`${pathBase}`)
+            : navigate(`${pathBase}/${page}/`)
+        }
+      }}
+    >
+      <fieldset>
+        <label htmlFor="page">
+          <span className="jump-to">Jump to </span>Page:
+        </label>
+        <select
+          id="page"
+          name="page"
+          onChange={e => setPage(e.target.options.selectedIndex + 1)}
+          defaultValue={pageContext.currentPage}
+        >
+          {Array.from({ length: pageContext.numPages }).map((_, i) => {
+            i++
+            return (
+              <option value={i} key={i}>
+                {i}
+              </option>
+            )
+          })}
+        </select>
+        <input type="submit" value="Go" />
+      </fieldset>
+    </form>
   )
 }

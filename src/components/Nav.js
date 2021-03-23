@@ -15,7 +15,7 @@ const NavStyles = styled.nav`
   border-bottom: 0.1rem solid var(--grey);
   box-shadow: var(--bs);
   font-size: 145%;
-  min-height: 10rem;
+  height: 8rem;
   @media (max-width: 768px) {
     position: sticky;
     min-height: 9rem;
@@ -30,7 +30,7 @@ const NavStyles = styled.nav`
     justify-content: flex-end;
   }
   @media (max-width: 390px) {
-    min-height: 6rem;
+    min-height: 1rem;
   }
 `
 const Toggle = styled.div`

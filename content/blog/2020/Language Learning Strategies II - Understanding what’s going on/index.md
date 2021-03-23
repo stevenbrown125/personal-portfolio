@@ -36,7 +36,7 @@ This article by Dr. Judy Willis elaborates in further details how your brain pro
 
 [https://www.teachthought.com/learning/how-the-brain-works-and-how-students-can-respond/](https://www.teachthought.com/learning/how-the-brain-works-and-how-students-can-respond/)
 
-This article provides TONS of different research in regards to neural plasticity and its effects on language acquisitions, music training, and life! I wouldn’t read the whole thing line by line but you can jump around a bit and see what type of effects learning music and language have on the brain
+This article provides TONS of different research in regards to neural plasticity and its effects on language acquisitions, music training, and life! I wouldn’t read the whole thing line by line but you can jump around a bit and see what type of effects learning music and language have on the brain.
 
 [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3834520/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3834520/)
 

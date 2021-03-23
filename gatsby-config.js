@@ -10,7 +10,7 @@ module.exports = {
     },
     description:
       "A website and blog displaying Steven's projects and interests. I design and develop things using React and NodeJS!",
-    siteUrl: "https://bliztek.com",
+    siteUrl: "https://stevendevelops.com",
     social: {
       twitter: "Design4TheWeb",
     },

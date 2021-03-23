@@ -63,6 +63,11 @@ const SEO = ({ description, lang, meta, title }) => {
           name: "twitter:description",
           content: metaDescription,
         },
+        {
+          name: "twitter:image",
+          content:
+            "https://live.staticflickr.com/65535/51059160668_91bd254764_m.jpg",
+        },
       ].concat(meta)}
     />
   )

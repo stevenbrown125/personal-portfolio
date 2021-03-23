@@ -7,6 +7,7 @@ import { FaRegNewspaper } from "react-icons/fa"
 import ListingsBlog from "../components/ListingsBlog"
 import Pagination from "../components/Pagination"
 import BlogPageStyles from "../styles/BlogPageStyles"
+import ListingsBlogFeatured from "../components/ListingsBlogFeatured"
 
 export default function BlogIndex({ data, location, pageContext }) {
   let posts = data.byTag.nodes
@@ -31,10 +32,13 @@ export default function BlogIndex({ data, location, pageContext }) {
       <article itemScope itemType="http://schema.org/Article">
         <header className="box">
           <h1 itemProp="headline" className="mark">
-            <FaRegNewspaper /> {title}
+            <FaRegNewspaper /> {title}{" "}
+            <span className="pagination">{pagination}</span>
           </h1>
-          {pagination}
         </header>
+        <section className="box">
+          <ListingsBlogFeatured posts={data.featured.nodes} />
+        </section>
         <section className="box">
           <ListingsBlog posts={posts} />
         </section>
@@ -47,7 +51,13 @@ export default function BlogIndex({ data, location, pageContext }) {
 export const pageQuery = graphql`
   query($id: String, $skip: Int!, $limit: Int!) {
     byTag: allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "post" }, tags: { eq: $id } } }
+      filter: {
+        frontmatter: {
+          type: { eq: "post" }
+          tags: { eq: $id }
+          featured: { nin: true }
+        }
+      }
       limit: $limit
       sort: { fields: frontmatter___date, order: DESC }
       skip: $skip
@@ -69,7 +79,13 @@ export const pageQuery = graphql`
       totalCount
     }
     byCategory: allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "post" }, categories: { eq: $id } } }
+      filter: {
+        frontmatter: {
+          type: { eq: "post" }
+          categories: { eq: $id }
+          featured: { nin: true }
+        }
+      }
       limit: $limit
       sort: { fields: frontmatter___date, order: DESC }
       skip: $skip
@@ -88,7 +104,34 @@ export const pageQuery = graphql`
           tags
         }
       }
+
       totalCount
+    }
+    featured: allMarkdownRemark(
+      filter: { frontmatter: { type: { eq: "post" }, featured: { eq: true } } }
+      limit: 1
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      nodes {
+        id
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "dddd MMMM Do, YYYY")
+          title
+          description
+          categories
+          tags
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH, height: 400)
+            }
+          }
+          imageDescription
+        }
+      }
     }
   }
 `
