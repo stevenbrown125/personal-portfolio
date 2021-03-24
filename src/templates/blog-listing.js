@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 import React from "react"
 import { graphql } from "gatsby"
 import Bio from "../components/Bio"
@@ -6,24 +7,39 @@ import Sidebar from "../components/Sidebar"
 import { FaRegNewspaper } from "react-icons/fa"
 import ListingsBlog from "../components/ListingsBlog"
 import Pagination from "../components/Pagination"
-import BlogPageStyles from "../styles/BlogPageStyles"
+import BlogListingStyles from "../styles/BlogListingStyles"
 import ListingsBlogFeatured from "../components/ListingsBlogFeatured"
 
 export default function BlogIndex({ data, location, pageContext }) {
-  let posts = data.byTag.nodes
-  if (data.byTag.totalCount === 0) {
-    posts = data.byCategory.nodes
-  }
-  let title = "All Blog Posts"
-  let pagination = ""
-  if (pageContext.id) {
-    title = `${pageContext.id} blog posts`
-  }
-  if (pageContext.numPages > 1) {
-    pagination = <Pagination pageContext={pageContext} location={location} />
-  }
+  // Get the posts (will either by by Category or by Tag)
+  const posts =
+    data.byTag.totalCount === 0 ? data.byCategory.nodes : data.byTag.nodes
+
+  // If there this is a tag / category collection, include that in the title
+  const title = pageContext.id
+    ? `${pageContext.id} blog posts`
+    : "All Blog Posts"
+
+  // Show the pagination component only if there is more than one page
+  const pagination =
+    pageContext.numPages > 1 ? (
+      <Pagination pageContext={pageContext} location={location} />
+    ) : (
+      ""
+    )
+
+  // Show Featured Post only on the First Page of the Blog
+  const featuredPost =
+    pageContext.currentPage === 1 && !pageContext.id ? (
+      <section className="box">
+        <ListingsBlogFeatured posts={data.featured.nodes} />
+      </section>
+    ) : (
+      ""
+    )
+  // Render
   return (
-    <BlogPageStyles className="container two-columns">
+    <BlogListingStyles className="container two-columns">
       <SEO
         title={title}
         description={"On this page, you will find all my latest blog posts."}
@@ -32,19 +48,16 @@ export default function BlogIndex({ data, location, pageContext }) {
       <article itemScope itemType="http://schema.org/Article">
         <header className="box">
           <h1 itemProp="headline" className="mark">
-            <FaRegNewspaper /> {title}{" "}
-            <span className="pagination">{pagination}</span>
+            <FaRegNewspaper /> {title} {pagination}
           </h1>
         </header>
-        <section className="box">
-          <ListingsBlogFeatured posts={data.featured.nodes} />
-        </section>
+        {featuredPost}
         <section className="box">
           <ListingsBlog posts={posts} />
         </section>
         <Bio />
       </article>
-    </BlogPageStyles>
+    </BlogListingStyles>
   )
 }
 
@@ -126,7 +139,7 @@ export const pageQuery = graphql`
           tags
           featuredImage {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, height: 400)
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
           imageDescription
