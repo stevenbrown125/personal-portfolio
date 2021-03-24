@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 const HomePageStyles = styled.div`
+  padding: 0.5rem 3rem;
   text-align: center;
   h1 {
     padding: 1rem;

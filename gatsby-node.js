@@ -184,7 +184,7 @@ function countOccurrences(arr, val) {
 
 function createMainBlogPageListings(posts, itemsPerPage, createPage) {
   const template = path.resolve("./src/templates/blog-listing.js")
-  const numPages = Math.ceil(posts.length / itemsPerPage)
+  const numPages = Math.ceil((posts.length - 1) / itemsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
     const path = `/blog${i === 0 ? "" : `/${i + 1}`}`
     createPage({

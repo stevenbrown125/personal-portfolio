@@ -1,34 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
-import { FaTag } from "react-icons/fa"
 import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
+import TaxonomyList from "./TaxonomyList"
+import BlogListingItemStyles from "../styles/BlogListingItemStyles"
 
-const FeaturedArticleStyles = styled.article`
-  position: relative;
-  z-index: 1;
-  padding: 0 0 1rem 0;
-  background: rgba(239, 239, 239, 0);
+const FeaturedArticleStyles = styled(BlogListingItemStyles)`
+  border: solid 1px var(--grey);
   img {
     z-index: -1;
   }
-  section,
-  header {
-    padding: 0 3rem;
-    line-height: 2.8rem;
-    font-size: 118%;
-  }
-
   ul {
     position: absolute;
     top: 0;
-    right: 0;
-    li {
-      padding: 1rem;
-      a {
-        font-size: 60%;
-      }
-    }
+    right: 1rem;
   }
   .ribbon-wrapper {
     width: 125px;
@@ -53,36 +38,12 @@ const FeaturedArticleStyles = styled.article`
       color: var(--black);
     }
   }
+
   @media only screen and (max-width: 800px) {
-    header {
-      font-size: 105%;
-      div {
-        display: block;
-      }
-      h3 {
-        line-height: 1.4rem;
-      }
-    }
-    section {
-      a {
-        padding: 0rem;
-      }
-      h3 {
-        font-size: 130%;
-      }
-      p {
-        line-height: 1.8rem;
-        font-size: 90%;
-      }
-      ul {
-        font-size: 74%;
-      }
-      ol {
-        font-size: 74%;
-      }
-      li {
-        line-height: 1.8rem;
-      }
+    ul {
+      position: inherit;
+      margin-block-start: 0;
+      padding: inherit;
     }
   }
 `
@@ -112,17 +73,12 @@ export default function ListingsBlogFeatured({ posts }) {
 
   const title = post.frontmatter.title || post.fields.slug
   return (
-    <FeaturedArticleStyles
-      itemScope
-      itemType="http://schema.org/Article"
-      className="box"
-    >
+    <FeaturedArticleStyles itemScope itemType="http://schema.org/Article">
       <div className="ribbon-wrapper">
         <div className="ribbon">FEATURED</div>
       </div>
-
-      {featuredImage}
       <header>
+        {featuredImage}
         <h3>
           <Link to={`/blog${post.fields.slug}`} itemProp="url">
             <span itemProp="headline">{title}</span>
@@ -131,15 +87,6 @@ export default function ListingsBlogFeatured({ posts }) {
         <time dateTime={post.frontmatter.date} itemProp="datePublished">
           Written on {post.frontmatter.date}
         </time>
-        <ul className="category-list">
-          {post.frontmatter.tags?.map(tag => (
-            <li className="mark" key={`${post.id}-${tag}`}>
-              <Link to={`/blog/tag/${tag.toLowerCase()}`}>
-                <FaTag /> {tag}
-              </Link>
-            </li>
-          ))}
-        </ul>
       </header>
       <section>
         <p
@@ -149,6 +96,11 @@ export default function ListingsBlogFeatured({ posts }) {
           itemProp="description"
         />
       </section>
+      <TaxonomyList
+        list={post.frontmatter.tags}
+        type="tag"
+        className="tag-list"
+      />
     </FeaturedArticleStyles>
   )
 }

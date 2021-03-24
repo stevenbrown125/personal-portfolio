@@ -5,10 +5,15 @@ import styled from "styled-components"
 import { FaTwitterSquare, FaLinkedin, FaGithubSquare } from "react-icons/fa"
 
 const BioStyles = styled.div`
+  padding: 2rem;
   margin-top: 2rem;
   text-align: center;
   img {
     border-radius: 50%;
+  }
+  p {
+    width: 85%;
+    margin: 1.2rem auto;
   }
   .social-icons {
     text-align: center;
@@ -28,6 +33,13 @@ const BioStyles = styled.div`
   }
   .social-icons svg:hover {
     transform: scale(1.2);
+  }
+
+  @media only screen and (max-width: 800px) {
+    p {
+      font-size: 115%;
+      line-height: 1.8rem;
+    }
   }
 `
 export default function Bio() {
@@ -56,7 +68,7 @@ export default function Bio() {
   const social = data.site.siteMetadata?.social
 
   return (
-    <BioStyles className="box content">
+    <BioStyles className="box">
       <GatsbyImage
         image={data.avatar.childImageSharp.gatsbyImageData}
         alt={author?.name || ""}
@@ -96,7 +108,7 @@ export default function Bio() {
         <a
           target="_blank"
           rel="noreferrer"
-          href={`https://twitter.com/${social?.twitter || ""} `}
+          href={`https://twitter.com/${social?.twitter || ""}`}
         >
           {social?.twitter ? `@${social?.twitter}` : ""}
         </a>

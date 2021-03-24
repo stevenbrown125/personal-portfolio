@@ -4,8 +4,9 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import SEO from "../components/Seo"
 import Bio from "../components/Bio"
 import Sidebar from "../components/Sidebar"
-import { FaLayerGroup, FaReadme } from "react-icons/fa"
-import BlogPageStyles from "../styles/BlogPageStyles"
+import { FaReadme } from "react-icons/fa"
+import BlogPostStyles from "../styles/BlogPostStyles"
+import TaxonomyList from "../components/TaxonomyList"
 
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
@@ -31,39 +32,26 @@ const BlogPostTemplate = ({ data }) => {
     )
   }
   return (
-    <BlogPageStyles className="container two-columns">
+    <div className="container two-columns">
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
       <Sidebar args={["categories", "tags-post"]} />
-      <article itemScope itemType="http://schema.org/Article">
+      <BlogPostStyles itemScope itemType="http://schema.org/Article">
         <header className="box">
           <h1 itemProp="headline" className="mark">
             <FaReadme /> {post.frontmatter.title}
           </h1>
           <div>
-            <p>
-              Written on{" "}
-              <time dateTime={post.frontmatter.date} itemProp="datePublished">
-                {post.frontmatter.date}
-              </time>
-            </p>
-            <div className="category-list">
-              <p>Categories</p>
-              <ul>
-                {post.frontmatter.categories.map(category => (
-                  <li className="mark" key={`category-list-post-${category}`}>
-                    <Link to={`/blog/category/${category.toLowerCase()}`}>
-                      <FaLayerGroup /> {category}{" "}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <time dateTime={post.frontmatter.date} itemProp="datePublished">
+              Written on {post.frontmatter.date}
+            </time>
+
+            <TaxonomyList list={post.frontmatter.categories} type="category" />
           </div>
         </header>
-        <section className="box content">
+        <section className="box">
           {featuredImage}
           <div
             dangerouslySetInnerHTML={{ __html: post.html }}
@@ -92,8 +80,8 @@ const BlogPostTemplate = ({ data }) => {
           </nav>
         </section>
         <Bio />
-      </article>
-    </BlogPageStyles>
+      </BlogPostStyles>
+    </div>
   )
 }
 
@@ -115,7 +103,7 @@ export const pageQuery = graphql`
         date(formatString: "dddd MMMM Do, YYYY")
         featuredImage {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, height: 400)
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         imageDescription

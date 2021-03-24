@@ -13,8 +13,6 @@ const Typography = createGlobalStyle`
   h1,h2,h3,h4,h5,h6 {
     font-weight: lighter;
     margin: 0;
-
-    border-radius: 0.4rem;
   }
   h2, h3 {
     font-weight: normal;
@@ -40,6 +38,7 @@ const Typography = createGlobalStyle`
     line-height: 1;
     border-radius: 4px;
     box-shadow: var(--bs);
+    border-radius: 0.4rem;
   }
 `
 

@@ -6,7 +6,7 @@ import Sidebar from "../components/Sidebar"
 import { FaCodeBranch } from "react-icons/fa"
 import ListingsProject from "../components/ListingsProject"
 import Pagination from "../components/Pagination"
-import BlogPageStyles from "../styles/BlogPageStyles"
+import BlogListingStyles from "../styles/BlogListingStyles"
 
 export default function BlogIndex({ data, location, pageContext }) {
   const projects = data.allMarkdownRemark.nodes
@@ -19,7 +19,7 @@ export default function BlogIndex({ data, location, pageContext }) {
     pagination = <Pagination pageContext={pageContext} location={location} />
   }
   return (
-    <BlogPageStyles className="container two-columns">
+    <BlogListingStyles className="container two-columns">
       <SEO
         title={title}
         description={
@@ -39,7 +39,7 @@ export default function BlogIndex({ data, location, pageContext }) {
         </section>
         <Bio />
       </article>
-    </BlogPageStyles>
+    </BlogListingStyles>
   )
 }
 

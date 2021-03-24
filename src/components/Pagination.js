@@ -1,5 +1,29 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
+import styled from "styled-components"
+
+const PaginationStyles = styled.form`
+  float: right;
+  font-size: 60%;
+  padding-top: 0.5rem;
+  fieldset {
+    border: none;
+    padding: 0;
+    input,
+    select {
+      margin: 0 0 0 1rem;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    padding-top: 0.3rem !important;
+    fieldset {
+      font-size: 110%;
+      label span.jump-to {
+        display: none;
+      }
+    }
+  }
+`
 
 export default function Pagination({ pageContext, location }) {
   const [page, setPage] = useState(pageContext.currentPage)
@@ -7,9 +31,8 @@ export default function Pagination({ pageContext, location }) {
     pageContext.currentPage !== 1
       ? location.pathname.split("/").slice(0, -2).join("/")
       : location.pathname
-
   return (
-    <form
+    <PaginationStyles
       onSubmit={event => {
         event.preventDefault()
         if (page !== pageContext.currentPage) {
@@ -40,6 +63,6 @@ export default function Pagination({ pageContext, location }) {
         </select>
         <input type="submit" value="Go" />
       </fieldset>
-    </form>
+    </PaginationStyles>
   )
 }

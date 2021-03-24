@@ -8,6 +8,8 @@ const BlogPageStyles = styled.div`
     margin-bottom: 0;
     header {
       margin-bottom: 2rem;
+      line-height: 2.8rem;
+      font-size: 118%;
       div {
         display: flex;
         justify-content: space-between;
@@ -42,30 +44,6 @@ const BlogPageStyles = styled.div`
       }
     }
 
-    .category-list {
-      display: inline-block;
-      padding-right: 1rem;
-      ul {
-        display: inline;
-        list-style-type: none;
-        padding-inline-start: 0;
-        font-size: 60%;
-      }
-      li {
-        display: inline-block;
-        padding: 0rem 0.8rem;
-        margin: 0.4rem 0.4rem;
-        a {
-          text-decoration: none;
-        }
-      }
-      li:hover {
-        background: var(--orange);
-        a {
-          color: var(--black);
-        }
-      }
-    }
     section {
       margin-bottom: 1rem;
       figure {
@@ -110,26 +88,19 @@ const BlogPageStyles = styled.div`
         }
       }
     }
-
-    ul,
-    ol {
-      li {
-        font-size: 115%;
-        line-height: 2.8rem;
-        padding: 1rem 1rem;
-      }
-    }
   }
 
   @media only screen and (max-width: 800px) {
     grid-template-columns: auto;
     article header {
+      line-height: 2.8rem;
+      font-size: 105%;
       div {
         display: block;
       }
       h1 {
-        font-size: 130%;
-        line-height: 2.2rem;
+        font-size: 110%;
+        line-height: 1.8rem;
       }
     }
     article section {
@@ -155,14 +126,6 @@ const BlogPageStyles = styled.div`
         font-size: 80%;
         li {
           line-height: 1.6rem;
-        }
-      }
-    }
-
-    span.pagination {
-      fieldset {
-        label span.jump-to {
-          display: none;
         }
       }
     }

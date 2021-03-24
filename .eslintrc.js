@@ -32,6 +32,7 @@ module.exports = {
         asyncArrow: "always",
       },
     ],
+    "multiline-ternary": ["error", "always-multiline"],
     "react/no-unescaped-entities": ["error", { forbid: [">", "}"] }],
     "react/prop-types": "off",
   },

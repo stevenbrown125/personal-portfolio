@@ -62,7 +62,12 @@ const GlobalStyles = createGlobalStyle`
     top: 0.125em;
     position: relative;
   }
-
+  figure {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-end: 0;
+        margin-inline-start: 0;
+      }
   img {
     max-width: 100%;
   }
@@ -70,17 +75,18 @@ const GlobalStyles = createGlobalStyle`
   div.container {
     padding: clamp(5px, 1vw, 25px);
     margin: 0 auto;
-  }
 
+  }
   .box {
       border-radius: 0.4rem;
       background: rgba(255, 255, 255, 0.85);
       box-shadow: var(--bs);
+      
   }
-
   .content {
       padding: 0.5rem 3rem;
       margin-bottom: 1rem;
+      
     p {
       text-indent: 3rem;
       font-size: 2.1rem;
@@ -91,7 +97,15 @@ const GlobalStyles = createGlobalStyle`
     grid-template-columns: auto;
   }
   .two-columns {
+    display: grid;
+    grid-gap: 2rem;
     grid-template-columns: 25rem auto;
+  }
+  
+  @media only screen and (max-width: 800px) {
+    .two-columns {
+      grid-template-columns: auto;
+    }
   }
 `
 

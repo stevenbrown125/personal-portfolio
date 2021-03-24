@@ -1,17 +1,16 @@
 import React from "react"
-import ItemListStyles from "../styles/ItemListStyles"
 import ListingsBlogItem from "./ListingsBlogItem"
 
 export default function ListingsBlog({ posts }) {
   return (
-    <ItemListStyles>
+    <ul className="article-listings">
       {posts.map(post => {
         return (
-          <li key={`post-${post.id}`}>
+          <li className="article-listing" key={`post-${post.id}`}>
             <ListingsBlogItem post={post} />
           </li>
         )
       })}
-    </ItemListStyles>
+    </ul>
   )
 }
