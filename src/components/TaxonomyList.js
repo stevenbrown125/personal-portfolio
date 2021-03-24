@@ -35,7 +35,7 @@ export default function TaxonomyList({ list, type }) {
   console.log(list + type)
   return (
     <TaxonomyListStyles itemProp="keywords">
-      <ul>
+      <ul className="taxonomy-list">
         {list?.map(taxonomy => (
           <li className="mark" key={`${taxonomy}`}>
             <Link to={`/blog/${type}/${taxonomy.toLowerCase()}`}>

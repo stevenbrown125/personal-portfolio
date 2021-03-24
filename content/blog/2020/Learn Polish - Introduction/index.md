@@ -15,7 +15,7 @@ tags:
   - Grammar
 ---
 
-#Dzień dobry!
+##Dzień dobry!
 
 Great job taking the first step to learning Polish! The journey will be long and difficult but I’m hopeful that having a small group struggling together will help keep us motivated. To start things out, I will lay out the different applications we will be using so you can get set up.
 

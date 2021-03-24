@@ -4,9 +4,8 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import SEO from "../components/Seo"
 import Bio from "../components/Bio"
 import Sidebar from "../components/Sidebar"
-import { FaReadme } from "react-icons/fa"
-import BlogPostStyles from "../styles/BlogPostStyles"
 import TaxonomyList from "../components/TaxonomyList"
+import BlogPostStyles from "../styles/BlogPostStyles"
 
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
@@ -31,6 +30,8 @@ const BlogPostTemplate = ({ data }) => {
       </figure>
     )
   }
+
+  const title = post.frontmatter.title || post.fields.slug
   return (
     <div className="container two-columns">
       <SEO
@@ -38,49 +39,34 @@ const BlogPostTemplate = ({ data }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <Sidebar args={["categories", "tags-post"]} />
-      <BlogPostStyles itemScope itemType="http://schema.org/Article">
-        <header className="box">
-          <h1 itemProp="headline" className="mark">
-            <FaReadme /> {post.frontmatter.title}
-          </h1>
-          <div>
+      <div>
+        <BlogPostStyles
+          className="box"
+          itemScope
+          itemType="http://schema.org/Article"
+        >
+          <header>
+            {featuredImage}
+            <h1 itemProp="headline">{title}</h1>
             <time dateTime={post.frontmatter.date} itemProp="datePublished">
               Written on {post.frontmatter.date}
             </time>
-
-            <TaxonomyList list={post.frontmatter.categories} type="category" />
-          </div>
-        </header>
-        <section className="box">
-          {featuredImage}
-          <div
-            dangerouslySetInnerHTML={{ __html: post.html }}
-            itemProp="articleBody"
+          </header>
+          <section>
+            <div
+              dangerouslySetInnerHTML={{ __html: post.html }}
+              itemProp="articleBody"
+            />
+          </section>
+          <TaxonomyList
+            list={post.frontmatter.tags}
+            type="tag"
+            className="tag-list"
           />
-        </section>
-        <section className="blog-post-nav box content">
-          <h2>Looking for more?</h2>
-          <nav>
-            <ul>
-              <li>
-                {previous && (
-                  <Link to={`/blog${previous.fields.slug}`} rel="prev">
-                    ← {previous.frontmatter.title}
-                  </Link>
-                )}
-              </li>
-              <li>
-                {next && (
-                  <Link to={`/blog${next.fields.slug}`} rel="next">
-                    {next.frontmatter.title} →
-                  </Link>
-                )}
-              </li>
-            </ul>
-          </nav>
-        </section>
+        </BlogPostStyles>
+
         <Bio />
-      </BlogPostStyles>
+      </div>
     </div>
   )
 }
