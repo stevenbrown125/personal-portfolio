@@ -1,17 +1,19 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import DisplayTags from "./DisplayTags"
+import DisplayTechnologies from "./DisplayTechnologies"
 import { FaLaptopCode } from "react-icons/fa"
 
 export default function ProjectTags() {
   return (
     <div>
       <h2 className="mark">
-        <FaLaptopCode /> Project Tags
+        <FaLaptopCode /> Technologies
       </h2>
       <StaticQuery
         query={pageQuery}
-        render={data => DisplayTags(data.allMarkdownRemark.distinct, "project")}
+        render={data =>
+          DisplayTechnologies(data.allMarkdownRemark.distinct, "project")
+        }
       />
     </div>
   )

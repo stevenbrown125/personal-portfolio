@@ -4,12 +4,6 @@ const BlogPostStyles = styled.article`
   margin-bottom: 0;
   position: relative;
   header {
-    background: rgb(239, 239, 239);
-    background: linear-gradient(
-      0deg,
-      rgba(239, 239, 239, 1) 0%,
-      rgba(46, 46, 46, 1) 100%
-    );
     position: relative;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
@@ -33,8 +27,7 @@ const BlogPostStyles = styled.article`
       }
       div {
         max-height: 400px;
-
-        border-bottom: 1px solid var(--black);
+        border-bottom: 1px solid #999;
       }
     }
     time {

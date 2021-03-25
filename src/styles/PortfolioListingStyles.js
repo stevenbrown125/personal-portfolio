@@ -47,7 +47,6 @@ const PortfolioListingStyles = styled.div`
     }
     section {
       margin-bottom: 1rem;
-
       div {
         word-break: break-word;
       }

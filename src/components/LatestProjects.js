@@ -1,18 +1,18 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { FaCodeBranch } from "react-icons/fa"
-import ListingsProject from "./ListingsProject"
+import ListingsProjectFeatured from "./ListingsProjectFeatured"
 
 export default function LatestProjects() {
   return (
     <div>
       <h2 className="mark">
-        <FaCodeBranch /> Latest Project
+        <FaCodeBranch /> Featured Project
       </h2>
       <StaticQuery
         query={pageQuery}
         render={data => (
-          <ListingsProject projects={data.allMarkdownRemark.nodes} />
+          <ListingsProjectFeatured projects={data.allMarkdownRemark.nodes} />
         )}
       />
     </div>
@@ -22,7 +22,9 @@ export default function LatestProjects() {
 const pageQuery = graphql`
   query {
     allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "project" } } }
+      filter: {
+        frontmatter: { type: { eq: "project" }, featured: { eq: true } }
+      }
       sort: { fields: frontmatter___date, order: DESC }
       limit: 1
     ) {

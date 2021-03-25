@@ -2,16 +2,19 @@ import React from "react"
 import styled from "styled-components"
 import { FaUser, FaEnvelope, FaEdit } from "react-icons/fa"
 import SEO from "../components/Seo"
-import BlogPageStyles from "../styles/BlogPageStyles"
 
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Helmet } from "react-helmet"
+import PortfolioListingStyles from "../styles/PortfolioListingStyles"
 
 const ContactPageStyles = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1rem;
+  h1 {
+    display: block;
+  }
   figure {
     display: inline-block;
   }
@@ -87,9 +90,8 @@ export default function ContactPage() {
       }
     }
   `)
-
   return (
-    <BlogPageStyles className="container single-column">
+    <PortfolioListingStyles className="container single-column">
       <Helmet>
         <script
           src={`https://www.google.com/recaptcha/api.js?r=${Math.random()}`}
@@ -174,6 +176,6 @@ export default function ContactPage() {
           </form>
         </ContactPageStyles>
       </article>
-    </BlogPageStyles>
+    </PortfolioListingStyles>
   )
 }

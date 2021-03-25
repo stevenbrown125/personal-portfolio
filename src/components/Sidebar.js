@@ -10,6 +10,9 @@ const SidebarStyles = styled.div`
   div {
     margin-bottom: 2rem;
   }
+  div div {
+    border-radius: 0.4rem;
+  }
   article {
     margin-bottom: 2rem;
     h3 {
@@ -23,15 +26,33 @@ const SidebarStyles = styled.div`
       display: none;
     }
   }
+  header,
+  section {
+    padding: 0 1.4rem;
+    time {
+      font-size: 80%;
+    }
+  }
+  header {
+    margin-top: 1rem;
+  }
+  section {
+    text-indent: 2rem;
+    font-size: 90%;
+    padding: 0 1.8rem;
+  }
   h2 {
-    text-align: center;
-    padding: 0.8rem;
+    padding: 0.8rem 1.4rem;
+    font-size: 120%;
     display: block;
+    box-shadow: var(--bs);
   }
   .categories {
     display: none;
   }
-
+  .ribbon-wrapper {
+    display: none;
+  }
   @media only screen and (max-width: 800px) {
     display: none;
   }

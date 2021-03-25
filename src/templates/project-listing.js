@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 import React from "react"
 import { graphql } from "gatsby"
 import Bio from "../components/Bio"
@@ -7,6 +8,8 @@ import { FaCodeBranch } from "react-icons/fa"
 import ListingsProject from "../components/ListingsProject"
 import Pagination from "../components/Pagination"
 import PortfolioListingStyles from "../styles/PortfolioListingStyles"
+
+import ListingsProjectFeatured from "../components/ListingsProjectFeatured"
 
 export default function BlogIndex({ data, location, pageContext }) {
   const projects = data.allMarkdownRemark.nodes
@@ -18,6 +21,15 @@ export default function BlogIndex({ data, location, pageContext }) {
   if (pageContext.numPages > 1) {
     pagination = <Pagination pageContext={pageContext} location={location} />
   }
+  // Show Featured Project only on the First Page of the Portfolio
+  const featuredProject =
+    pageContext.currentPage === 1 && !pageContext.id ? (
+      <section className="box">
+        <ListingsProjectFeatured projects={data.featured.nodes} />
+      </section>
+    ) : (
+      ""
+    )
   return (
     <PortfolioListingStyles className="container two-columns">
       <SEO
@@ -30,6 +42,7 @@ export default function BlogIndex({ data, location, pageContext }) {
         className="sidebar box"
         args={["tags-project", "latest-project"]}
       />
+
       <article itemScope itemType="http://schema.org/Article">
         <header className="box">
           <h1 itemProp="headline" className="mark">
@@ -37,6 +50,7 @@ export default function BlogIndex({ data, location, pageContext }) {
             {pagination}
           </h1>
         </header>
+        {featuredProject}
         <section>
           <ListingsProject projects={projects} />
         </section>
@@ -49,7 +63,13 @@ export default function BlogIndex({ data, location, pageContext }) {
 export const pageQuery = graphql`
   query($id: String, $skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "project" }, tags: { eq: $id } } }
+      filter: {
+        frontmatter: {
+          type: { eq: "project" }
+          tags: { eq: $id }
+          featured: { nin: true }
+        }
+      }
       limit: $limit
       sort: { fields: frontmatter___date, order: DESC }
       skip: $skip
@@ -71,13 +91,44 @@ export const pageQuery = graphql`
             childImageSharp {
               gatsbyImageData(
                 layout: FULL_WIDTH
-                transformOptions: { fit: INSIDE, grayscale: true }
+                transformOptions: { grayscale: true, cropFocus: NORTH }
               )
             }
           }
         }
       }
       totalCount
+    }
+    featured: allMarkdownRemark(
+      filter: {
+        frontmatter: { type: { eq: "project" }, featured: { eq: true } }
+      }
+      limit: 1
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      nodes {
+        id
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "dddd MMMM Do, YYYY")
+          title
+          description
+          categories
+          tags
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                transformOptions: { cropFocus: NORTH }
+              )
+            }
+          }
+          imageDescription
+        }
+      }
     }
   }
 `

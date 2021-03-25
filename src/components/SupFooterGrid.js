@@ -11,13 +11,20 @@ const SubGridStyles = styled.div`
   & > div {
     display: grid-item;
     padding: 0rem 3rem;
+    h2 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  div div {
+    border: 0;
   }
   article {
-    margin-bottom: 1rem;
+    margin: 1rem;
     h3 {
       font-size: 120%;
     }
-    .categories {
+    .taxonomy {
       display: none;
     }
   }

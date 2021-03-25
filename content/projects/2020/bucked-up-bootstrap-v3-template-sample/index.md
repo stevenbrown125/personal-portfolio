@@ -5,6 +5,7 @@ description: "After receiving positive feedback on my Bootstrap v4 sample, I was
 type: project
 featuredImage: "./buckedup.png"
 demolink: https://bliztek.com/buckedup/bootstrap3.html
+featured: true
 tags:
   - Bootstrap v3
   - HTML5

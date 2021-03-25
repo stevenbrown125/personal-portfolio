@@ -42,7 +42,7 @@ export default function TaxonomyList({ list, type }) {
   const section = type === "technology" ? "portfolio" : "blog"
 
   return (
-    <TaxonomyListStyles itemProp="keywords">
+    <TaxonomyListStyles className="taxonomy" itemProp="keywords">
       <ul className="taxonomy-list">
         {list?.map(taxonomy => (
           <li className="mark" key={`${taxonomy}`}>

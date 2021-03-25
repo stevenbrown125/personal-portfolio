@@ -163,10 +163,10 @@ async function createBlogPosts({ graphql, actions, reporter }) {
   // Using the arrays we created earlier as master lists
 
   if (postTags.length > 0) {
-    createTagPages(postTags, "blog", itemsPerPage, createPage)
+    createTagPages(postTags, itemsPerPage, createPage)
   }
   if (projectTags.length > 0) {
-    createTagPages(projectTags, "project", itemsPerPage, createPage)
+    createTechnologyPages(projectTags, itemsPerPage, createPage)
   }
 
   // Create the category listing pages
@@ -218,8 +218,7 @@ function createMainPortfolioPageListings(projects, itemsPerPage, createPage) {
   })
 }
 
-function createTagPages(tags, type, itemsPerPage, createPage) {
-  const tagPostTemplate = path.resolve("./src/templates/blog-listing.js")
+function createTechnologyPages(tags, itemsPerPage, createPage) {
   const tagProjectTemplate = path.resolve("./src/templates/project-listing.js")
 
   const uTags = [...new Set(tags)]
@@ -227,12 +226,36 @@ function createTagPages(tags, type, itemsPerPage, createPage) {
     const numPages = Math.ceil(countOccurrences(tags, tag) / itemsPerPage)
 
     Array.from({ length: numPages }).forEach((_, i) => {
-      const path = `/${type}/tag/${tag.toLowerCase()}${
+      const path = `/portfolio/technology/${tag.toLowerCase()}${
         i === 0 ? "" : `/${i + 1}`
       }`
       createPage({
         path: path,
-        component: type === "blog" ? tagPostTemplate : tagProjectTemplate,
+        component: tagProjectTemplate,
+        context: {
+          id: tag,
+          limit: itemsPerPage,
+          skip: i * itemsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    })
+  })
+}
+
+function createTagPages(tags, itemsPerPage, createPage) {
+  const tagPostTemplate = path.resolve("./src/templates/blog-listing.js")
+
+  const uTags = [...new Set(tags)]
+  uTags.forEach(tag => {
+    const numPages = Math.ceil(countOccurrences(tags, tag) / itemsPerPage)
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      const path = `/blog/tag/${tag.toLowerCase()}${i === 0 ? "" : `/${i + 1}`}`
+      createPage({
+        path: path,
+        component: tagPostTemplate,
         context: {
           id: tag,
           limit: itemsPerPage,
