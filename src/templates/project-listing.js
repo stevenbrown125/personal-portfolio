@@ -6,12 +6,12 @@ import Sidebar from "../components/Sidebar"
 import { FaCodeBranch } from "react-icons/fa"
 import ListingsProject from "../components/ListingsProject"
 import Pagination from "../components/Pagination"
-import BlogListingStyles from "../styles/BlogListingStyles"
+import PortfolioListingStyles from "../styles/PortfolioListingStyles"
 
 export default function BlogIndex({ data, location, pageContext }) {
   const projects = data.allMarkdownRemark.nodes
   let pagination = ""
-  let title = "Latest Project Showcase"
+  let title = "Project Showcase"
   if (pageContext.id) {
     title = `Projects using ${pageContext.id}`
   }
@@ -19,27 +19,30 @@ export default function BlogIndex({ data, location, pageContext }) {
     pagination = <Pagination pageContext={pageContext} location={location} />
   }
   return (
-    <BlogListingStyles className="container two-columns">
+    <PortfolioListingStyles className="container two-columns">
       <SEO
         title={title}
         description={
           "On this page, find my latest projects with links to a live demo of the site."
         }
       />
-      <Sidebar className="box" args={["tags-project", "latest-project"]} />
-      <article>
+      <Sidebar
+        className="sidebar box"
+        args={["tags-project", "latest-project"]}
+      />
+      <article itemScope itemType="http://schema.org/Article">
         <header className="box">
           <h1 itemProp="headline" className="mark">
             <FaCodeBranch /> {title}
-            <span className="pagination"> {pagination}</span>
+            {pagination}
           </h1>
         </header>
-        <section className="box">
+        <section>
           <ListingsProject projects={projects} />
         </section>
         <Bio />
       </article>
-    </BlogListingStyles>
+    </PortfolioListingStyles>
   )
 }
 
@@ -63,9 +66,13 @@ export const pageQuery = graphql`
           description
           categories
           tags
+          demolink
           featuredImage {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                transformOptions: { fit: INSIDE, grayscale: true }
+              )
             }
           }
         }

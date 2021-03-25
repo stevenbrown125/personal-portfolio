@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-
 import TaxonomyList from "./TaxonomyList"
 import BlogListingItemStyles from "../styles/BlogListingItemStyles"
 

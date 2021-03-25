@@ -1,11 +1,12 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import SEO from "../components/Seo"
 import Bio from "../components/Bio"
 import Sidebar from "../components/Sidebar"
 import TaxonomyList from "../components/TaxonomyList"
 import BlogPostStyles from "../styles/BlogPostStyles"
+import ArticleNavigation from "../components/ArticleNavigation"
 
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
@@ -64,7 +65,7 @@ const BlogPostTemplate = ({ data }) => {
             className="tag-list"
           />
         </BlogPostStyles>
-
+        <ArticleNavigation previous={previous} next={next} />
         <Bio />
       </div>
     </div>

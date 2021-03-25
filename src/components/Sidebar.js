@@ -7,6 +7,9 @@ import ProjectTags from "./ProjectTags"
 import PostTags from "./PostTags"
 
 const SidebarStyles = styled.div`
+  div {
+    margin-bottom: 2rem;
+  }
   article {
     margin-bottom: 2rem;
     h3 {

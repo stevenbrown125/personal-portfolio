@@ -1,10 +1,9 @@
 import React from "react"
-import ItemStyles from "../styles/ItemListStyles"
 import ListingsProjectItem from "./ListingsProjectItem"
 
 export default function ListingsProject({ projects }) {
   return (
-    <ItemStyles>
+    <ul className="article-listings">
       {projects.map(project => {
         return (
           <li key={project.fields.slug}>
@@ -12,6 +11,6 @@ export default function ListingsProject({ projects }) {
           </li>
         )
       })}
-    </ItemStyles>
+    </ul>
   )
 }

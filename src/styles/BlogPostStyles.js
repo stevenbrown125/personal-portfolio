@@ -19,9 +19,6 @@ const BlogPostStyles = styled.article`
       font-size: 165%;
     }
     figure {
-      margin-block-start: 0;
-      margin-inline-end: 0;
-      margin-inline-start: 0;
       figcaption {
         font-style: italic;
         text-align: right;
@@ -37,6 +34,7 @@ const BlogPostStyles = styled.article`
     }
   }
   section {
+    padding-bottom: 1rem;
     margin-bottom: 1rem;
     div {
       padding: 0 1rem;
@@ -47,7 +45,14 @@ const BlogPostStyles = styled.article`
       ol {
         li {
           padding: 0.8rem;
+          margin-inline-start: 6rem;
         }
+      }
+      ul {
+        list-style-type: square;
+      }
+      ol {
+        list-style-type: lower-roman;
       }
     }
   }
@@ -66,7 +71,6 @@ const BlogPostStyles = styled.article`
     grid-template-columns: auto;
     ul.taxonomy-list {
       position: inherit;
-      margin-block-start: 0;
       padding: inherit;
     }
   }

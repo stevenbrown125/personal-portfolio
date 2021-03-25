@@ -1,6 +1,7 @@
+/* eslint-disable multiline-ternary */
 import React from "react"
 import { Link } from "gatsby"
-import { FaLayerGroup, FaTag } from "react-icons/fa"
+import { FaFileCode, FaLayerGroup, FaTag } from "react-icons/fa"
 import styled from "styled-components"
 
 const TaxonomyListStyles = styled.section`
@@ -8,8 +9,7 @@ const TaxonomyListStyles = styled.section`
   font-size: 65%;
   ul {
     display: inline-block;
-    padding: 0 1rem;
-    list-style-type: none;
+    padding: 1rem 1rem;
     li {
       margin: 0.4rem 0.4rem;
       padding: 0.5rem 1rem;
@@ -31,14 +31,22 @@ const TaxonomyListStyles = styled.section`
 `
 
 export default function TaxonomyList({ list, type }) {
-  const icon = type === "tag" ? <FaTag /> : <FaLayerGroup />
-  console.log(list + type)
+  const icon =
+    type === "tag" ? (
+      <FaTag />
+    ) : type === "categories" ? (
+      <FaLayerGroup />
+    ) : (
+      <FaFileCode />
+    )
+  const section = type === "technology" ? "portfolio" : "blog"
+
   return (
     <TaxonomyListStyles itemProp="keywords">
       <ul className="taxonomy-list">
         {list?.map(taxonomy => (
           <li className="mark" key={`${taxonomy}`}>
-            <Link to={`/blog/${type}/${taxonomy.toLowerCase()}`}>
+            <Link to={`/${section}/${type}/${taxonomy.toLowerCase()}`}>
               {icon} {taxonomy}
             </Link>
           </li>

@@ -62,14 +62,21 @@ const GlobalStyles = createGlobalStyle`
     top: 0.125em;
     position: relative;
   }
-  figure {
+  figure, ul, ol {
         margin-block-start: 0;
         margin-block-end: 0;
         margin-inline-end: 0;
         margin-inline-start: 0;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
       }
+      
   img {
     max-width: 100%;
+  }
+
+  ul,ol {
+list-style-type:none;
   }
 
   div.container {
