@@ -2,7 +2,7 @@
   "name": "steven-browns-portfolio",
   "private": true,
   "description": "Web Designer living in Italy. I develop things using React and NodeJS!",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "author": "Steven Brown <sbrown@bliztek.com>",
   "bugs": {
     "url": "https://github.com/stevenbrown125/personal-portfolio/issues"

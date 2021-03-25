@@ -18,9 +18,7 @@ const ContactPageStyles = styled.section`
   figure {
     display: inline-block;
   }
-  div {
-    padding: 1rem;
-  }
+
   form {
     fieldset {
       display: grid;

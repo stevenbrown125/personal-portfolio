@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { FaTwitter, FaHeart, FaRetweet } from "react-icons/fa"
 
 const TweetStyles = styled.div`
+  margin-bottom: 2rem;
   div {
     border-bottom: 1px solid var(--grey);
   }

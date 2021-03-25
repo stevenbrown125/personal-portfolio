@@ -22,11 +22,16 @@ const PortfolioListingItemStyles = styled.article`
         font-size: 90%;
       }
       ul {
-        font-size: 74%;
+        font-size: 100%;
       }
       li {
         line-height: 1.8rem;
       }
+    }
+    ul.taxonomy-list {
+      position: inherit;
+      margin-block-start: 0;
+      padding: inherit;
     }
   }
 `

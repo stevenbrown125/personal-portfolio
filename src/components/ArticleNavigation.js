@@ -16,7 +16,7 @@ const ArticleNavigationStyles = styled.section`
       list-style-type: none;
       padding: 0;
       li {
-        max-width: 30rem;
+        max-width: 49%;
       }
     }
   }

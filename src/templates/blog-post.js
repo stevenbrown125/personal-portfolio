@@ -57,6 +57,7 @@ const BlogPostTemplate = ({ data }) => {
             <div
               dangerouslySetInnerHTML={{ __html: post.html }}
               itemProp="articleBody"
+              className="articleBody"
             />
           </section>
           <TaxonomyList

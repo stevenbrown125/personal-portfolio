@@ -28,20 +28,27 @@ const SubGridStyles = styled.div`
       display: none;
     }
   }
-
+  h3,
+  time,
+  p {
+    padding: 0 1rem;
+  }
   @media only screen and (max-width: 800px) {
     grid-template-columns: auto;
     div {
       padding: 0;
     }
-
+    h3,
+    time,
+    p {
+      padding: 0 2rem;
+    }
     h2 {
       margin: 0;
       font-size: 110%;
       display: block;
     }
     p {
-      padding: 1rem;
       font-size: 90%;
     }
     article {

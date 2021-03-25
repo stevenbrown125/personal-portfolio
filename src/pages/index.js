@@ -4,10 +4,8 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 const HomePageStyles = styled.div`
-  padding: 0.5rem 3rem;
   text-align: center;
   div {
-    padding: 0.5rem 3rem;
     margin-bottom: 1rem;
     h1 {
       padding: 1rem;
@@ -19,10 +17,12 @@ const HomePageStyles = styled.div`
     }
     p {
       text-indent: 3rem;
-      font-size: 2.1rem;
+      font-size: 115%;
       line-height: 2.9rem;
-
       text-align: left;
+    }
+    div.box {
+      padding: 0.2rem 3rem;
     }
   }
 
@@ -35,7 +35,7 @@ const HomePageStyles = styled.div`
       font-size: 140%;
     }
     p {
-      font-size: 120%;
+      font-size: 90%;
       line-height: 2rem;
     }
   }

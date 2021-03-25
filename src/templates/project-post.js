@@ -54,6 +54,7 @@ const ProjectTemplate = ({ data }) => {
             <div
               dangerouslySetInnerHTML={{ __html: project.html }}
               itemProp="articleBody"
+              className="articleBody"
             />
             <div>
               <p>
