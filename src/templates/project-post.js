@@ -6,104 +6,80 @@ import Bio from "../components/Bio"
 import Sidebar from "../components/Sidebar"
 import { FaCodeBranch, FaTag } from "react-icons/fa"
 import BlogPageStyles from "../styles/BlogPageStyles"
+import BlogPostStyles from "../styles/BlogPostStyles"
+import ArticleNavigation from "../components/ArticleNavigation"
+import TaxonomyList from "../components/TaxonomyList"
 
 const ProjectTemplate = ({ data }) => {
-  const post = data.markdownRemark
+  const project = data.markdownRemark
   let featuredImage = ""
   const { previous, next } = data
 
-  if (post.frontmatter.featuredImage.childImageSharp.gatsbyImageData) {
+  if (project.frontmatter.featuredImage.childImageSharp.gatsbyImageData) {
     featuredImage = (
       <figure>
         <GatsbyImage
           image={
-            post.frontmatter.featuredImage?.childImageSharp.gatsbyImageData
+            project.frontmatter.featuredImage?.childImageSharp.gatsbyImageData
           }
           className="featured-image"
-          alt={post.frontmatter.title}
+          alt={project.frontmatter.title}
         />
-        <figcaption>
-          Check out this{" "}
-          <a target="_blank" rel="noreferrer" href={post.frontmatter.demolink}>
-            project live
-          </a>
-          !
-        </figcaption>
       </figure>
     )
   }
 
   return (
-    <BlogPageStyles className="container two-columns">
+    <div className="container two-columns">
       <SEO
-        title={"Latest Project Showcase"}
-        description={
-          "On this page, find my latest projects with links to a live demo of the site."
-        }
+        title={project.frontmatter.title}
+        description={project.frontmatter.description || project.excerpt}
       />
-      <Sidebar args={["tags-project", "recent-blog-posts"]} />
-      <article itemScope itemType="http://schema.org/Article">
-        <header className="box">
-          <h1 itemProp="headline" className="mark">
-            <FaCodeBranch /> {post.frontmatter.title}
-          </h1>
-          <div>
-            <p>
-              Released on:{" "}
-              <time dateTime={post.frontmatter.date} itemProp="datePublished">
-                {post.frontmatter.date}
-              </time>
-            </p>
-            <div className="category-list">
-              <p>Tags</p>
-              <ul>
-                {post.frontmatter.tags.map(tag => (
-                  <li className="mark" key={`tag-list-${tag}`}>
-                    <FaTag />
-                    <Link to={`/project/tag/${tag.toLowerCase()}`}>
-                      {" "}
-                      {tag}{" "}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+      <Sidebar args={["tags-project", "recent-blog-projects"]} />
+      <div>
+        <BlogPostStyles
+          className="box"
+          itemScope
+          itemType="http://schema.org/Article"
+        >
+          <header>
+            {featuredImage}
+            <h1 itemProp="headline">
+              <FaCodeBranch /> {project.frontmatter.title}
+            </h1>
+            <time dateTime={project.frontmatter.date} itemProp="datePublished">
+              Released on: {project.frontmatter.date}
+            </time>
+          </header>
+          <section>
+            <div
+              dangerouslySetInnerHTML={{ __html: project.html }}
+              itemProp="articleBody"
+            />
+            <div>
+              <p>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={project.frontmatter.demolink}
+                >
+                  Check out this project live!
+                </a>
+              </p>
             </div>
-          </div>
-        </header>
-        <section className="box content">
-          {featuredImage}
-          <div
-            dangerouslySetInnerHTML={{ __html: post.html }}
-            itemProp="articleBody"
+          </section>
+          <TaxonomyList
+            list={project.frontmatter.tags}
+            type="technology"
+            className="tag-list"
           />
-        </section>
-        <section className="blog-post-nav box content">
-          <h2>Looking for more?</h2>
-          <nav>
-            <ul>
-              <li>
-                {previous && (
-                  <Link to={`/project${previous.fields.slug}`} rel="prev">
-                    ← {previous.frontmatter.title}
-                  </Link>
-                )}
-              </li>
-              <li>
-                {next && (
-                  <Link to={`/project${next.fields.slug}`} rel="next">
-                    {next.frontmatter.title} →
-                  </Link>
-                )}
-              </li>
-            </ul>
-          </nav>
-        </section>
+        </BlogPostStyles>
+        <ArticleNavigation previous={previous} next={next} type="project" />
         <Bio />
-      </article>
-    </BlogPageStyles>
+      </div>
+    </div>
   )
 }
-
 export default ProjectTemplate
 
 export const pageQuery = graphql`

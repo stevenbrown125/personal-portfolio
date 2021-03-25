@@ -22,7 +22,7 @@ const ArticleNavigationStyles = styled.section`
   }
 `
 
-export default function ArticleNavigation({ previous, next }) {
+export default function ArticleNavigation({ previous, next, type = "blog" }) {
   return (
     <ArticleNavigationStyles className="blog-post-nav box content">
       <h2>Looking for more?</h2>
@@ -30,14 +30,14 @@ export default function ArticleNavigation({ previous, next }) {
         <ul>
           <li>
             {previous && (
-              <Link to={`/blog${previous.fields.slug}`} rel="prev">
+              <Link to={`/${type}${previous.fields.slug}`} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={`/blog${next.fields.slug}`} rel="next">
+              <Link to={`/${type}${next.fields.slug}`} rel="next">
                 {next.frontmatter.title} →
               </Link>
             )}
