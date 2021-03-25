@@ -39,7 +39,7 @@ const BlogPostTemplate = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <Sidebar args={["categories", "tags-post"]} />
+      <Sidebar args={["categories", "tags-post", "featured-project"]} />
       <div>
         <BlogPostStyles
           className="box"

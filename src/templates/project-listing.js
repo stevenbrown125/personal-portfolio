@@ -8,7 +8,6 @@ import { FaCodeBranch } from "react-icons/fa"
 import ListingsProject from "../components/ListingsProject"
 import Pagination from "../components/Pagination"
 import PortfolioListingStyles from "../styles/PortfolioListingStyles"
-
 import ListingsProjectFeatured from "../components/ListingsProjectFeatured"
 
 export default function BlogIndex({ data, location, pageContext }) {
@@ -38,11 +37,7 @@ export default function BlogIndex({ data, location, pageContext }) {
           "On this page, find my latest projects with links to a live demo of the site."
         }
       />
-      <Sidebar
-        className="sidebar box"
-        args={["tags-project", "latest-project"]}
-      />
-
+      <Sidebar args={["tags-project", "latest-blog-posts"]} />
       <article itemScope itemType="http://schema.org/Article">
         <header className="box">
           <h1 itemProp="headline" className="mark">

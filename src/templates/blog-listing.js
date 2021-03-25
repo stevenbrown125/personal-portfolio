@@ -44,7 +44,10 @@ export default function BlogIndex({ data, location, pageContext }) {
         title={title}
         description={"On this page, you will find all my latest blog posts."}
       />
-      <Sidebar className="sidebar box" args={["categories", "tags-post"]} />
+      <Sidebar
+        className="sidebar box"
+        args={["categories", "tags-post", "featured-project"]}
+      />
       <article itemScope itemType="http://schema.org/Article">
         <header className="box">
           <h1 itemProp="headline" className="mark">

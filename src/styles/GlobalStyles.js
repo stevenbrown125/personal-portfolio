@@ -76,7 +76,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ul,ol {
-list-style-type:none;
+    list-style-type:none;
   }
 
   div.container {

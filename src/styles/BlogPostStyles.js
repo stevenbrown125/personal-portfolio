@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const BlogPostStyles = styled.article`
-  margin-bottom: 0;
+  margin-bottom: 2rem;
   position: relative;
   header {
     position: relative;

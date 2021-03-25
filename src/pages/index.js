@@ -6,16 +6,24 @@ import { Link } from "gatsby"
 const HomePageStyles = styled.div`
   padding: 0.5rem 3rem;
   text-align: center;
-  h1 {
-    padding: 1rem;
-  }
-  h2 {
-    margin-top: -0.6rem;
-    transform: rotate(-0.8deg);
-    margin-bottom: 2rem;
-  }
-  p {
-    text-align: left;
+  div {
+    padding: 0.5rem 3rem;
+    margin-bottom: 1rem;
+    h1 {
+      padding: 1rem;
+    }
+    h2 {
+      margin-top: -0.6rem;
+      transform: rotate(-0.8deg);
+      margin-bottom: 2rem;
+    }
+    p {
+      text-indent: 3rem;
+      font-size: 2.1rem;
+      line-height: 2.9rem;
+
+      text-align: left;
+    }
   }
 
   @media only screen and (max-width: 800px) {
@@ -47,7 +55,7 @@ export default function HomePage() {
             I'm here to help bring your ideas to the web!
           </span>
         </h2>
-        <div className="box content">
+        <div className="box">
           <p>
             I'm a Full Stack Javascript developer from the US
             <span role="img" aria-label="american-flag"></span>. Web Design

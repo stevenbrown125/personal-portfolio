@@ -202,7 +202,7 @@ function createMainBlogPageListings(posts, itemsPerPage, createPage) {
 
 function createMainPortfolioPageListings(projects, itemsPerPage, createPage) {
   const template = path.resolve("./src/templates/project-listing.js")
-  const numPages = Math.ceil(projects.length / itemsPerPage)
+  const numPages = Math.ceil((projects.length - 1) / itemsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
     const path = `/portfolio${i === 0 ? "" : `/${i + 1}`}`
     createPage({

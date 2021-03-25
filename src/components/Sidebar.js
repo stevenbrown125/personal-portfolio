@@ -12,34 +12,40 @@ const SidebarStyles = styled.div`
   }
   div div {
     border-radius: 0.4rem;
+    border: 0;
   }
   article {
-    margin-bottom: 2rem;
     h3 {
-      font-size: 120%;
+      padding: 0.8rem 0 0;
+      font-size: 105%;
+      text-align: center;
     }
     p {
       text-indent: 1rem;
       font-size: 90%;
+      padding: 0;
     }
     time {
-      display: none;
+      padding-left: 1rem;
+      text-align: center;
     }
+    border-bottom: 1px solid var(--grey);
   }
   header,
   section {
     padding: 0 1.4rem;
+
     time {
       font-size: 80%;
+
+      padding: 0;
     }
   }
-  header {
-    margin-top: 1rem;
-  }
+
   section {
     text-indent: 2rem;
     font-size: 90%;
-    padding: 0 1.8rem;
+    padding: 0 1.8rem 0.8rem;
   }
   h2 {
     padding: 0.8rem 1.4rem;
@@ -47,7 +53,8 @@ const SidebarStyles = styled.div`
     display: block;
     box-shadow: var(--bs);
   }
-  .categories {
+
+  .taxonomy {
     display: none;
   }
   .ribbon-wrapper {
@@ -69,8 +76,7 @@ export default function Sidebar({ args }) {
                 <Categories />
               </div>
             )
-
-          case "latest-project":
+          case "featured-project":
             return (
               <div className="box sidebar" key="latest-project">
                 <LatestProjects />
