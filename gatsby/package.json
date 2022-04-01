@@ -1,0 +1,73 @@
+{
+  "name": "steven-browns-portfolio",
+  "private": true,
+  "description": "Web Designer living in Italy. I develop things using React and NodeJS!",
+  "version": "2.0.0",
+  "author": "Steven Brown <sbrown@bliztek.com>",
+  "bugs": {
+    "url": "https://github.com/stevenbrown125/personal-portfolio/issues"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.5.0",
+    "@heroicons/react": "^1.0.6",
+    "@portabletext/react": "^1.0.4",
+    "@sanity/image-url": "^1.0.1",
+    "dotenv": "^16.0.0",
+    "gatsby": "^4.10.3",
+    "gatsby-plugin-image": "^2.10.1",
+    "gatsby-plugin-react-helmet": "^5.10.0",
+    "gatsby-plugin-sanity-image": "^0.11.0",
+    "gatsby-plugin-sharp": "^4.10.2",
+    "gatsby-source-cloudinary": "^0.1.14",
+    "gatsby-source-filesystem": "^4.10.1",
+    "gatsby-source-sanity": "^7.3.2",
+    "gatsby-source-twitter": "^4.0.1",
+    "gatsby-transformer-cloudinary": "^2.2.4",
+    "gatsby-transformer-sharp": "^4.10.0",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/typography": "^0.5.2",
+    "autoprefixer": "^10.4.4",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "gatsby-plugin-postcss": "^5.10.0",
+    "postcss": "^8.4.12",
+    "prettier": "^2.6.1",
+    "tailwindcss": "^3.0.23"
+  },
+  "homepage": "https://github.com/stevenbrown125/personal-portfolio/blob/main/README.md",
+  "keywords": [
+    "gatsby",
+    "javascript",
+    "development",
+    "portfolio"
+  ],
+  "license": "0BSD",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenbrown125/personal-portfolio.git"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "dev": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  }
+}
