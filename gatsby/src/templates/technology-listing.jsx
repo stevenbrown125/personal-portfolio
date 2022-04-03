@@ -21,7 +21,7 @@ export default function TechnologyListing({ data: { projects, technology }, page
           <div>
             <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
               <h2 className="flex items-center text-lg font-semibold text-center lg:text-3xl md:text-left">
-                <FaCodeBranch className="pr-2" />
+                <FaCodeBranch className="mr-2" />
                 All
                 {' '}
                 {technology.name}

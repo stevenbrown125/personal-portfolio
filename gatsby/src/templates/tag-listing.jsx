@@ -19,16 +19,16 @@ export default function CategoryListing({ data: { posts, tag }, location, pageCo
           <Sidebar args={['categories', 'tags', 'featured-post']} />
           <div>
             <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
-              <h2 className="flex items-center text-lg font-semibold lg:text-3xl gap-x-2">
-                <FaRegNewspaper />
+              <h2 className="flex items-center text-lg font-semibold lg:text-3xl">
+                <FaRegNewspaper className="mr-2" />
                 All
                 {' '}
                 {tag.name}
                 {' '}
                 Posts
               </h2>
-              <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center gap-x-2`}>
-                <p className="hidden text-lg font-semibold md:block">Jump to Page:</p>
+              <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center`}>
+                <p className="hidden pr-2 text-lg font-semibold md:block">Jump to Page:</p>
                 <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
               </div>
             </div>
@@ -39,7 +39,7 @@ export default function CategoryListing({ data: { posts, tag }, location, pageCo
                 <div className="px-8 py-8 ">
                   <div className="text-xl text-slate-900">
                     <h2 className="text-2xl font-semibold">Oh no!</h2>
-                    <p className="p-4">There's no entries for this tag. Tell me to write some!</p>
+                    <p className="p-4">There&rsquo;s no entries for this tag. Tell me to write some!</p>
                   </div>
                 </div>
 

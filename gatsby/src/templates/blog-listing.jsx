@@ -21,7 +21,7 @@ export default function BlogIndex({ data: { posts, featured }, pageContext }) {
           <div className="w-full">
             <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
               <h2 className="flex items-center text-lg font-semibold lg:text-3xl">
-                <FaRegNewspaper className="pr-2" />
+                <FaRegNewspaper className="mr-2" />
                 All Blog Posts
               </h2>
               <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center`}>

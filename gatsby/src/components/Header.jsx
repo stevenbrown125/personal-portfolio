@@ -22,7 +22,6 @@ const navigationRight = [
 
 export default function Header({ page }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  console.log(`/${page}` === navigationLeft[1].href);
   return (
     <div className="fixed top-0 z-40 w-full min-w-full shadow-lg bg-stone-50">
       {/* Mobile menu */}
@@ -77,12 +76,10 @@ export default function Header({ page }) {
 
               {/* Links */}
               <div className="px-4 py-4 space-y-4 border-t border-primary-dark">
-                {navigation.map((page) => (
-                  <div key={page.name} className="flow-root">
-                    <Link to={page.href}>
-                      <button onClick={() => setMobileMenuOpen(false)} type="button" className="block px-2 text-lg font-medium text-warm-gray-700 hover:text-primary">
-                        {page.name}
-                      </button>
+                {navigation.map((item) => (
+                  <div key={item.name} className="flow-root">
+                    <Link to={item.href} onClick={() => setMobileMenuOpen(false)} className={`${`/${page}` === item.href ? 'text-amber-600' : 'text-stone-700'} block px-2 text-lg font-medium hover:text-primary`}>
+                      {item.name}
                     </Link>
                   </div>
                 ))}

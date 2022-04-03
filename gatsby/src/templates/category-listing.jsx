@@ -20,7 +20,7 @@ export default function CategoryListing({ data: { posts, category }, pageContext
           <div>
             <div className="relative z-20 flex items-center justify-between w-full px-4 py-2 mb-4 rounded-sm shadow-md sm:px-6 bg-secondary-light">
               <h2 className="flex items-center text-lg font-semibold lg:text-3xl">
-                <FaRegNewspaper className="hidden pr-2 sm:block" />
+                <FaRegNewspaper className="hidden mr-2 sm:block" />
                 All
                 {' '}
                 {category.name}
