@@ -79,7 +79,13 @@ module.exports = {
     },
     'gatsby-plugin-sharp',
     'gatsby-plugin-image',
-
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images/`,
+      },
+    },
     'gatsby-plugin-postcss',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',

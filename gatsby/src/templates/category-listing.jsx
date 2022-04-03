@@ -15,7 +15,6 @@ export default function CategoryListing({ data: { posts, category }, pageContext
       <SEO
         title={`${category.name} Posts | Page ${pageContext.currentPage}`}
       />
-      <Background />
       <section className="relative py-4 md:py-8">
         <div className="relative flex mx-auto max-w-7xl">
           <Sidebar args={['categories', 'tags', 'featured-post']} />

@@ -7,7 +7,6 @@ import Sidebar from '../components/Sidebar';
 import DropDownMenu from '../components/DropDownMenu';
 import SEO from '../components/Seo';
 import BlogListing from '../components/BlogPost/BlogListing';
-import Background from '../components/BlogPost/Background';
 
 export default function CategoryListing({ data: { posts, tag }, location, pageContext }) {
   return (
@@ -15,7 +14,6 @@ export default function CategoryListing({ data: { posts, tag }, location, pageCo
       <SEO
         title={`${tag.name} Posts | Page ${pageContext.currentPage}`}
       />
-      <Background />
       <section className="relative py-4 md:py-8">
         <div className="relative flex mx-auto max-w-7xl">
           <Sidebar args={['categories', 'tags', 'featured-post']} />

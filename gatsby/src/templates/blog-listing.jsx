@@ -8,7 +8,6 @@ import DropDownMenu from '../components/DropDownMenu';
 import SEO from '../components/Seo';
 import BlogListing from '../components/BlogPost/BlogListing';
 import FeaturedPostListing from '../components/BlogPost/FeaturedPostListing';
-import Background from '../components/BlogPost/Background';
 
 export default function BlogIndex({ data: { posts, featured }, pageContext }) {
   return (
@@ -16,8 +15,7 @@ export default function BlogIndex({ data: { posts, featured }, pageContext }) {
       <SEO
         title={`Blog Posts | Page ${pageContext.currentPage}`}
       />
-      <Background />
-      <section className="relative py-4 pr-4 md:py-8">
+      <section className="relative py-4 md:py-8">
         <div className="relative flex mx-auto max-w-7xl">
           <Sidebar args={['categories', 'tags', 'featured-post']} />
           <div className="w-full">

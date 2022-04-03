@@ -16,14 +16,7 @@ export default function ProjectListingTemplate({ data: { projects, featured }, p
       <SEO
         title={`Portfolio | Page ${pageContext.currentPage}`}
       />
-      <div className="absolute inset-0 z-0">
-        <StaticImage
-          className="w-full h-full max-h-[1200px] shadow-lg"
-          imgClassName="object-top"
-          src="../images/garda-optimized.jpg"
-          alt="Lake Garda, Italy"
-        />
-      </div>
+
       <section className="relative py-4 md:py-8">
         <div className="relative flex mx-auto max-w-7xl">
           <Sidebar args={['technologies', 'featured-project']} />

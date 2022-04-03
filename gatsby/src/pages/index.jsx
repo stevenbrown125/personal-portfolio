@@ -11,14 +11,7 @@ export default function HomePage() {
         description="A website and blog displaying Steven's projects and interests. I design and develop things using  React and NodeJS!"
       />
       <section className="relative py-12">
-        <div className="absolute inset-0 z-0">
-          <StaticImage
-            className="w-full h-full min-h-92"
-            imgClassName="object-top"
-            src="../images/rome-optimized.jpg"
-            alt="Rome, Italy"
-          />
-        </div>
+
         <div className="relative mx-auto max-w-7xl">
           <h1 className="min-w-full px-4 py-6 mx-auto text-4xl font-black tracking-wide text-center bg-white shadow-lg -skew-y-2 sm:text-5xl max-w-max sm:min-w-min sm:px-12 md:rounded-md opacity-90 xl:text-7xl ">Hey, I&rsquo;m Steven Brown</h1>
           <h2 className="z-20 px-8 py-2 mx-auto -mt-2 text-2xl font-medium text-center transform rounded-sm shadow-xl bg-secondary-light max-w-max -skew-y-2 xl:text-4xl">
