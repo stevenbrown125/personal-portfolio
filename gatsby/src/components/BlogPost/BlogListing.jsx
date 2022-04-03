@@ -22,11 +22,11 @@ export default function BlogListing({ post }) {
           <RichText body={post._rawBody} />
         </div>
       </div>
-      <ul className="inline-flex px-8 py-4 gap-x-2" itemType="keywords">
+      <ul className="inline-flex px-8 py-4" itemType="keywords">
         {post.tags.map((tag) => (
           <li key={post.id + tag.id}>
-            <Link to={`/blog/tag/${tag.slug.current}`} className="flex items-center px-3 py-1 rounded-lg gap-x-2 bg-secondary-light hover:bg-amber-500 font-lighter">
-              <FaTag />
+            <Link to={`/blog/tag/${tag.slug.current}`} className="flex items-center px-3 py-1 mx-2 rounded-lg bg-secondary-light hover:bg-amber-500 font-lighter">
+              <FaTag className="mr-2" />
               {tag.name}
             </Link>
           </li>

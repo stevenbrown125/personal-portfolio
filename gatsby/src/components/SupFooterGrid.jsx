@@ -79,9 +79,9 @@ export default function SupFooterGrid() {
     <section className="relative z-30 grid grid-cols-1 pb-4 lg:grid-cols-3 gap-x-8 lg:px-8 bg-stone-50">
       {/* Twitter */}
       <div>
-        <h3 className="flex items-center p-4 text-2xl font-medium shadow-md gap-x-2 bg-secondary-light lg:max-w-max rounded-b-md">
-          <FaTwitter />
-          {' '}
+        <h3 className="flex items-center p-4 text-2xl font-medium shadow-md bg-secondary-light lg:max-w-max rounded-b-md">
+          <FaTwitter className="mr-2" />
+
           @Design4TheWeb Tweets
         </h3>
         {/* Listing */}
@@ -94,7 +94,7 @@ export default function SupFooterGrid() {
                   href={`https://twitter.com/Design4TheWeb/status/${tweet.id_str}/`}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-amber-600"
+                  className="hover:text-stone-500"
                 >
                   <FaTwitter className="float-left mr-4 text-2xl prose prose-xl text-twitter" />
                   {tweet.full_text}
@@ -104,19 +104,19 @@ export default function SupFooterGrid() {
                 <a
                   href={`https://twitter.com/Design4TheWeb/status/${tweet.id_str}/likes`}
                   target="_blank"
-                  className="flex items-center transition duration-300 ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 gap-x-2"
+                  className="flex items-center mr-2 transition duration-300 ease-in-out delay-150 hover:-translate-y-1 hover:scale-110"
                   rel="noreferrer"
                 >
-                  <FaHeart className="text-red-500" />
+                  <FaHeart className="mr-1 text-red-500" />
                   {tweet.favorite_count}
                 </a>
                 <a
-                  className="flex items-center transition duration-300 ease-in-out delay-150 gap-x-2 hover:-translate-y-1 hover:scale-110"
+                  className="flex items-center mr-2 transition duration-300 ease-in-out delay-150 hover:-translate-y-1 hover:scale-110"
                   href={`https://twitter.com/Design4TheWeb/status/${tweet.id_str}/retweets`}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <FaRetweet className="text-green-600" />
+                  <FaRetweet className="mr-1 text-green-600" />
                   {tweet.retweet_count}
                 </a>
               </div>
@@ -127,14 +127,14 @@ export default function SupFooterGrid() {
       </div>
       {/* Latest Blog */}
       <div>
-        <h3 className="flex items-center p-4 text-2xl font-medium shadow-md gap-x-2 bg-secondary-light lg:max-w-max rounded-b-md">
-          <FaBlog />
+        <h3 className="flex items-center p-4 text-2xl font-medium shadow-md bg-secondary-light lg:max-w-max rounded-b-md">
+          <FaBlog className="mr-2" />
           Recent Blog Posts
         </h3>
         <div className="">
           {/* Posts */}
           {posts.nodes.map((post) => (
-            <article className="px-4 pb-2 mb-2 border-b border-stone-200 last:border-none" key={`footer-${post.id}`}>
+            <article className="pb-2 mb-2 border-b border-stone-200 last:border-none" key={`footer-${post.id}`}>
               <header className="relative" />
               <h2 className="px-4 pt-4 pb-2 text-xl">
                 <Link to={`/blog/${post.slug.current}`} className="border-b-2 border-amber-600 hover:text-amber-600">{post.name}</Link>
@@ -144,7 +144,7 @@ export default function SupFooterGrid() {
                 {' '}
                 {post.publishedAt}
               </p>
-              <div className="px-4">
+              <div className="px-4 line-clamp-6">
                 <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-4">
                   <RichText body={post._rawBody} />
                 </div>
@@ -156,8 +156,8 @@ export default function SupFooterGrid() {
 
       </div>
       <div>
-        <h3 className="flex items-center p-4 text-2xl font-medium shadow-md gap-x-2 bg-secondary-light lg:max-w-max rounded-b-md">
-          <FaCodeBranch />
+        <h3 className="flex items-center p-4 text-2xl font-medium shadow-md bg-secondary-light lg:max-w-max rounded-b-md">
+          <FaCodeBranch className="mr-2" />
           Featured Project
         </h3>
         <div className="py-4 text-lg">
@@ -179,7 +179,6 @@ export default function SupFooterGrid() {
           <div className="px-8 prose line-clamp-6 lg:prose-lg">
             <RichText body={project._rawDescription} />
           </div>
-
         </div>
       </div>
     </section>
