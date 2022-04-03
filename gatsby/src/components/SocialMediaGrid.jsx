@@ -4,7 +4,7 @@ import { FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 export default function SocialMediaGrid() {
   return (
     <section className="relative z-30 shadow-xl bg-stone-800 ">
-      <h3 className="flex items-center justify-center p-6 text-3xl font-medium text-center text-white lg:text-4xl">
+      <h3 className="flex items-center justify-center p-6 text-2xl font-medium text-center text-white md:text-3xl lg:text-4xl">
         Let&rsquo;s Connect
         <span className="flex items-center px-4 sm:px-12">
           <a

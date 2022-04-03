@@ -3,7 +3,6 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { FaTag, FaStar } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import RichText from '../RichText';
 
 export default function FeaturedPostListing({ post }) {
   return (
@@ -34,15 +33,15 @@ export default function FeaturedPostListing({ post }) {
           ))}
         </ul>
       </header>
-      <h2 className="px-6 pt-2 pb-2 text-lg md:text-xl lg:text-2xl" itemType="headline">
+      <h2 className="px-6 pt-2 pb-2 text-lg text-center md:text-xl lg:text-2xl md:text-left" itemType="headline">
         <Link to={`/blog/${post.slug.current}`} className="border-b-2 border-amber-600 hover:text-amber-600" itemType="url">{post.name}</Link>
       </h2>
-      <p className="px-6 pb-4 text-sm font-light">
+      <p className="px-6 pb-4 text-sm font-light text-center md:text-left">
         Written on
         {' '}
         <time dateTime={post.publishedAt} itemType="datePublished">{post.publishedAt}</time>
       </p>
-      <div className="px-8 ">
+      <div className="px-8 text-center md:text-left">
         <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-6" itemType="text">
           {/* eslint-disable-next-line no-underscore-dangle */}
           {post.excerpt}

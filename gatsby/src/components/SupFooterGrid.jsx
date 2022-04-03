@@ -80,7 +80,7 @@ export default function SupFooterGrid() {
     <section className="relative z-30 grid grid-cols-1 pb-4 lg:grid-cols-3 gap-x-8 lg:px-8 bg-stone-50">
       {/* Twitter */}
       <div>
-        <h3 className="flex items-center p-4 text-2xl font-medium shadow-md bg-secondary-light lg:max-w-max rounded-b-md">
+        <h3 className="flex items-center justify-center p-4 text-2xl font-medium shadow-md bg-secondary-light lg:max-w-max rounded-b-md md:justify-start">
           <FaTwitter className="mr-2" />
 
           @Design4TheWeb Tweets
@@ -89,15 +89,15 @@ export default function SupFooterGrid() {
         <div className="px-8 py-4">
           {/* Posts */}
           {tweets.nodes.map((tweet) => (
-            <div className="py-6 text-lg border-b border-stone-300 last:border-none">
+            <div className="py-6 text-lg prose text-center border-b lg:prose-lg border-stone-300 last:border-none md:text-left">
               <p>
                 <a
                   href={`https://twitter.com/Design4TheWeb/status/${tweet.id_str}/`}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-stone-500"
+                  className="text-base font-normal no-underline text-slate-900 hover:text-stone-500"
                 >
-                  <FaTwitter className="float-left mr-4 text-2xl prose prose-xl text-twitter" />
+                  <FaTwitter className="float-left mr-1 text-2xl prose prose-xl md:mt-1 md:mr-4 text-twitter" />
                   {tweet.full_text}
                 </a>
               </p>
@@ -105,14 +105,14 @@ export default function SupFooterGrid() {
                 <a
                   href={`https://twitter.com/Design4TheWeb/status/${tweet.id_str}/likes`}
                   target="_blank"
-                  className="flex items-center mr-2 transition duration-300 ease-in-out delay-150 hover:-translate-y-1 hover:scale-110"
+                  className="flex items-center mr-2 no-underline transition duration-300 ease-in-out delay-150 hover:-translate-y-1 hover:scale-110"
                   rel="noreferrer"
                 >
                   <FaHeart className="mr-1 text-red-500" />
                   {tweet.favorite_count}
                 </a>
                 <a
-                  className="flex items-center mr-2 transition duration-300 ease-in-out delay-150 hover:-translate-y-1 hover:scale-110"
+                  className="flex items-center mr-2 no-underline transition duration-300 ease-in-out delay-150 hover:-translate-y-1 hover:scale-110"
                   href={`https://twitter.com/Design4TheWeb/status/${tweet.id_str}/retweets`}
                   target="_blank"
                   rel="noreferrer"
@@ -128,7 +128,7 @@ export default function SupFooterGrid() {
       </div>
       {/* Latest Blog */}
       <div>
-        <h3 className="flex items-center p-4 text-2xl font-medium shadow-md bg-secondary-light lg:max-w-max rounded-b-md">
+        <h3 className="flex items-center justify-center p-4 text-2xl font-medium text-center shadow-md bg-secondary-light lg:max-w-max rounded-b-md md:text-left md:justify-start">
           <FaBlog className="mr-2" />
           Recent Blog Posts
         </h3>
@@ -137,16 +137,16 @@ export default function SupFooterGrid() {
           {posts.nodes.map((post) => (
             <article className="pb-2 mb-2 border-b border-stone-200 last:border-none" key={`footer-${post.id}`}>
               <header className="relative" />
-              <h2 className="px-4 pt-4 pb-2 text-xl">
+              <h2 className="px-4 pt-4 pb-2 text-xl text-center md:text-left">
                 <Link to={`/blog/${post.slug.current}`} className="border-b-2 border-amber-600 hover:text-amber-600">{post.name}</Link>
               </h2>
-              <p className="px-4 pb-2 text-sm font-light">
+              <p className="px-4 pb-2 text-sm font-light text-center md:text-left">
                 Written on
                 {' '}
                 {post.publishedAt}
               </p>
               <div className="px-4 line-clamp-6">
-                <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-4">
+                <div className="prose text-center lg:prose-lg max-w-none text-slate-900 line-clamp-4 md:text-left">
                   {post.excerpt}
                   ...
                 </div>
@@ -158,7 +158,7 @@ export default function SupFooterGrid() {
 
       </div>
       <div>
-        <h3 className="flex items-center p-4 text-2xl font-medium shadow-md bg-secondary-light lg:max-w-max rounded-b-md">
+        <h3 className="flex items-center justify-center p-4 text-2xl font-medium shadow-md bg-secondary-light lg:max-w-max rounded-b-md md:justify-start">
           <FaCodeBranch className="mr-2" />
           Featured Project
         </h3>
@@ -178,7 +178,7 @@ export default function SupFooterGrid() {
             {' '}
             {project.publishedAt}
           </p>
-          <div className="px-8 prose line-clamp-6 lg:prose-lg">
+          <div className="px-8 prose text-center line-clamp-6 lg:prose-lg md:text-left">
             <RichText body={project._rawDescription} />
           </div>
         </div>
