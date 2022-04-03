@@ -54,7 +54,7 @@ export default function Header() {
           >
             <div className="relative flex flex-col w-4/5 max-w-xs pb-12 overflow-y-auto shadow-xl bg-stone-50">
               <div className="relative flex items-center justify-between px-4 pt-4 pb-3">
-                <Link to="/">
+                <Link to="/" className="outline-none ring-0">
                   <button onClick={() => setMobileMenuOpen(false)} type="button">
                     <StaticImage
                       className="block h-auto mx-2 w-44"
