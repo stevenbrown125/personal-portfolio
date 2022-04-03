@@ -17,7 +17,6 @@ export default function BlogListing({ post }) {
       </p>
       <div className="relative px-6 text-center md:text-left">
         <div className="prose max-w-none text-slate-900 line-clamp-6" itemType="text">
-          {/* eslint-disable-next-line no-underscore-dangle */}
           {post.excerpt}
           ...
         </div>

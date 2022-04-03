@@ -20,8 +20,9 @@ const navigationRight = [
   { name: 'Contact', href: '/contact' },
 ];
 
-export default function Header() {
+export default function Header({ page }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  console.log(`/${page}` === navigationLeft[1].href);
   return (
     <div className="fixed top-0 z-40 w-full min-w-full shadow-lg bg-stone-50">
       {/* Mobile menu */}
@@ -101,7 +102,7 @@ export default function Header() {
                   <div className="relative hidden md:flex">
                     <div className="px-4">
                       {navigationLeft.map((item) => (
-                        <Link key={item.name} to={item.href} className="px-8 text-lg font-medium lg:px-16 text-stone-700 xl:text-2xl hover:text-primary">
+                        <Link key={item.name} to={item.href} className={`${`/${page}` === item.href ? 'text-amber-600' : 'text-stone-700'} px-8 text-lg font-medium lg:px-16 xl:text-2xl hover:text-primary`}>
                           {item.name}
                         </Link>
                       ))}
@@ -122,7 +123,7 @@ export default function Header() {
                   <div className="relative hidden pl-4 md:flex justify-items-stretch">
                     <div className="px-4">
                       {navigationRight.map((item) => (
-                        <Link key={item.name} to={item.href} className="px-8 text-lg font-medium lg:px-16 text-stone-700 xl:text-2xl hover:text-primary">
+                        <Link key={item.name} to={item.href} className={`${`/${page}` === item.href ? 'text-amber-600' : 'text-stone-700'} px-8 text-lg font-medium lg:px-16  xl:text-2xl hover:text-primary`}>
                           {item.name}
                         </Link>
                       ))}

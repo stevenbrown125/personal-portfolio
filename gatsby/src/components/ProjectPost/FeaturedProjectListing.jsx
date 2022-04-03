@@ -14,8 +14,8 @@ export default function FeaturedProjectListing({ project }) {
           image={project.image.asset.gatsbyImageData}
           alt={project.name}
         />
-        <span className="absolute top-0 left-0 flex px-4 pt-2 pb-2 text-sm font-bold text-center uppercase rounded-br shadow-lg bg-primary gap-x-2 ">
-          <FaStar />
+        <span className="absolute top-0 left-0 flex px-4 pt-2 pb-2 text-sm font-bold text-center uppercase rounded-br shadow-lg bg-primary">
+          <FaStar className="pr-2" />
           Featured
         </span>
         <ul className="absolute inline-flex text-sm top-2 right-4 gap-x-2">
@@ -29,16 +29,16 @@ export default function FeaturedProjectListing({ project }) {
           ))}
         </ul>
       </header>
-      <h2 className="px-4 pt-4 pb-2 text-2xl">
+      <h2 className="px-4 pt-4 pb-2 text-2xl text-center md:text-left">
         <Link to={`/portfolio/project/${project.slug.current}`} className="border-b-2 border-amber-600 hover:text-amber-600">{project.name}</Link>
       </h2>
-      <p className="px-4 pb-4 text-sm font-light">
+      <p className="px-4 pb-4 text-sm font-light text-center md:text-left">
         Written on
         {' '}
         {project.publishedAt}
       </p>
-      <div className="px-8 ">
-        <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-6">
+      <div className="px-8">
+        <div className="prose text-center lg:prose-lg max-w-none text-slate-900 line-clamp-6 md:text-left">
           <RichText body={project._rawDescription} />
         </div>
       </div>

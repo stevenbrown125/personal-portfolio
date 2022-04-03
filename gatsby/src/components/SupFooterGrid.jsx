@@ -11,7 +11,6 @@ const query = graphql`
 query {
   posts: allSanityPost(limit: 2, sort: {fields: publishedAt, order: DESC}) {
     nodes {
-      _rawBody
       featured
       id
       image {
@@ -89,7 +88,7 @@ export default function SupFooterGrid() {
         <div className="px-8 py-4">
           {/* Posts */}
           {tweets.nodes.map((tweet) => (
-            <div className="py-6 text-lg prose text-center border-b lg:prose-lg border-stone-300 last:border-none md:text-left">
+            <div className="py-6 text-lg prose text-center border-b lg:prose-lg border-stone-300 last:border-none md:text-left" key={tweet.id}>
               <p>
                 <a
                   href={`https://twitter.com/Design4TheWeb/status/${tweet.id_str}/`}
@@ -136,22 +135,22 @@ export default function SupFooterGrid() {
           {/* Posts */}
           {posts.nodes.map((post) => (
             <article className="pb-2 mb-2 border-b border-stone-200 last:border-none" key={`footer-${post.id}`}>
-              <header className="relative" />
-              <h2 className="px-4 pt-4 pb-2 text-xl text-center md:text-left">
-                <Link to={`/blog/${post.slug.current}`} className="border-b-2 border-amber-600 hover:text-amber-600">{post.name}</Link>
-              </h2>
-              <p className="px-4 pb-2 text-sm font-light text-center md:text-left">
-                Written on
-                {' '}
-                {post.publishedAt}
-              </p>
-              <div className="px-4 line-clamp-6">
+              <header className="relative pt-2">
+                <h2 className="px-4 pt-4 pb-2 text-xl text-center md:text-left">
+                  <Link to={`/blog/${post.slug.current}`} className="border-b-2 border-amber-600 hover:text-amber-600">{post.name}</Link>
+                </h2>
+                <p className="px-4 pb-2 text-sm font-light text-center md:text-left">
+                  Written on
+                  {' '}
+                  {post.publishedAt}
+                </p>
+              </header>
+              <div className="px-4 pb-4 line-clamp-6">
                 <div className="prose text-center lg:prose-lg max-w-none text-slate-900 line-clamp-4 md:text-left">
                   {post.excerpt}
                   ...
                 </div>
               </div>
-
             </article>
           ))}
         </div>

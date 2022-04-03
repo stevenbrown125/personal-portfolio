@@ -20,12 +20,12 @@ export default function BlogIndex({ data: { posts, featured }, pageContext }) {
           <Sidebar args={['categories', 'tags', 'featured-post']} />
           <div className="w-full">
             <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
-              <h2 className="flex items-center text-xl font-semibold lg:text-3xl gap-x-2">
-                <FaRegNewspaper />
+              <h2 className="flex items-center text-lg font-semibold lg:text-3xl">
+                <FaRegNewspaper className="pr-2" />
                 All Blog Posts
               </h2>
-              <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center gap-x-2`}>
-                <p className="hidden text-lg font-semibold sm:block">Jump to Page:</p>
+              <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center`}>
+                <p className="hidden pr-2 text-lg font-semibold sm:block">Jump to Page:</p>
                 <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
               </div>
             </div>
@@ -34,7 +34,7 @@ export default function BlogIndex({ data: { posts, featured }, pageContext }) {
                 <FeaturedPostListing post={featured} />
               )}
             {posts.nodes.map((post) => (
-              <BlogListing post={post} />
+              <BlogListing post={post} key={post.id} />
             ))}
             <Bio />
           </div>

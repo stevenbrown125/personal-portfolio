@@ -8,8 +8,7 @@ export default function Footer() {
         {' '}
         {new Date().getFullYear()}
         {' '}
-        Steven Brown. All Rights
-        Reserved.
+        . All Rights Reserved.
         {' '}
       </p>
     </div>

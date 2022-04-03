@@ -18,25 +18,16 @@ export default function ContactPage() {
         title="Contact"
         description="Got questions, comments, or concerns? Need a quote for a web project or want to hire me part time? Awesome! Please fill out the provided form and I will get back to you as soon as possible. Looking forward to hearing from you!"
       />
-      <section className="relative py-4 md:py-12">
-        <div className="absolute inset-0 z-0">
-          <StaticImage
-            className="w-full h-full min-h-92"
-            imgClassName="object-top"
-            src="../images/pompei-optimized.jpg"
-            alt="Pompei, Italy"
-          />
-        </div>
-        <header className="relative z-10 p-3 mx-auto mb-4 text-2xl shadow-lg md:text-4xl md:rounded-md md:mb-8 max-w-7xl bg-secondary-light">
-          <h1 className="flex font-bold gap-x-2">
-            <FaEdit />
+      <section className="relative pt-4 pb-12 md:pt-8">
+        <header className="relative z-10 p-2 mx-auto mb-4 text-lg shadow-lg md:text-3xl md:rounded-md max-w-7xl bg-secondary-light">
+          <h1 className="flex items-center px-4 font-bold">
+            <FaEdit className="mr-2" />
             Contact
           </h1>
         </header>
-
-        <div className="relative z-10 grid grid-cols-1 p-4 mx-auto bg-white shadow md:rounded-md md:grid-cols-2 max-w-7xl text-slate-900 opacity-90">
+        <div className="relative z-10 grid grid-cols-1 p-4 mx-auto bg-white shadow md:rounded-md md:grid-cols-2 max-w-7xl text-slate-900 md:opacity-95">
           <div className="">
-            <figure className="w-full p-4">
+            <figure className="w-full md:p-4">
               <StaticImage
                 src="../images/rome-3.jpg"
                 alt="Steven Brown in Rome"
@@ -44,7 +35,7 @@ export default function ContactPage() {
               />
               <figcaption className="pr-2 text-sm italic text-right">Photo taken in Pompei, Italy</figcaption>
             </figure>
-            <p className="p-4 text-xl first-letter:pl-8">
+            <p className="p-4 prose first-letter:pl-8 lg:prose-lg">
               Do you have questions, comments, concerns? Do you need a quote for a web project
               or want to hire me part time? Are you looking for my offical resume? Awesome!
               Please fill out the provided form and I will get back to you as soon as
@@ -104,13 +95,11 @@ export default function ContactPage() {
 
               </label>
               <input type="text" name="_gotcha" className="mapleSyrup" />
-
               <div className="flex justify-center md:justify-start">
                 <div
                   className="mb-2 g-recaptcha"
                   data-sitekey="6Ldry4UaAAAAABBpzHUPhDuzItukepJmzJrbTPqW"
                 />
-
               </div>
               <button
                 type="submit"

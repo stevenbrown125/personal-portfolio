@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
 import SEO from '../components/Seo';
 
 export default function HomePage() {
@@ -17,7 +16,7 @@ export default function HomePage() {
           <h2 className="z-20 px-8 py-2 mx-auto -mt-2 text-2xl font-medium text-center transform rounded-sm shadow-xl bg-secondary-light max-w-max -skew-y-2 xl:text-4xl">
             I  bring your ideas to the web!
           </h2>
-          <div className="max-w-5xl px-8 py-6 mx-auto my-12 text-lg bg-white rounded-md md:leading-relaxed md:text-xl opacity-90 xl:max-w-7xl xl:text-2xl text-slate-900">
+          <div className="max-w-5xl px-8 py-6 mx-auto my-12 text-lg bg-white lg:rounded-md md:leading-relaxed md:text-xl opacity-90 xl:max-w-7xl xl:text-2xl text-slate-900">
             <p className="p-4 first-letter:pl-8">
               I&rsquo;m a Full Stack Javascript developer from the US
               <span role="img" aria-label="american-flag" />

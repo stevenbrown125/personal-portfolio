@@ -3,7 +3,6 @@ import React from 'react';
 
 export default function Background({ page }) {
   let image = 'rome-optimized.jpg';
-  console.log(page);
   switch (page) {
     case 'blog':
       image = (
@@ -12,7 +11,18 @@ export default function Background({ page }) {
           imgClassName="object-top"
           placeholder="blurred"
           src="../../images/campaignia-optimized.jpg"
-          alt="Rome, Italy"
+          alt="Campaignia, Italy"
+        />
+      );
+      break;
+    case 'contact':
+      image = (
+        <StaticImage
+          className="w-full h-full max-h-[1200px] shadow-lg"
+          imgClassName="object-top"
+          placeholder="blurred"
+          src="../../images/pompei-optimized.jpg"
+          alt="Pompei, Italy"
         />
       );
       break;
@@ -23,7 +33,7 @@ export default function Background({ page }) {
           imgClassName="object-top"
           placeholder="blurred"
           src="../../images/garda-optimized.jpg"
-          alt="Rome, Italy"
+          alt="Lake Garda, Italy"
         />
       );
       break;

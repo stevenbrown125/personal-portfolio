@@ -2,7 +2,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { FaCodeBranch } from 'react-icons/fa';
-import { StaticImage } from 'gatsby-plugin-image';
 import Bio from '../components/Bio';
 import Sidebar from '../components/Sidebar';
 import DropDownMenu from '../components/DropDownMenu';
@@ -16,18 +15,17 @@ export default function ProjectListingTemplate({ data: { projects, featured }, p
       <SEO
         title={`Portfolio | Page ${pageContext.currentPage}`}
       />
-
       <section className="relative py-4 md:py-8">
         <div className="relative flex mx-auto max-w-7xl">
           <Sidebar args={['technologies', 'featured-project']} />
           <div>
             <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
-              <h2 className="flex items-center text-xl font-semibold lg:text-3xl gap-x-2">
-                <FaCodeBranch />
+              <h2 className="flex items-center text-lg font-semibold lg:text-3xl">
+                <FaCodeBranch className="pr-2" />
                 All Projects
               </h2>
-              <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center gap-x-2`}>
-                <p className="text-lg font-semibold">Jump to Page:</p>
+              <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center`}>
+                <p className="pr-2 text-lg font-semibold">Jump to Page:</p>
                 <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
               </div>
             </div>
@@ -36,7 +34,7 @@ export default function ProjectListingTemplate({ data: { projects, featured }, p
                 <FeaturedProjectListing project={featured} />
               )}
             {projects.nodes.map((project) => (
-              <ProjectListing project={project} />
+              <ProjectListing project={project} key={project.id} />
             ))}
             <Bio />
           </div>

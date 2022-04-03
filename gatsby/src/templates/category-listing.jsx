@@ -6,7 +6,6 @@ import Bio from '../components/Bio';
 import Sidebar from '../components/Sidebar';
 import DropDownMenu from '../components/DropDownMenu';
 import SEO from '../components/Seo';
-import Background from '../components/BlogPost/Background';
 import BlogListing from '../components/BlogPost/BlogListing';
 
 export default function CategoryListing({ data: { posts, category }, pageContext }) {
@@ -20,16 +19,16 @@ export default function CategoryListing({ data: { posts, category }, pageContext
           <Sidebar args={['categories', 'tags', 'featured-post']} />
           <div>
             <div className="relative z-20 flex items-center justify-between w-full px-4 py-2 mb-4 rounded-sm shadow-md sm:px-6 bg-secondary-light">
-              <h2 className="flex items-center text-lg font-semibold lg:text-3xl gap-x-2">
-                <FaRegNewspaper className="hidden sm:block" />
+              <h2 className="flex items-center text-lg font-semibold lg:text-3xl">
+                <FaRegNewspaper className="hidden pr-2 sm:block" />
                 All
                 {' '}
                 {category.name}
                 {' '}
                 Posts
               </h2>
-              <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center gap-x-2`}>
-                <p className="text-lg font-semibold">Jump to Page:</p>
+              <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center`}>
+                <p className="hidden pr-2 text-lg font-semibold md:block">Jump to Page:</p>
                 <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
               </div>
             </div>
@@ -45,7 +44,7 @@ export default function CategoryListing({ data: { posts, category }, pageContext
               </article>
             )}
             {posts.nodes.map((post) => (
-              <BlogListing post={post} />
+              <BlogListing post={post} key={post.id} />
             ))}
             <Bio />
           </div>

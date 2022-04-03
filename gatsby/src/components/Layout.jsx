@@ -21,7 +21,7 @@ function Layout({ children }) {
           type="text/javascript"
         />
       </Helmet>
-      <Header />
+      <Header page={children[1].props.location.pathname.split('/')[1]} />
       <main className="mt-20 md:mt-24 bg-stone-100">
         <Background page={children[1].props.location.pathname.split('/')[1]} />
         {children}

@@ -19,7 +19,7 @@ export default function CategoryListing({ data: { posts, tag }, location, pageCo
           <Sidebar args={['categories', 'tags', 'featured-post']} />
           <div>
             <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
-              <h2 className="flex items-center text-3xl font-semibold gap-x-2">
+              <h2 className="flex items-center text-lg font-semibold lg:text-3xl gap-x-2">
                 <FaRegNewspaper />
                 All
                 {' '}
@@ -28,7 +28,7 @@ export default function CategoryListing({ data: { posts, tag }, location, pageCo
                 Posts
               </h2>
               <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center gap-x-2`}>
-                <p className="text-lg font-semibold">Jump to Page:</p>
+                <p className="hidden text-lg font-semibold md:block">Jump to Page:</p>
                 <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
               </div>
             </div>
@@ -46,7 +46,7 @@ export default function CategoryListing({ data: { posts, tag }, location, pageCo
               </article>
             )}
             {posts.nodes.map((post) => (
-              <BlogListing post={post} />
+              <BlogListing post={post} key={post.id} />
             ))}
             <Bio />
           </div>

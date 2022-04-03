@@ -26,30 +26,28 @@ query {
 export default function FeaturedProject() {
   const { project } = useStaticQuery(query);
   return (
-    <div className="border border-stone-400 rounded-md shadow-md bg-stone-50 mb-4">
-      <h2 className="bg-secondary-light text-2xl flex gap-x-2 items-center py-2 px-4 border-b border-stone-500 shadow rounded-t-md">
+    <div className="mb-4 border rounded-md shadow-md border-stone-400 bg-stone-50">
+      <h2 className="flex items-center px-4 py-2 text-2xl border-b shadow bg-secondary-light gap-x-2 border-stone-500 rounded-t-md">
         <FaCodeBranch />
         Featured Project
       </h2>
-      <div className="text-lg pb-4">
+      <div className="pb-4 text-lg">
         <GatsbyImage
           className="w-auto h-32 border-b border-stone-400"
           imgClassName="object-center"
           image={project.image.asset.gatsbyImageData}
-          alt={project.title}
+          alt={project.name}
         />
-        <h3 className="font-bold p-2 text-center">{project.name}</h3>
-        <p className="text-sm font-light text-center pb-2 px-2 ">
+        <h3 className="p-2 text-center"><Link to={`/portfolio/project/${project.slug.current}`} className="border-b border-amber-600 hover:text-amber-600 text-md">{project.name}</Link></h3>
+        <p className="px-2 pb-2 text-sm font-light text-center ">
           Created on
           {' '}
           {project.publishedAt}
         </p>
-        <div className="px-4 line-clamp-6">
+        <div className="px-4 prose line-clamp-6 lg:prose-lg">
           <RichText body={project._rawDescription} />
         </div>
-        <div className="mt-3 text-right pr-6 ">
-          <Link to={`/portfolio/project/${project.slug.current}`} className="border-b border-amber-600 hover:text-amber-600 italic  text-md">Read more...</Link>
-        </div>
+
       </div>
     </div>
   );
