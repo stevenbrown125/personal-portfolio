@@ -18,7 +18,7 @@ export default function ContactPage() {
         title="Contact"
         description="Got questions, comments, or concerns? Need a quote for a web project or want to hire me part time? Awesome! Please fill out the provided form and I will get back to you as soon as possible. Looking forward to hearing from you!"
       />
-      <section className="relative py-12">
+      <section className="relative py-4 md:py-12">
         <div className="absolute inset-0 z-0">
           <StaticImage
             className="w-full h-full min-h-92"
@@ -27,21 +27,15 @@ export default function ContactPage() {
             alt="Pompei, Italy"
           />
         </div>
-        <header className="relative z-10 p-3 mx-auto mb-8 text-4xl rounded-md shadow-lg max-w-7xl bg-secondary-light">
+        <header className="relative z-10 p-3 mx-auto mb-4 text-2xl shadow-lg md:text-4xl md:rounded-md md:mb-8 max-w-7xl bg-secondary-light">
           <h1 className="flex font-bold gap-x-2">
             <FaEdit />
             Contact
           </h1>
         </header>
 
-        <div className="relative z-10 grid grid-cols-1 p-4 mx-auto bg-white rounded-md shadow md:grid-cols-2 max-w-7xl text-slate-900 opacity-90">
-          <div>
-            <p className="p-4 text-xl first-letter:pl-8 ">
-              Do you have questions, comments, concerns? Do you need a quote for a web project
-              or want to hire me part time? Are you looking for my offical resume? Awesome!
-              Please fill out the provided form and I will get back to you as soon as
-              possible. I&rsquo;m looking forward to hearing from you!
-            </p>
+        <div className="relative z-10 grid grid-cols-1 p-4 mx-auto bg-white shadow md:rounded-md md:grid-cols-2 max-w-7xl text-slate-900 opacity-90">
+          <div className="">
             <figure className="w-full p-4">
               <StaticImage
                 src="../images/rome-3.jpg"
@@ -50,6 +44,13 @@ export default function ContactPage() {
               />
               <figcaption className="pr-2 text-sm italic text-right">Photo taken in Pompei, Italy</figcaption>
             </figure>
+            <p className="p-4 text-xl first-letter:pl-8">
+              Do you have questions, comments, concerns? Do you need a quote for a web project
+              or want to hire me part time? Are you looking for my offical resume? Awesome!
+              Please fill out the provided form and I will get back to you as soon as
+              possible. I&rsquo;m looking forward to hearing from you!
+            </p>
+
           </div>
           <form
             action="https://formspree.io/f/mlearrjj"
