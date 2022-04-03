@@ -30,10 +30,10 @@ export default function ContactPage() {
             <figure className="w-full md:p-4">
               <StaticImage
                 src="../images/rome-3.jpg"
-                alt="Steven Brown in Rome"
+                alt="Steven Brown in Rome, Italy"
                 className="rounded-md w-92"
               />
-              <figcaption className="pr-2 text-sm italic text-right">Photo taken in Pompei, Italy</figcaption>
+              <figcaption className="pr-2 text-sm italic text-right">Photo taken in Rome, Italy</figcaption>
             </figure>
             <p className="p-4 prose first-letter:pl-8 lg:prose-lg">
               Do you have questions, comments, concerns? Do you need a quote for a web project
