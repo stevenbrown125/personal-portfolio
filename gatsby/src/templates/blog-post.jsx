@@ -9,7 +9,7 @@ export default function BlogPostTemplate({ data: { post } }) {
     <>
       <SEO
         title={truncate(post.name, 44)}
-        description={truncate(post._rawBody, { length: 255 })}
+        description={post.excerpt}
       />
       <BlogPost post={post} />
     </>
@@ -32,6 +32,7 @@ query($slug: String!) {
         }
       }
       name
+      excerpt
       image {
         asset {
           gatsbyImageData

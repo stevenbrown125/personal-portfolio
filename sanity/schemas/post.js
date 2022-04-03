@@ -59,6 +59,16 @@ export default {
       type: 'blockContent',
     },
     {
+      name: 'excerpt',
+      title: 'Excerpt',
+      description: 'Cannot be more than 255 Characters',
+      type: 'string',
+      validation: (Rule) =>
+        Rule.max(255).warning(
+          `An excerpt shouldn't be more than 255 characters.`
+        ),
+    },
+    {
       title: 'Featured',
       name: 'featured',
       type: 'boolean',

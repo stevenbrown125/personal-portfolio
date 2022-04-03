@@ -15,7 +15,7 @@ export default function BlogIndex({ data: { posts, featured }, pageContext }) {
       <SEO
         title={`Blog Posts | Page ${pageContext.currentPage}`}
       />
-      <section className="relative py-4 md:py-8">
+      <section className="relative py-4 md:py-8 ">
         <div className="relative flex mx-auto max-w-7xl">
           <Sidebar args={['categories', 'tags', 'featured-post']} />
           <div className="w-full">
@@ -25,7 +25,7 @@ export default function BlogIndex({ data: { posts, featured }, pageContext }) {
                 All Blog Posts
               </h2>
               <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center gap-x-2`}>
-                <p className="text-lg font-semibold">Jump to Page:</p>
+                <p className="hidden text-lg font-semibold sm:block">Jump to Page:</p>
                 <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
               </div>
             </div>
@@ -48,7 +48,6 @@ export const pageQuery = graphql`
   query($skip: Int!, $limit: Int!)  {
     posts: allSanityPost(limit: $limit, skip: $skip, filter: {featured: {eq: false}}) {
       nodes {
-        _rawBody
         id
         image {
           asset {
@@ -56,6 +55,7 @@ export const pageQuery = graphql`
           }
         }
         publishedAt(formatString: "dddd MMMM Do, YYYY")
+        excerpt
         tags {
           id
           name
@@ -77,7 +77,6 @@ export const pageQuery = graphql`
       }
     }
     featured: sanityPost(featured: {eq: true}) {
-      _rawBody
       id
       image {
         asset {
@@ -96,6 +95,7 @@ export const pageQuery = graphql`
         current
       }
       name
+      excerpt
       caption
       category {
         slug {

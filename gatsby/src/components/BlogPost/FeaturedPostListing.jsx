@@ -45,7 +45,8 @@ export default function FeaturedPostListing({ post }) {
       <div className="px-8 ">
         <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-6" itemType="text">
           {/* eslint-disable-next-line no-underscore-dangle */}
-          <RichText body={post._rawBody} />
+          {post.excerpt}
+          ...
         </div>
       </div>
     </article>

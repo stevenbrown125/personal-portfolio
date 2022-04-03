@@ -14,6 +14,7 @@
     "@sanity/image-url": "^1.0.1",
     "dotenv": "^16.0.0",
     "gatsby": "^4.10.3",
+    "gatsby-plugin-excerpts": "^1.1.0",
     "gatsby-plugin-image": "^2.10.1",
     "gatsby-plugin-react-helmet": "^5.10.0",
     "gatsby-plugin-sanity-image": "^0.11.0",

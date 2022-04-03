@@ -22,7 +22,7 @@ export default function ProjectListingTemplate({ data: { projects, featured }, p
           <Sidebar args={['technologies', 'featured-project']} />
           <div>
             <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
-              <h2 className="flex items-center text-3xl font-semibold gap-x-2">
+              <h2 className="flex items-center text-xl font-semibold lg:text-3xl gap-x-2">
                 <FaCodeBranch />
                 All Projects
               </h2>

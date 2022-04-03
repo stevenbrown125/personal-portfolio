@@ -19,6 +19,7 @@ query {
           gatsbyImageData
         }
       }
+      excerpt
       publishedAt
       tags {
         id
@@ -56,7 +57,7 @@ query {
     }
     tweets: allTwitterStatusesUserTimelineLatestTweets(
       limit: 2
-      sort: {order: DESC, fields: created_at}
+      sort: {order: ASC, fields: created_at}
     ) {
       nodes {
         id
@@ -146,7 +147,8 @@ export default function SupFooterGrid() {
               </p>
               <div className="px-4 line-clamp-6">
                 <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-4">
-                  <RichText body={post._rawBody} />
+                  {post.excerpt}
+                  ...
                 </div>
               </div>
 

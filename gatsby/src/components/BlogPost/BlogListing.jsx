@@ -2,7 +2,6 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { FaTag } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import RichText from '../RichText';
 
 export default function BlogListing({ post }) {
   return (
@@ -16,10 +15,11 @@ export default function BlogListing({ post }) {
         {' '}
         <time dateTime={post.publishedAt} itemType="datePublished">{post.publishedAt}</time>
       </p>
-      <div className="px-8 ">
+      <div className="relative px-8 ">
         <div className="prose max-w-none text-slate-900 line-clamp-6" itemType="text">
           {/* eslint-disable-next-line no-underscore-dangle */}
-          <RichText body={post._rawBody} />
+          {post.excerpt}
+          ...
         </div>
       </div>
       <ul className="inline-flex px-8 py-4" itemType="keywords">

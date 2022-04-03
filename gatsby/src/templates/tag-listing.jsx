@@ -63,6 +63,7 @@ export const pageQuery = graphql`
         _rawBody
         featured
         id
+        excerpt
         publishedAt(formatString: "dddd MMMM Do, YYYY")
         tags {
           id

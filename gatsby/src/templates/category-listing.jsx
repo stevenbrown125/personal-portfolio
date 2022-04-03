@@ -19,9 +19,9 @@ export default function CategoryListing({ data: { posts, category }, pageContext
         <div className="relative flex mx-auto max-w-7xl">
           <Sidebar args={['categories', 'tags', 'featured-post']} />
           <div>
-            <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
-              <h2 className="flex items-center text-3xl font-semibold gap-x-2">
-                <FaRegNewspaper />
+            <div className="relative z-20 flex items-center justify-between w-full px-4 py-2 mb-4 rounded-sm shadow-md sm:px-6 bg-secondary-light">
+              <h2 className="flex items-center text-lg font-semibold lg:text-3xl gap-x-2">
+                <FaRegNewspaper className="hidden sm:block" />
                 All
                 {' '}
                 {category.name}
@@ -62,6 +62,7 @@ export const pageQuery = graphql`
         _rawBody
         featured
         id
+        excerpt
         publishedAt(formatString: "dddd MMMM Do, YYYY")
         tags {
           id

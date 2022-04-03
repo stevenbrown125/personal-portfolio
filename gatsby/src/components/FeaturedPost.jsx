@@ -2,12 +2,11 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import { FaNewspaper } from 'react-icons/fa';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import RichText from './RichText';
 
 const query = graphql`
   query {
     post: sanityPost(featured: {eq: true}) {
-        _rawBody
+        excerpt
         id
         image {
           asset {
@@ -38,14 +37,14 @@ export default function FeaturedPost() {
           image={post.image.asset.gatsbyImageData}
           alt={post.name}
         />
-        <h3 className="pt-2 text-center medium"><Link to={`/blog/${post.slug.current}`} className="border-b border-amber-600 hover:text-amber-600">{post.name}</Link></h3>
+        <h3 className="px-1 pt-2 text-center medium"><Link to={`/blog/${post.slug.current}`} className="border-b border-amber-600 hover:text-amber-600">{post.name}</Link></h3>
         <p className="px-2 pb-2 text-sm font-light text-center ">
           Written on
           {' '}
           {post.publishedAt}
         </p>
-        <div className="px-4 prose line-clamp-6">
-          <RichText body={post._rawBody} />
+        <div className="px-4 prose-sm prose line-clamp-6">
+          {post.excerpt}
         </div>
       </div>
     </div>
