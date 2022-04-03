@@ -18,7 +18,7 @@ export default function ContactPage() {
         title="Contact"
         description="Got questions, comments, or concerns? Need a quote for a web project or want to hire me part time? Awesome! Please fill out the provided form and I will get back to you as soon as possible. Looking forward to hearing from you!"
       />
-      <section className="relative pt-4 pb-12 md:pt-8">
+      <section className="relative pt-4 md:pb-12 md:pt-8">
         <header className="relative z-10 p-2 mx-auto mb-4 text-lg shadow-lg md:text-3xl md:rounded-md max-w-7xl bg-secondary-light">
           <h1 className="flex items-center px-4 font-bold">
             <FaEdit className="mr-2" />
