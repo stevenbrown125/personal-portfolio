@@ -42,7 +42,7 @@ export default function FeaturedPostListing({ post }) {
         <time dateTime={post.publishedAt} itemType="datePublished">{post.publishedAt}</time>
       </p>
       <div className="px-8 text-center md:text-left">
-        <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-6" itemType="text">
+        <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-10" itemType="text">
           {/* eslint-disable-next-line no-underscore-dangle */}
           {post.excerpt}
           ...
