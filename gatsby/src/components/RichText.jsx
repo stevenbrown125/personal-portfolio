@@ -1,6 +1,7 @@
 import React from 'react';
 import { PortableText } from '@portabletext/react';
 import urlBuilder from '@sanity/image-url';
+import Code from './PortableText/Code';
 
 const builder = urlBuilder({
   projectId: 'lbvh0g0x',
@@ -79,6 +80,8 @@ const components = {
     ) : (
       <div className="callToAction">{value.text}</div>
     )),
+    code: ({ value }) => (<Code value={value} />),
+
   },
 };
 
