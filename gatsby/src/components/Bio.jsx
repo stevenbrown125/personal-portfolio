@@ -19,16 +19,14 @@ export default function Bio() {
             name
             summary
           }
-          social {
-            twitter
-          }
+          twitterUsername
         }
       }
     }
   `);
 
   const author = data.site.siteMetadata?.author;
-  const social = data.site.siteMetadata?.social;
+  const social = data.site.siteMetadata?.twitterUsername;
 
   return (
     <section className="p-4 mx-auto my-4 text-center border shadow-md md:rounded-md max-w-7xl border-stone-200 bg-stone-50" itemScope="person">
@@ -73,10 +71,10 @@ export default function Bio() {
         <a
           target="_blank"
           rel="noreferrer"
-          href={`https://twitter.com/${social?.twitter || ''}`}
+          href={`https://twitter.com/${social || ''}`}
           className="pl-1 border-b border-amber-600 hover:text-amber-600"
         >
-          {social?.twitter ? `@${social?.twitter}` : ''}
+          {social?.twitter ? `@${social}` : ''}
         </a>
       </p>
     </section>

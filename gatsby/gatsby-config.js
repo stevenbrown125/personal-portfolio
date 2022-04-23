@@ -12,10 +12,10 @@ module.exports = {
     },
     description:
       "A website and blog displaying Steven's projects and interests. I design and develop things using React and NodeJS!",
-    siteUrl: 'https://stevendevelops.com',
-    social: {
-      twitter: 'Design4TheWeb',
-    },
+    url: 'https://stevendevelops.com',
+    twitterUsername: 'Design4TheWeb',
+    image: 'images/icon.png',
+    titleTemplate: "%s | Steven Brown's Portfolio",
   },
   plugins: [
     {

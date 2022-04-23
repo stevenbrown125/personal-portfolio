@@ -10,6 +10,8 @@ export default function BlogPostTemplate({ data: { post } }) {
       <SEO
         title={truncate(post.name, 44)}
         description={post.excerpt}
+        article
+        image={post.image.asset.gatsbyImageData}
       />
       <BlogPost post={post} />
     </>

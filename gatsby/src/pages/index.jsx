@@ -7,10 +7,9 @@ export default function HomePage() {
     <>
       <SEO
         title="Homepage"
-        description="A website and blog displaying Steven's projects and interests. I design and develop things using  React and NodeJS!"
+        description="A portfolio and blog displaying Steven Brown's projects, musings, interests. I am a FULL Stack Developer who's passion is bringing your ideas to the web! I love using React, Gatsby and NodeJS."
       />
       <section className="relative pt-12 md:py-12">
-
         <div className="relative mx-auto max-w-7xl">
           <h1 className="min-w-full px-4 py-6 mx-auto text-4xl font-black tracking-wide text-center bg-white shadow-lg -skew-y-2 sm:text-5xl max-w-max sm:min-w-min sm:px-12 md:rounded-md opacity-90 xl:text-7xl ">Hey, I&rsquo;m Steven Brown</h1>
           <h2 className="z-20 px-4 py-2 mx-auto mb-8 -mt-2 text-2xl font-medium text-center transform rounded-sm shadow-xl md:px-8 bg-secondary-light max-w-max -skew-y-2 xl:text-4xl">

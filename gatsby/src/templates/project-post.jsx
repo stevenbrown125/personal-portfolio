@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { FaTag } from 'react-icons/fa';
 import Bio from '../components/Bio';
 import Sidebar from '../components/Sidebar';
@@ -8,12 +8,13 @@ import RichText from '../components/RichText';
 import SEO from '../components/Seo';
 
 export default function ProjectPostTemplate({ data: { project } }) {
-  const truncate = (str, n) => ((str.length > n) ? `${str.substr(0, n - 1)}...` : str);
   return (
     <>
       <SEO
-        title={truncate(project.name, 44)}
-        description={truncate(project._rawDescription, { length: 255 })}
+        title={project.name}
+        description={project._rawDescription}
+        image={project.image.asset.gatsbyImageData}
+        article
       />
       <section className="relative py-4 md:py-8">
         <div className="relative flex mx-auto max-w-7xl">
