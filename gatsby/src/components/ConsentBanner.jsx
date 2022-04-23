@@ -1,4 +1,5 @@
 import * as React from 'react';
+// eslint-disable-next-line import/no-unresolved
 import { useLocation } from '@reach/router';
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
 import { Link } from 'gatsby';
