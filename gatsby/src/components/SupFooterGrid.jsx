@@ -61,7 +61,6 @@ query {
       nodes {
         id
         retweet_count
-        
         full_text
         favorite_count
         created_at

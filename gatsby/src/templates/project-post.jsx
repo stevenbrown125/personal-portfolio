@@ -13,7 +13,7 @@ export default function ProjectPostTemplate({ data: { project } }) {
       <SEO
         title={project.name}
         description={project._rawDescription}
-        image={project.image.asset.gatsbyImageData}
+        image={project.image.asset.url}
         article
       />
       <section className="relative py-4 md:py-8">
@@ -82,6 +82,7 @@ query($slug: String!) {
         _rawDescription
         image {
           asset {
+            url
             gatsbyImageData
           }
         }

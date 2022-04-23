@@ -18,7 +18,7 @@ export default function Code({ value: { code, language } }) {
     return null;
   }
   return (
-    <div className="relative">
+    <div className="relative max-w-prose sm:max-w-none">
       <SyntaxHighlighter
         language={language || 'text'}
         lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
@@ -29,17 +29,14 @@ export default function Code({ value: { code, language } }) {
       <CopyToClipboard
         text={code}
         onCopy={() => handleCopyClick()}
-        className="absolute w-6 h-6 top-3 right-4"
+        className="absolute w-6 h-6 top-2 lg:top-2 right-4"
       >
-        {isCopied ? <ClipboardCheckIcon className="w-5 h-5" /> : <ClipboardCopyIcon className="w-5 h-5" />}
+        {isCopied ? <ClipboardCheckIcon className="w-4 h-4 md:h-5 md:w-5 " /> : <ClipboardCopyIcon className="w-4 h-4 md:h-5 md:w-5" />}
       </CopyToClipboard>
     </div>
   );
 }
 
 Code.propTypes = {
-  value: PropTypes.objectOf({
-    code: PropTypes.string,
-    language: PropTypes.string,
-  }).isRequired,
+  value: PropTypes.any.isRequired,
 };

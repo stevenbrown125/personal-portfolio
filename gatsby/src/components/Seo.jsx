@@ -8,7 +8,7 @@ const query = graphql`
   query SEO {
     site {
       siteMetadata {
-        defaultTitle: title
+        defaultTitle: title 
         titleTemplate
         defaultDescription: description
         siteUrl: url
@@ -23,7 +23,7 @@ function SEO({
 }) {
   const { pathname } = useLocation();
   const { site } = useStaticQuery(query);
-
+  const ogImage = image ?? image?.childImageSharp?.gatsbyImageData;
   const {
     defaultTitle,
     titleTemplate,
@@ -36,10 +36,9 @@ function SEO({
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    image: `${ogImage || `${siteUrl}/${defaultImage}`}`,
     url: `${siteUrl}${pathname}`,
   };
-  console.log(defaultImage);
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
       <meta name="description" content={seo.description} />

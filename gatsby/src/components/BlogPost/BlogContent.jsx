@@ -14,7 +14,7 @@ export default function BlogContent({ post }) {
           <time dateTime={post.publishedAt} itemType="datePublished">{post.publishedAt}</time>
         </p>
       </header>
-      <div className="p-8 prose prose-xl border max-w-none text-slate-900 border-stone-200 md:rounded-b-md" itemType="text">
+      <div className="p-8 prose border lg:prose-xl lg:max-w-none text-slate-900 border-stone-200 md:rounded-b-md" itemType="text">
         {/* eslint-disable-next-line no-underscore-dangle */}
         <RichText body={post._rawBody} />
       </div>

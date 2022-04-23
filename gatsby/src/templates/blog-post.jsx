@@ -11,7 +11,7 @@ export default function BlogPostTemplate({ data: { post } }) {
         title={truncate(post.name, 44)}
         description={post.excerpt}
         article
-        image={post.image.asset.gatsbyImageData}
+        image={post.image.asset.url}
       />
       <BlogPost post={post} />
     </>
@@ -37,6 +37,7 @@ query($slug: String!) {
       excerpt
       image {
         asset {
+          url
           gatsbyImageData
         }
       }
