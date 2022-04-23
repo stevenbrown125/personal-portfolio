@@ -6,6 +6,7 @@ import Footer from './Footer';
 import SocialMediaGrid from './SocialMediaGrid';
 import SupFooterGrid from './SupFooterGrid';
 import Background from './BlogPost/Background';
+import CookieConsent from './ConsentBanner';
 
 function Layout({ children }) {
   return (
@@ -29,6 +30,7 @@ function Layout({ children }) {
       <SocialMediaGrid />
       <SupFooterGrid />
       <Footer />
+      <CookieConsent />
     </>
   );
 }

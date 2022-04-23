@@ -16,7 +16,7 @@ export default function BlogListing({ post }) {
         <time dateTime={post.publishedAt} itemType="datePublished">{post.publishedAt}</time>
       </p>
       <div className="relative px-6 text-center md:text-left">
-        <div className="prose max-w-none text-slate-900 line-clamp-6" itemType="text">
+        <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-6" itemType="text">
           {post.excerpt}
           ...
         </div>

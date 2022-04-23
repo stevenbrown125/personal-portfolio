@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 export default function Footer() {
   return (
@@ -9,7 +10,9 @@ export default function Footer() {
         {new Date().getFullYear()}
         {' '}
         . All Rights Reserved.
+        Read our
         {' '}
+        <Link to="/privacy-policy" className="underline hover:text-amber-600">Privacy Policy</Link>
       </p>
     </div>
   );

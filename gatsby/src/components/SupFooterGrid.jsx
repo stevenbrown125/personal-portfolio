@@ -94,7 +94,7 @@ export default function SupFooterGrid() {
                   href={`https://twitter.com/Design4TheWeb/status/${tweet.id_str}/`}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-base font-normal no-underline text-slate-900 hover:text-stone-500"
+                  className="text-base font-normal no-underline text-slate-900 hover:text-twitter"
                 >
                   <FaTwitter className="float-left mr-1 text-2xl prose prose-xl md:mt-1 md:mr-4 text-twitter" />
                   {tweet.full_text}
