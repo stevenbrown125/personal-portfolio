@@ -7,7 +7,7 @@ export default function BlogContent({ post }) {
   return (
     <>
       <header>
-        <h2 className="pt-2 text-3xl font-semibold text-center" itemType="headline">{post.name}</h2>
+        <h2 className="px-4 pt-2 text-3xl font-semibold text-center" itemType="headline">{post.name}</h2>
         <p className="pb-4 text-sm font-light text-center border-b border-amber-600">
           Written on
           {' '}

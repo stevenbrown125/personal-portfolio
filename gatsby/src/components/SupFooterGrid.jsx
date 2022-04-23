@@ -56,7 +56,7 @@ query {
     }
     tweets: allTwitterStatusesUserTimelineLatestTweets(
       limit: 2
-      sort: {order: ASC, fields: created_at}
+      sort: {order: ASC, fields: user___created_at}
     ) {
       nodes {
         id
