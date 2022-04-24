@@ -48,7 +48,7 @@ export default function TechnologyListing({ data: { projects, technology }, page
             {projects.nodes.map((project) => (
               <article className="pb-8 mb-4 shadow-sm bg-stone-50" key={`article-${project.id}`}>
                 <header className="relative" />
-                <h2 className="px-4 pt-4 pb-2 text-2xl text-center md:text-left">
+                <h2 className="px-4 pt-1 pt-4 pb-2 text-2xl text-center md:text-left">
                   <Link to={`/portfolio/project/${project.slug.current}`} className="border-b-2 border-amber-600 hover:text-amber-600">{project.name}</Link>
                 </h2>
                 <p className="px-4 pb-4 text-sm font-light text-center md:text-left">

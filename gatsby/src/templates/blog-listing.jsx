@@ -20,7 +20,7 @@ export default function BlogIndex({ data: { posts, featured }, pageContext }) {
           <Sidebar args={['categories', 'tags', 'featured-post']} />
           <div className="w-full">
             <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
-              <h2 className="flex items-center text-lg font-semibold lg:text-3xl">
+              <h2 className="flex items-center pt-1 text-lg font-semibold lg:text-3xl">
                 <FaRegNewspaper className="mr-2" />
                 All Blog Posts
               </h2>
