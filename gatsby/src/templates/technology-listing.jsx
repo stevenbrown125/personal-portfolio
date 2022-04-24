@@ -58,7 +58,7 @@ export default function TechnologyListing({ data: { projects, technology }, page
                 </p>
                 <div className="px-8 ">
                   <div className="prose text-center lg:prose-lg max-w-none text-slate-900 line-clamp-6 md:text-left">
-                    <RichText body={project._rawDescription} />
+                    {project.excerpt}
                   </div>
                 </div>
 
@@ -86,7 +86,7 @@ export default function TechnologyListing({ data: { projects, technology }, page
 
 export const pageQuery = graphql`
   query($skip: Int!, $limit: Int!, $tech: String!)  {
-    projects: allSanityProject(limit: $limit, skip: $skip, filter: { technologies: {elemMatch: {slug: {current: {eq: $tech } } }} }) {
+    projects: allSanityProject(limit: $limit, skip: $skip, filter: { technologies: {elemMatch: {slug: {current: {eq: $tech } } }} }, sort: {fields: publishedAt, order: ASC}) {
       nodes {
         _rawDescription
         featured
@@ -96,6 +96,7 @@ export const pageQuery = graphql`
           current
         }
         name
+        excerpt
         technologies {
           slug {
             current

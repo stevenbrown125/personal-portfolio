@@ -41,7 +41,7 @@ query {
     }
   }
   project: sanityProject(featured: {eq: true}) {
-      _rawDescription
+      excerpt
       id
       image {
         asset {
@@ -177,7 +177,7 @@ export default function SupFooterGrid() {
             {project.publishedAt}
           </p>
           <div className="px-8 prose text-center line-clamp-6 lg:prose-lg md:text-left">
-            <RichText body={project._rawDescription} />
+            {project.excerpt}
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ export default function ProjectPostTemplate({ data: { project } }) {
     <>
       <SEO
         title={project.name}
-        description={project._rawDescription}
+        description={project.excerpt}
         image={project.image.asset.url}
         article
       />
@@ -28,7 +28,7 @@ export default function ProjectPostTemplate({ data: { project } }) {
                   image={project.image.asset.gatsbyImageData}
                   alt={project.name}
                 />
-                <ul className="absolute inline-flex text-sm top-2 right-4 gap-x-2">
+                <ul className="absolute flex flex-wrap justify-end gap-2 py-4 ml-20 text-sm top-2 right-4">
                   {project.technologies.map((tag) => (
                     <li key={project.id + tag.id}>
                       <Link to={`/blog/tag/${tag.slug.current}`} className="flex items-center px-3 py-1 rounded-lg gap-x-2 bg-secondary-light hover:bg-amber-500 font-lighter ">
@@ -78,8 +78,10 @@ query($slug: String!) {
         slug {
           current
         }
+        excerpt
         name
         _rawDescription
+        excerpt
         image {
           asset {
             url

@@ -46,7 +46,7 @@ export default function ProjectListingTemplate({ data: { projects, featured }, p
 
 export const pageQuery = graphql`
   query($skip: Int!, $limit: Int!)  {
-    projects: allSanityProject(limit: $limit, skip: $skip, filter: {featured: {eq: false}}) {
+    projects: allSanityProject(limit: $limit, skip: $skip, filter: {featured: {eq: false}}, sort: {fields: publishedAt, order: DESC}) {
       nodes {
         _rawDescription
         featured
@@ -68,6 +68,7 @@ export const pageQuery = graphql`
           current
         }
         name
+        excerpt
       }
     }
     featured: sanityProject(featured: {eq: true}) {
@@ -91,6 +92,7 @@ export const pageQuery = graphql`
         current
       }
       name
+      excerpt
     }
   }
 `;

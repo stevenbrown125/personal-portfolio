@@ -1,7 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { FaCode } from 'react-icons/fa';
-import RichText from '../RichText';
 
 export default function ProjectListing({ project }) {
   return (
@@ -17,7 +16,8 @@ export default function ProjectListing({ project }) {
       </p>
       <div className="px-6">
         <div className="prose lg:prose-lg max-w-none text-slate-900 line-clamp-6">
-          <RichText body={project._rawDescription} />
+          {project.excerpt}
+          ...
         </div>
       </div>
 

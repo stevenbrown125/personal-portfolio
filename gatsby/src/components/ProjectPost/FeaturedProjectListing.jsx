@@ -2,7 +2,6 @@ import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { FaCode, FaStar } from 'react-icons/fa';
-import RichText from '../RichText';
 
 export default function FeaturedProjectListing({ project }) {
   return (
@@ -14,11 +13,11 @@ export default function FeaturedProjectListing({ project }) {
           image={project.image.asset.gatsbyImageData}
           alt={project.name}
         />
-        <span className="absolute top-0 left-0 flex px-4 pt-2 pb-2 text-sm font-bold text-center uppercase rounded-br shadow-lg bg-primary">
-          <FaStar className="pr-2" />
+        <span className="absolute top-0 left-0 flex items-center px-4 pt-2 pb-2 text-sm font-bold text-center uppercase rounded-br shadow-lg bg-primary">
+          <FaStar className="mr-2" />
           Featured
         </span>
-        <ul className="absolute inline-flex text-sm top-2 right-4 gap-x-2">
+        <ul className="absolute flex flex-wrap justify-end gap-2 py-4 ml-20 text-sm top-2 right-4">
           {project.technologies.map((technology) => (
             <li key={`featured-${technology.id}`}>
               <Link to={`/portfolio/technology/${technology.slug.current}`} className="flex items-center px-3 py-1 rounded-lg gap-x-2 bg-secondary-light hover:bg-amber-500 font-lighter ">
@@ -39,7 +38,8 @@ export default function FeaturedProjectListing({ project }) {
       </p>
       <div className="px-8">
         <div className="prose text-center lg:prose-lg max-w-none text-slate-900 line-clamp-6 md:text-left">
-          <RichText body={project._rawDescription} />
+          {project.excerpt}
+          ...
         </div>
       </div>
     </article>
