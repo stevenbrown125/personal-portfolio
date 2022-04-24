@@ -1,11 +1,9 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
-
 import {
   FaTwitter, FaBlog, FaCodeBranch, FaHeart, FaRetweet,
 } from 'react-icons/fa';
-import RichText from './RichText';
 
 const query = graphql`
 query {
@@ -19,7 +17,7 @@ query {
         }
       }
       excerpt
-      publishedAt
+      publishedAt(formatString: "dddd MMMM Do, YYYY")
       tags {
         id
         name
@@ -87,15 +85,15 @@ export default function SupFooterGrid() {
         <div className="px-8 py-4">
           {/* Posts */}
           {tweets.nodes.map((tweet) => (
-            <div className="py-6 text-lg prose text-center border-b lg:prose-lg border-stone-300 last:border-none md:text-left" key={tweet.id}>
-              <p>
+            <div className="py-6 text-lg prose text-center border-b lg:prose-lg border-stone-300 max-w-none last:border-none md:text-left" key={tweet.id}>
+              <p className="">
                 <a
                   href={`https://twitter.com/Design4TheWeb/status/${tweet.id_str}/`}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-base font-normal no-underline text-slate-900 hover:text-twitter"
+                  className="text-base font-normal prose no-underline lg:prose-lg hover:text-twitter"
                 >
-                  <FaTwitter className="float-left mr-1 text-2xl prose prose-xl md:mt-1 md:mr-4 text-twitter" />
+                  <FaTwitter className="float-left pt-1 mr-1 text-2xl md:mr-2 text-twitter" />
                   {tweet.full_text}
                 </a>
               </p>
@@ -145,7 +143,7 @@ export default function SupFooterGrid() {
                 </p>
               </header>
               <div className="px-4 pb-4 line-clamp-6">
-                <div className="prose text-center lg:prose-lg max-w-none text-slate-900 line-clamp-4 md:text-left">
+                <div className="prose text-center lg:prose-lg max-w-none line-clamp-4 md:text-left">
                   {post.excerpt}
                   ...
                 </div>
@@ -176,7 +174,7 @@ export default function SupFooterGrid() {
             {' '}
             {project.publishedAt}
           </p>
-          <div className="px-8 prose text-center line-clamp-6 lg:prose-lg md:text-left">
+          <div className="px-8 prose text-center max-w-none line-clamp-6 lg:prose-lg md:text-left">
             {project.excerpt}
           </div>
         </div>
