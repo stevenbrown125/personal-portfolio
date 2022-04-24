@@ -46,7 +46,7 @@ export default function BlogIndex({ data: { posts, featured }, pageContext }) {
 
 export const pageQuery = graphql`
   query($skip: Int!, $limit: Int!)  {
-    posts: allSanityPost(limit: $limit, skip: $skip, filter: {featured: {eq: false}}) {
+    posts: allSanityPost(limit: $limit, skip: $skip, filter: {featured: {eq: false}}, sort: {fields: publishedAt, order: DESC}) {
       nodes {
         id
         image {

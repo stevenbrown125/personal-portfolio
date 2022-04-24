@@ -2,6 +2,7 @@ import React from 'react';
 import { PortableText } from '@portabletext/react';
 import urlBuilder from '@sanity/image-url';
 import Code from './PortableText/Code';
+import InlineImage from './PortableText/InlineImage';
 
 const builder = urlBuilder({
   projectId: 'lbvh0g0x',
@@ -62,18 +63,7 @@ const components = {
   },
   types: {
     inlineImage: ({ value }) => (
-      <div className="flex items-center justify-center">
-        <figure>
-          <img
-            src={builder
-              .image(value.image)}
-            className="h-96"
-            alt={value.alt || ' '}
-            loading="lazy"
-          />
-          <figcaption className="pr-4 text-sm italic text-right">{value?.alt}</figcaption>
-        </figure>
-      </div>
+      <InlineImage value={value} />
     ),
     callToAction: ({ value, isInline }) => (isInline ? (
       <a href={value.url}>{value.text}</a>

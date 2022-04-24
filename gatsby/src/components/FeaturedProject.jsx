@@ -44,10 +44,9 @@ export default function FeaturedProject() {
           {' '}
           {project.publishedAt}
         </p>
-        <div className="px-4 prose line-clamp-6 lg:prose-lg">
+        <div className="px-4 prose-sm prose line-clamp-6">
           <RichText body={project._rawDescription} />
         </div>
-
       </div>
     </div>
   );
