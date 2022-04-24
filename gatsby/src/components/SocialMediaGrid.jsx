@@ -14,6 +14,7 @@ export default function SocialMediaGrid() {
             rel="noreferrer"
           >
             <FaTwitter />
+            <span className="sr-only">Twitter</span>
           </a>
           <a
             href="https://www.linkedin.com/in/stevenbrown125/"
@@ -22,6 +23,7 @@ export default function SocialMediaGrid() {
             rel="noreferrer"
           >
             <FaLinkedinIn />
+            <span className="sr-only">LinkedIn</span>
           </a>
           <a
             href="https://github.com/stevenbrown125"
@@ -30,6 +32,7 @@ export default function SocialMediaGrid() {
             rel="noreferrer"
           >
             <FaGithub />
+            <span className="sr-only">GitHub</span>
           </a>
         </span>
       </h3>
