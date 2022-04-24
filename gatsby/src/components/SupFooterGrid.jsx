@@ -133,17 +133,17 @@ export default function SupFooterGrid() {
           {posts.nodes.map((post) => (
             <article className="pb-2 mb-2 border-b border-stone-200 last:border-none" key={`footer-${post.id}`}>
               <header className="relative pt-2">
-                <h2 className="px-4 pt-4 pb-2 text-xl text-center md:text-left">
+                <h2 className="px-8 pt-4 pb-2 text-xl text-center md:px-4 md:text-left">
                   <Link to={`/blog/${post.slug.current}`} className="border-b-2 border-amber-600 hover:text-amber-600">{post.name}</Link>
                 </h2>
-                <p className="px-4 pb-2 text-sm font-light text-center md:text-left">
+                <p className="px-8 pb-2 text-sm font-light text-center md:px-4 md:text-left">
                   Written on
                   {' '}
                   {post.publishedAt}
                 </p>
               </header>
-              <div className="px-4 pb-4 line-clamp-6">
-                <div className="px-8 prose text-center lg:prose-lg max-w-none line-clamp-4 md:text-left">
+              <div className="px-8 pb-4 line-clamp-6">
+                <div className="prose text-center lg:prose-lg max-w-none line-clamp-4 md:text-left">
                   {post.excerpt}
                   ...
                 </div>
