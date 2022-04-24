@@ -8,7 +8,7 @@ import DropDownMenu from '../components/DropDownMenu';
 import SEO from '../components/Seo';
 import BlogListing from '../components/BlogPost/BlogListing';
 
-export default function CategoryListing({ data: { posts, category }, pageContext }) {
+export default function CategoryListing({ data: { posts, category }, pageContext, location }) {
   return (
     <>
       <SEO
@@ -29,7 +29,7 @@ export default function CategoryListing({ data: { posts, category }, pageContext
               </h2>
               <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center`}>
                 <p className="hidden pr-2 text-lg font-semibold md:block">Jump to Page:</p>
-                <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
+                <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} section={`blog/category/${location.pathname.split('/')[3]}`} />
               </div>
             </div>
             {posts.nodes.length > 0 ? '' : (

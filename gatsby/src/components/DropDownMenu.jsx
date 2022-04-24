@@ -5,7 +5,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { Link } from 'gatsby';
 
-export default function DropDownMenu({ current, pages }) {
+export default function DropDownMenu({ current, pages, section }) {
   return (
     <Menu as="div" className="relative inline-block pt-1 text-left">
       <div>
@@ -31,7 +31,7 @@ export default function DropDownMenu({ current, pages }) {
             { Array.from({ length: pages }).map((_, i) => (
               // eslint-disable-next-line react/no-array-index-key
               <Menu.Item key={`page-${i}`}>
-                <Link to={`/blog${i === 0 ? '' : `/${i + 1}`}`} className={` ${i + 1 === current ? 'bg-amber-300' : 'hover:bg-amber-400'} group flex rounded-md items-center w-full py-2 text-sm px-5 my-1`}>
+                <Link to={`/${section}${i === 0 ? '' : `/${i + 1}`}`} className={` ${i + 1 === current ? 'bg-amber-300' : 'hover:bg-amber-400'} group flex rounded-md items-center w-full py-2 text-sm px-5 my-1`}>
                   {i + 1}
                 </Link>
               </Menu.Item>

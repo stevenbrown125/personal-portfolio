@@ -1,13 +1,12 @@
 /* eslint-disable multiline-ternary */
 import React from 'react';
-import { graphql, Link } from 'gatsby';
-import { FaCode, FaCodeBranch } from 'react-icons/fa';
-import { StaticImage } from 'gatsby-plugin-image';
+import { graphql } from 'gatsby';
+import { FaCodeBranch } from 'react-icons/fa';
 import Bio from '../components/Bio';
 import Sidebar from '../components/Sidebar';
-import RichText from '../components/RichText';
 import DropDownMenu from '../components/DropDownMenu';
 import SEO from '../components/Seo';
+import ProjectListing from '../components/ProjectPost/ProjectListing';
 
 export default function TechnologyListing({ data: { projects, technology }, pageContext }) {
   return (
@@ -20,7 +19,7 @@ export default function TechnologyListing({ data: { projects, technology }, page
           <Sidebar args={['technologies', 'featured-project']} />
           <div>
             <div className="relative z-20 flex items-center justify-between px-6 py-2 mb-4 rounded-sm shadow-md bg-secondary-light">
-              <h2 className="flex items-center text-lg font-semibold text-center lg:text-3xl md:text-left">
+              <h2 className="flex items-center pt-1 text-lg font-semibold lg:text-3xl">
                 <FaCodeBranch className="mr-2" />
                 All
                 {' '}
@@ -30,7 +29,7 @@ export default function TechnologyListing({ data: { projects, technology }, page
               </h2>
               <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center gap-x-2`}>
                 <p className="hidden text-lg font-semibold md:block">Jump to Page:</p>
-                <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
+                <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} section={`portfolio/technology/${location.pathname.split('/')[3]}`} />
               </div>
             </div>
             {projects.nodes.length > 0 ? '' : (
@@ -46,34 +45,7 @@ export default function TechnologyListing({ data: { projects, technology }, page
               </article>
             )}
             {projects.nodes.map((project) => (
-              <article className="pb-8 mb-4 shadow-sm bg-stone-50" key={`article-${project.id}`}>
-                <header className="relative" />
-                <h2 className="px-4 pt-1 pt-4 pb-2 text-2xl text-center md:text-left">
-                  <Link to={`/portfolio/project/${project.slug.current}`} className="border-b-2 border-amber-600 hover:text-amber-600">{project.name}</Link>
-                </h2>
-                <p className="px-4 pb-4 text-sm font-light text-center md:text-left">
-                  Written on
-                  {' '}
-                  {project.publishedAt}
-                </p>
-                <div className="px-8 ">
-                  <div className="prose text-center lg:prose-lg max-w-none text-slate-900 line-clamp-6 md:text-left">
-                    {project.excerpt}
-                  </div>
-                </div>
-
-                <ul className="flex flex-wrap justify-center px-6 py-4 md:justify-start">
-                  {project.technologies.map((tech) => (
-                    <li key={project.id + tech.id} className="flex-shrink-0 px-1 py-1">
-                      <Link to={`/portfolio/technology/${tech.slug.current}`} className="flex items-center px-3 py-1 rounded-lg gap-x-2 bg-secondary-light hover:bg-amber-500 font-lighter ">
-                        <FaCode />
-                        {tech.name}
-                      </Link>
-
-                    </li>
-                  ))}
-                </ul>
-              </article>
+              <ProjectListing project={project} key={project.id} />
             ))}
 
             <Bio />

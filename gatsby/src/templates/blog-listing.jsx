@@ -9,7 +9,7 @@ import SEO from '../components/Seo';
 import BlogListing from '../components/BlogPost/BlogListing';
 import FeaturedPostListing from '../components/BlogPost/FeaturedPostListing';
 
-export default function BlogIndex({ data: { posts, featured }, pageContext }) {
+export default function BlogIndex({ data: { posts, featured }, pageContext, location }) {
   return (
     <>
       <SEO
@@ -26,7 +26,7 @@ export default function BlogIndex({ data: { posts, featured }, pageContext }) {
               </h2>
               <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center`}>
                 <p className="hidden pr-2 text-lg font-semibold sm:block">Jump to Page:</p>
-                <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
+                <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} section="blog" />
               </div>
             </div>
             { pageContext.currentPage !== 1 ? ''

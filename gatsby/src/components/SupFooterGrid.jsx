@@ -143,7 +143,7 @@ export default function SupFooterGrid() {
                 </p>
               </header>
               <div className="px-4 pb-4 line-clamp-6">
-                <div className="prose text-center lg:prose-lg max-w-none line-clamp-4 md:text-left">
+                <div className="px-8 prose text-center lg:prose-lg max-w-none line-clamp-4 md:text-left">
                   {post.excerpt}
                   ...
                 </div>

@@ -9,7 +9,7 @@ import SEO from '../components/Seo';
 import FeaturedProjectListing from '../components/ProjectPost/FeaturedProjectListing';
 import ProjectListing from '../components/ProjectPost/ProjectListing';
 
-export default function ProjectListingTemplate({ data: { projects, featured }, pageContext }) {
+export default function ProjectListingTemplate({ data: { projects, featured }, pageContext, location }) {
   return (
     <>
       <SEO
@@ -26,7 +26,7 @@ export default function ProjectListingTemplate({ data: { projects, featured }, p
               </h2>
               <div className={` ${pageContext.pages <= 1 ? 'hidden' : 'flex'} items-center`}>
                 <p className="pr-2 text-lg font-semibold">Jump to Page:</p>
-                <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} />
+                <DropDownMenu current={pageContext.currentPage} pages={pageContext.pages} section={location.pathname.split('/')[1]} />
               </div>
             </div>
             { pageContext.currentPage !== 1 ? ''
