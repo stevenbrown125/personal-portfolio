@@ -16,7 +16,6 @@
     "gatsby": "^4.10.3",
     "gatsby-plugin-gdpr-cookies": "^2.0.8",
     "gatsby-plugin-image": "^2.10.1",
-    "gatsby-plugin-manifest": "^4.12.1",
     "gatsby-plugin-react-helmet": "^5.10.0",
     "gatsby-plugin-sanity-image": "^0.11.0",
     "gatsby-plugin-sharp": "^4.10.2",
