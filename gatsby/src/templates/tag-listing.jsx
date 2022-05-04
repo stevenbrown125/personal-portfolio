@@ -8,7 +8,7 @@ import DropDownMenu from '../components/DropDownMenu';
 import SEO from '../components/Seo';
 import BlogListing from '../components/BlogPost/BlogListing';
 
-export default function CategoryListing({ data: { posts, tag }, pageContext }) {
+export default function CategoryListing({ data: { posts, tag }, pageContext, location }) {
   return (
     <>
       <SEO

@@ -8,7 +8,7 @@ import DropDownMenu from '../components/DropDownMenu';
 import SEO from '../components/Seo';
 import ProjectListing from '../components/ProjectPost/ProjectListing';
 
-export default function TechnologyListing({ data: { projects, technology }, pageContext }) {
+export default function TechnologyListing({ data: { projects, technology }, pageContext, location }) {
   return (
     <>
       <SEO
